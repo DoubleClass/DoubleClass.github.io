@@ -164,6 +164,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-支持向量机（SVM）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/">支持向量机（SVM）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-04-08T06:48:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这篇文章写给已经对SVM有所了解，但是对背后的公式和方法还有所迷惑的同学，有些图片和思路借鉴于下面两篇博客：</p>
+<p><a href="https://www.jiqizhixin.com/articles/2018-10-17-20" target="_blank" rel="noopener">https://www.jiqizhixin.com/articles/2018-10-17-20</a></p>
+<p><a href="https://blog.csdn.net/weixin_41500849/article/details/80493712" target="_blank" rel="noopener">https://blog.csdn.net/weixin_41500849/article/details/80493712</a></p>
+<p><a href="https://www.cnblogs.com/liaohuiqiang/p/7805954.html" target="_blank" rel="noopener">https://www.cnblogs.com/liaohuiqiang/p/7805954.html</a></p>
+<p>另外，由于本人能力有限，且没有严谨的数学功底，同时又极力想把这个问题描述得非常简单，所以文中肯定会有不合理乃至错误之处，还请大家不吝指正。</p>
+<h2 id="拉格朗日乘子法"><a href="#拉格朗日乘子法" class="headerlink" title="拉格朗日乘子法"></a>拉格朗日乘子法</h2><p>接触过 SVM 的同学应该都听过这个方法，不过我一开始听到这个方法时是完全懵逼的，再加上KKT条件，整个人傻掉了，下面，咱就用一个最简单的例子，说一说这个拉格朗日乘子法，是个啥意思。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>首先，我们把问题限制在凸函数的优化问题上，也就是没有local minimal，只有一个全局最优。</p>
+<p>最简单的问题就是：下面这个函数的最小值是多少？</p>
+<p><img src="/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200408194351413.png" alt="image-20200408194351413"></p>
+<p>那位读者你把手放下，我知道你学过，不就是求导吗？当我没上过高中啊？好吧好吧，那如果加上一个条件呢？</p>
+<p><img src="/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200408194510478.png" alt="image-20200408194510478"></p>
+<p>如果不但要保证$f$ 最小，同时还要满足上面两个等式，该咋整捏？我们一点点来看。</p>
+<h3 id="等式约束"><a href="#等式约束" class="headerlink" title="等式约束"></a>等式约束</h3><p>没错，咱们上面描述的那个问题就是一个带等式约束的优化问题，但是三个$x$太多了，咱们看一个简单的：</p>
+<p>目标函数：<br>$$<br>f(x_1, x_2) = x_1 + x_2<br>$$<br>等式约束：<br>$$<br>h(x) = x_1^2+x_2^2-2=0<br>$$<br>画出来是什么样子呢？</p>
+<p><img src="/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200408195234890.png" alt="image-20200408195234890"></p>
+<p>f(x)在二维平面上画出等高线（contour）就是一条条斜率相同的直线，h(x)=0在二维平面上画出等高线就是一个圆，如上图所示。</p>
+<p>可以明显的看出，在圆圈h(x)的限制下，直线 $f(x)$ 的最小值为-2，在左下角直线x1+x2=2和圆的交点上。</p>
+<p>不考虑圆h(x)的限制时，f(x)要得到极小值，需要往f(x)的负梯度（下降最快的方向）（不懂为什么负梯度是下降方向的同学可以用个最简单的二次方程试一试，确实是这样的）方向走，如下左图蓝色箭头。</p>
+<p>如果考虑圆h(x)的限制，要得到极小值，需要沿着圆的切线方向走，如下右图红色粗箭头。注意这里的方向不是h(x)的梯度，而是正交于h(x)的梯度，h(x)梯度如下右图的红色细箭头。</p>
+<p>在极小值点，f(x)和h(x)的等高线是相切的。</p>
+<p><img src="https://i.loli.net/2020/04/08/oBDJc2bR6Mjsrqz.png" alt="image-20200408195612351"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DeepDDI-第一部分：问题简述与数据收集" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
