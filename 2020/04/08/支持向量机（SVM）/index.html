@@ -16,7 +16,7 @@
 <meta property="og:description" content="写在前面这篇文章写给已经对SVM有所了解，但是对背后的公式和方法还有所迷惑的同学，有些图片和思路借鉴于下面三篇博客： https:&#x2F;&#x2F;www.jiqizhixin.com&#x2F;articles&#x2F;2018-10-17-20 https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_41500849&#x2F;article&#x2F;details&#x2F;80493712 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;liao">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/04/08/kR7XCQsAq1UvZmO.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/08/CUqVcLBYodsXImT.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/10/DNb7fjkEspli8zH.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/08/tujy1Xeo6rRnHJI.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/08/oBDJc2bR6Mjsrqz.png">
 <meta property="og:image" content="http://yoursite.com/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200408195820023.png">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/04/08/a6JKI8WCResXqhu.png">
 <meta property="og:image" content="https://i.loli.net/2020/04/08/QPa4esgJqVSYcik.png">
 <meta property="article:published_time" content="2020-04-08T06:48:27.000Z">
-<meta property="article:modified_time" content="2020-04-10T00:18:31.021Z">
+<meta property="article:modified_time" content="2020-04-10T00:27:01.959Z">
 <meta property="article:author" content="Dark Knight">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -210,7 +210,7 @@
 <p>最简单的问题就是：下面这个函数的最小值是多少？</p>
 <p><img src="https://i.loli.net/2020/04/08/kR7XCQsAq1UvZmO.png" alt="image-20200408194351413"></p>
 <p>那位读者你把手放下，我知道你学过，不就是求导吗？当我没上过高中啊？好吧好吧，那如果加上一个条件呢？</p>
-<p><img src="https://i.loli.net/2020/04/08/CUqVcLBYodsXImT.png" alt="image-20200408194510478"></p>
+<p><img src="https://i.loli.net/2020/04/10/DNb7fjkEspli8zH.png" alt="image-20200410082652624"></p>
 <p>如果不但要保证$f$ 最小，同时还要满足上面两个等式，该咋整捏？我们一点点来看。</p>
 <h3 id="等式约束"><a href="#等式约束" class="headerlink" title="等式约束"></a>等式约束</h3><p>没错，咱们上面描述的那个问题就是一个带等式约束的优化问题，但是三个$x$太多了，咱们看一个简单的：</p>
 <p>目标函数：<br>$$<br>f(x_1, x_2) = x_1 + x_2<br>$$<br>等式约束：<br>$$<br>h(x) = x_1^2+x_2^2-2=0<br>$$<br>画出来是什么样子呢？</p>
