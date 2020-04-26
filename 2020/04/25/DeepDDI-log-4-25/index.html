@@ -6,26 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>DeepDDI log 4.24 | Dark Knight 的博客</title>
+  <title>DeepDDI log 4.25 | Dark Knight 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="¶添加验证集 1234567891011def DataSplit(dataX, dataY, ratio&#x3D;0.90):    size &#x3D; dataX.shape[0]    slice_whole &#x3D; range(size)    slice_train &#x3D; random.sample(slice_whole, int(ratio * size))    slice_val &#x3D; [i for">
+  <meta name="description" content="¶尝试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DeepDDI log 4.24">
-<meta property="og:url" content="http://yoursite.com/2020/04/24/DeepDDI-log-4-24/index.html">
+<meta property="og:title" content="DeepDDI log 4.25">
+<meta property="og:url" content="http://yoursite.com/2020/04/25/DeepDDI-log-4-25/index.html">
 <meta property="og:site_name" content="Dark Knight 的博客">
-<meta property="og:description" content="¶添加验证集 1234567891011def DataSplit(dataX, dataY, ratio&#x3D;0.90):    size &#x3D; dataX.shape[0]    slice_whole &#x3D; range(size)    slice_train &#x3D; random.sample(slice_whole, int(ratio * size))    slice_val &#x3D; [i for">
+<meta property="og:description" content="¶尝试">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/04/25/bNqLmIrsTeVczYZ.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/25/US1VbGCdDpcztAO.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/25/FGcLIUBvHDRehaQ.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/25/pKcIeUEYoVhzGwy.png">
-<meta property="og:image" content="https://i.loli.net/2020/04/25/FcbKhSPMCxiJ4p8.png">
-<meta property="article:published_time" content="2020-04-24T12:25:46.000Z">
-<meta property="article:modified_time" content="2020-04-25T03:33:54.087Z">
+<meta property="article:published_time" content="2020-04-25T08:43:27.000Z">
+<meta property="article:modified_time" content="2020-04-25T10:56:40.182Z">
 <meta property="article:author" content="Dark Knight">
 <meta property="article:tag" content="DeepDDI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/04/25/bNqLmIrsTeVczYZ.png">
   
     <link rel="alternative" href="/atom.xml" title="Dark Knight 的博客" type="application/atom+xml">
   
@@ -173,62 +167,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-DeepDDI-log-4-24" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DeepDDI-log-4-25" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      DeepDDI log 4.24
+      DeepDDI log 4.25
     </h1>
   
 
         
-        <a href="/2020/04/24/DeepDDI-log-4-24/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+        <a href="/2020/04/25/DeepDDI-log-4-25/" class="archive-article-date">
+  	<time datetime="2020-04-25T08:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="添加验证集"><a class="header-anchor" href="#添加验证集">¶</a>添加验证集</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DataSplit</span><span class="params">(dataX, dataY, ratio=<span class="number">0.90</span>)</span>:</span></span><br><span class="line">    size = dataX.shape[<span class="number">0</span>]</span><br><span class="line">    slice_whole = range(size)</span><br><span class="line">    slice_train = random.sample(slice_whole, int(ratio * size))</span><br><span class="line">    slice_val = [i <span class="keyword">for</span> i <span class="keyword">in</span> slice_whole <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> slice_train]</span><br><span class="line">    X_train = dataX[slice_train, :]</span><br><span class="line">    X_val = dataX[slice_val, :]</span><br><span class="line"></span><br><span class="line">    y_train = dataY[slice_train]</span><br><span class="line">    y_val = dataY[slice_val]</span><br><span class="line">    <span class="keyword">return</span> X_train, X_val, y_train, y_val</span><br></pre></td></tr></table></figure>
-<h2 id="使用1-3测试："><a class="header-anchor" href="#使用1-3测试：">¶</a>使用1_3测试：</h2>
-<h3 id="AUC"><a class="header-anchor" href="#AUC">¶</a>AUC</h3>
-<p><img src="https://i.loli.net/2020/04/25/bNqLmIrsTeVczYZ.png" alt="image-20200425092307666"></p>
-<h3 id="AUPRC"><a class="header-anchor" href="#AUPRC">¶</a>AUPRC</h3>
-<p><img src="https://i.loli.net/2020/04/25/US1VbGCdDpcztAO.png" alt="image-20200425093242190"></p>
-<p>不是很理想</p>
-<p><img src="https://i.loli.net/2020/04/25/FGcLIUBvHDRehaQ.png" alt="image-20200425093259606"></p>
-<p>为什么LR的效果这么好啊啊啊啊啊啊啊啊啊啊</p>
-<h2 id="加一层卷积层"><a class="header-anchor" href="#加一层卷积层">¶</a>加一层卷积层</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = Conv2D(filters=<span class="number">10</span>, kernel_size=(<span class="number">1</span>, <span class="number">5</span>), strides=(<span class="number">1</span>, <span class="number">1</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'valid'</span>)(x)</span><br><span class="line">x = MaxPooling2D(pool_size=(<span class="number">1</span>, <span class="number">2</span>))(x)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/04/25/pKcIeUEYoVhzGwy.png" alt="image-20200425094910954"></p>
-<p>比刚才提高了0.005</p>
-<h2 id="不使用Globe-Max-Pooling"><a class="header-anchor" href="#不使用Globe-Max-Pooling">¶</a>不使用Globe Max Pooling</h2>
-<p><img src="https://i.loli.net/2020/04/25/FcbKhSPMCxiJ4p8.png" alt="image-20200425095325879"></p>
-<p>看来不加还是不行</p>
-<h2 id="最后改为relu"><a class="header-anchor" href="#最后改为relu">¶</a>最后改为relu</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">638</span>    output = Dense(<span class="number">1</span>, activation=<span class="string">'relu'</span>, name=<span class="string">'output'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>和上面完全一样</p>
-<h2 id="去掉一个drop-out"><a class="header-anchor" href="#去掉一个drop-out">¶</a>去掉一个drop out</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">636</span>    x = Dropout(<span class="number">0.2</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>又跌倒 0.9357了，不行，还是加回去</p>
-<h2 id="在刚刚-concatenate地方，把激活函数，从-tanh-改为-relu"><a class="header-anchor" href="#在刚刚-concatenate地方，把激活函数，从-tanh-改为-relu">¶</a>在刚刚 concatenate地方，把激活函数，从 tanh 改为 relu</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">614</span>     x = Dense(<span class="number">300</span>, activation=<span class="string">'relu'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>跌到0.92了，完蛋，还是改回来</p>
-<h2 id="增加一层-conv"><a class="header-anchor" href="#增加一层-conv">¶</a>增加一层 conv</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = Conv2D(filters=<span class="number">10</span>, kernel_size=(<span class="number">1</span>, <span class="number">5</span>), strides=(<span class="number">1</span>, <span class="number">1</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'valid'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>又回到0.91了，我太难了</p>
-<h2 id="在刚刚-concatenate的地方，Dense改成400"><a class="header-anchor" href="#在刚刚-concatenate的地方，Dense改成400">¶</a>在刚刚 concatenate的地方，Dense改成400</h2>
-<p>0.93333</p>
-<p>还是改回来</p>
-<h2 id="试试之前的，看还有94吗"><a class="header-anchor" href="#试试之前的，看还有94吗">¶</a>试试之前的，看还有94吗</h2>
-<p>还好，又回来了</p>
-<p>0.9444444444444444</p>
-<p>今天，就先到这里吧，太惨了</p>
+        <h2 id="尝试"><a class="header-anchor" href="#尝试">¶</a>尝试</h2>
 
       
 
@@ -298,7 +257,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/24/DeepDDI-log-4-24/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/25/DeepDDI-log-4-25/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -312,18 +271,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/25/DeepDDI-log-4-25/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DeepDDI log 4.25
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">贝叶斯分类器</div>
+    <a href="/2020/04/24/DeepDDI-log-4-24/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DeepDDI log 4.24</div>
       <i class="icon-circle-right"></i>
     </a>
   
