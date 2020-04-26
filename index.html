@@ -185,6 +185,32 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="尝试"><a class="header-anchor" href="#尝试">¶</a>尝试</h2>
+<p>python train_with_pre_data.py -unit_list 84 34 12 4 2 -gpu_id 0 -evaluate_method auc -use_relu True -use_GMP True -use_bn True -sample 1_3 -use_whole_data 1</p>
+<h2 id="修改-threshold"><a class="header-anchor" href="#修改-threshold">¶</a>修改 threshold</h2>
+<p>把0.5改成0.6，试一下结果(epoch  和  最后都改了)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred_val_rfc[i] &gt; <span class="number">0.6</span></span><br></pre></td></tr></table></figure>
+<p>仍旧是0.94444</p>
+<p>激进一点：</p>
+<p>改成 0.7</p>
+<p>结果仍然 没变，可能是我傻了，但是为什么会不变呢？</p>
+<h2 id="调整学习率"><a class="header-anchor" href="#调整学习率">¶</a>调整学习率</h2>
+<p>从0.001到0.005，看结果怎么样</p>
+<p>都变成0.5了………………</p>
+<p>那我改成0.002试一下</p>
+<p>结果还是刚才那个，太南了</p>
+<h2 id="调整unit-list"><a class="header-anchor" href="#调整unit-list">¶</a>调整unit_list</h2>
+<p>python train_with_pre_data.py -unit_list 21 13 12 4 2 -gpu_id 0 -evaluate_method auc -use_relu True -use_GMP True -use_bn True -sample 1_3 -use_whole_data 1</p>
+<p>改成 21 13 12 4 2</p>
+<p>做了两次实验，一次 90.00一次 93.3333</p>
+<p>再改 84 126  34 12 4 2</p>
+<p>这次终于有长进了：</p>
+<p>0.9481481481481482</p>
+<p>再改 84 126  140 34 12 4 2</p>
+<p>这个到0.9518518518518518了，不错不错</p>
+<p>再改 84 126  140 180 34 12 4 2，这个就不是很好了，结果是 0.9407</p>
+<p>再改 84 126 140 134 12 4 2 不行，94.44</p>
+<p>再改84 126 140 34 124 2，95.185</p>
+<p>试一试 1：6比例的，效果非常差，85</p>
 
       
 
