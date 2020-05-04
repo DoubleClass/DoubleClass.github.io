@@ -61,6 +61,10 @@
 	        
 				<li><a href="/tags/DeepDDI/">DeepDDI</a></li>
 	        
+				<li><a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a></li>
+	        
+				<li><a href="/tags/%E9%80%9F%E6%9F%A5/">little Tips</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -121,6 +125,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -141,13 +149,17 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/DeepDDI/">DeepDDI</a></li>
+					<li style="width: 16.666666666666668%"><a href="/tags/DeepDDI/">DeepDDI</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/%E9%80%9F%E6%9F%A5/">little Tips</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,6 +175,91 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-DeepDDI-log-4-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/DeepDDI-log-4-20/">DeepDDI log 4.20</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/DeepDDI-log-4-20/" class="archive-article-date">
+  	<time datetime="2020-04-20T13:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="悲剧"><a class="header-anchor" href="#悲剧">¶</a>悲剧</h2>
+<p>今天用跑好的dataidx重新运行发现全都是0.5了十分恼火，整个一上午和一下午都没有找到原因</p>
+<h2 id="思路一"><a class="header-anchor" href="#思路一">¶</a>思路一</h2>
+<p>target没有设成float，导致预测只能是整数，事实证明不是这个问题</p>
+<h2 id="思路二"><a class="header-anchor" href="#思路二">¶</a>思路二</h2>
+<p>dataidx本身存在问题，这个在下午甚至让我震惊了好久，因为在 dataidx中出现的反应的 两个药物竟然在源文件中没有，肯定是出问题了啊，但是最后发现</p>
+<p>问题出现 windows记事本，它的搜索功能太烂了，我用excel搜索就搜到了，所以以后也要记住教训：千万不要为了生内存用记事本，有excel为什么不用呢？</p>
+<h2 id="思路三"><a class="header-anchor" href="#思路三">¶</a>思路三</h2>
+<p>暂时没有思路三</p>
+<p>今天搞了一整天还是没有搞清楚问题出现在哪里</p>
+<p>但是还是觉得很有趣，因为93的结果出现过，这个问题应该是可以解决的</p>
+<p>所以下一步应该是从头捋一捋整个过程，validation set的分割，可以放到后面</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/DeepDDI-log-4-20/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020年4月第三周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1424,127 +1521,6 @@ $$<br>
 
 
   
-    <article id="post-BP算法的两种推导" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/25/BP%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8E%A8%E5%AF%BC/">BP算法的两种推导</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/25/BP%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8E%A8%E5%AF%BC/" class="archive-article-date">
-  	<time datetime="2020-03-25T08:13:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基于交叉熵"><a class="header-anchor" href="#基于交叉熵">¶</a>基于交叉熵</h2>
-<h3 id="问题描述"><a class="header-anchor" href="#问题描述">¶</a>问题描述</h3>
-<p>这里首先给出基于交叉熵的损失函数表示方式。</p>
-<p>假设有神经网络结构如下：</p>
-<p><img src="https://i.loli.net/2020/03/26/18wURDjWrZAFMXL.png" alt="image-20200326143757041"></p>
-<p>总共有四层，其中第一层是输入层，第四层是输出层，每个隐藏层包含一个偏置项（bias），$L$表示总共的层数，$s_l$表示第$l$层中的神经元个数（不包含偏置项）。</p>
-<p><img src="https://i.loli.net/2020/03/26/MwueNJjPsA1ZhRz.png" alt="image-20200326144324764"></p>
-<p>我们可以把这种神经网络想象成K个逻辑斯蒂回归模型的组合，所以很自然的，损失函数需要计算四个输出总共的err，即增加了一层$\sum_{k = 1}^K$用来求和，对应下面的正则化项也很好理解，首先，一共有$L$层说明就有$L-1$个参数集，每个参数集内即可用后两个求和公式进行计算</p>
-<h3 id="偏导数推导"><a class="header-anchor" href="#偏导数推导">¶</a>偏导数推导</h3>
-<p>我们为什么要找到损失函数？因为需要最小化它找到最合适的参数。</p>
-<p>我们怎样最小化这个损失函数？最普遍的方式就是梯度下降法（包括随机梯度下降，共轭梯度下降等）。</p>
-<p>梯度下降法最关键的步骤是什么？当然是找到梯度。</p>
-<p>但是对于神经网络模型来说，参数往往非常多，而且彼此依赖，如何快速计算出损失函数对于每个参数的梯度就是BP算法要解决的问题。</p>
-<p>首先，我们再来看刚才的问题：</p>
-<p><img src="https://i.loli.net/2020/03/26/voLVCFSqy5BiTkO.png" alt="image-20200326145721034"></p>
-<p>假设 $a$ 代表每一层的输出，$z$ 代表每一层的输入（$z^{(2)} = \Theta<sup>{(1)}a</sup>{(1)}$ ），BP算法的厉害之处在于，它先计算出“每个节点的err”，而由链式法则，参数的偏导数即为这个节点的“err”再乘上该节点对该参数的偏导，具体公式如下：</p>
-<p><img src="https://i.loli.net/2020/03/26/x7cOuCpaZH94q2V.png" alt="image-20200326150831400"></p>
-<p>有个这个“节点的err”，再求某个具体参数的偏导，就直接乘上一层偏导就可以了，而这一层偏导就是上一层对应参数的输出 $a$</p>
-<p><img src="https://i.loli.net/2020/03/26/ODriHJfgzKZsTEo.png" alt="image-20200326151132627"></p>
-<p>右上所述，我们就可以对一个样本、一个输出层节点的偏导进行推导：</p>
-<p><img src="https://i.loli.net/2020/03/26/EXx8o2jfnqQLm4A.png" alt="image-20200326153242783"></p>
-<p>注意这里的$\delta^{(4)}$是一个四行一列的向量，代表的是$J(\Theta)$ 对于四个输出层的四个偏导数，接下俩是第二项，sigmoid的求导</p>
-<p><img src="https://i.loli.net/2020/03/26/CjJK4wDRquzOB6F.png" alt="image-20200326153457177"></p>
-<p>两项相乘，得到的式子非常简洁：</p>
-<p><img src="https://i.loli.net/2020/03/26/afeDmt4lnJwQ1jZ.png" alt="image-20200326153528808"></p>
-<p>最后，我们对三层节点都求出对应 $\delta$ 如下：</p>
-<p><img src="https://i.loli.net/2020/03/26/ScHbz6ilqGOehUN.png" alt="image-20200326153812558"></p>
-<h3 id="最终伪代码"><a class="header-anchor" href="#最终伪代码">¶</a>最终伪代码</h3>
-<p><img src="https://i.loli.net/2020/03/26/zrBVnW91wkdubZ5.png" alt="image-20200326154443599"></p>
-<h2 id="基于最小二乘"><a class="header-anchor" href="#基于最小二乘">¶</a>基于最小二乘</h2>
-<h3 id="问题描述-v2"><a class="header-anchor" href="#问题描述-v2">¶</a>问题描述</h3>
-<p>这种方法与上述交叉熵不同点就在于损失函数不同，这里使用的是最小二乘法，即最小化下面这个函数</p>
-<p><img src="https://i.loli.net/2020/03/26/vNtYb7gqRwcTBKk.png" alt="image-20200326155516842"></p>
-<p>这里对应的$\delta$就是：<br>
-$$<br>
-\delta^{(4)} = \frac{\partial E}{\partial a^{(4)}}\frac{\partial a^{(4)}}{\partial z^{(4)}}<br>
-$$</p>
-<p>$$<br>
-=\sum_{i=1}<sup>{m}(a</sup>{(4)}-y<sup>{(i)})a</sup>{(4)}(1-a^{(4)})<br>
-$$</p>
-<p>所以有，<br>
-$$<br>
-\frac{\partial E}{\partial \theta_{ij}^{(3)}} =\delta^{(4)}\frac{\partial z^{(4)}}{\partial \theta_{ij}^{(3)}} = a<sup>{(3)}\sum_{i=1}</sup>{m}(a<sup>{(4)}-y</sup>{(i)})a<sup>{(4)}(1-a</sup>{(4)})<br>
-$$</p>
-<h3 id="伪代码"><a class="header-anchor" href="#伪代码">¶</a>伪代码</h3>
-<p>剩下的步骤基本就与上述一致：</p>
-<p><img src="https://i.loli.net/2020/03/26/XFaCQmByONjkUxV.png" alt="image-20200326161842290"></p>
-<p>这样，我们就完成两种损失函数的BP算法推导，其实核心思想完全一致，就是把对参数的求偏导改为有顺序的，对节点的求偏导，再累积到每个参数上，就可以神奇地一趟完成整个过程。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/25/BP%E7%AE%97%E6%B3%95%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%8E%A8%E5%AF%BC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1672,6 +1648,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">周记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法与数据结构</a>
               </li>
             
             <div class="clearfix"></div>
