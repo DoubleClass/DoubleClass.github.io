@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>python 数据处理速查  | Dark Knight 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="¶读取csv ¶方法一 1reader_cross_table &#x3D; csv.reader(open(cross_table_path, &#39;r&#39;)) 这样后面可以直接用中括号引用 123rows &#x3D; [item for item in reader_cross_table]rows &#x3D; rows[1:len(rows)]name2bank &#x3D; &amp;#123;item[1].lower(): item[">
+  <meta name="description" content="¶读取csv ¶方法一 1reader_cross_table &#x3D; csv.reader(open(data_idx_two_sides, &#39;r&#39;)) 这样后面可以直接用中括号引用 123rows &#x3D; [item for item in reader_cross_table]rows &#x3D; rows[1:len(rows)]name2bank &#x3D; &amp;#123;item[1].lower(): ite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 数据处理速查 ">
 <meta property="og:url" content="http://yoursite.com/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/index.html">
 <meta property="og:site_name" content="Dark Knight 的博客">
-<meta property="og:description" content="¶读取csv ¶方法一 1reader_cross_table &#x3D; csv.reader(open(cross_table_path, &#39;r&#39;)) 这样后面可以直接用中括号引用 123rows &#x3D; [item for item in reader_cross_table]rows &#x3D; rows[1:len(rows)]name2bank &#x3D; &amp;#123;item[1].lower(): item[">
+<meta property="og:description" content="¶读取csv ¶方法一 1reader_cross_table &#x3D; csv.reader(open(data_idx_two_sides, &#39;r&#39;)) 这样后面可以直接用中括号引用 123rows &#x3D; [item for item in reader_cross_table]rows &#x3D; rows[1:len(rows)]name2bank &#x3D; &amp;#123;item[1].lower(): ite">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-02T12:26:13.000Z">
-<meta property="article:modified_time" content="2020-05-03T15:47:47.735Z">
+<meta property="article:modified_time" content="2020-06-05T10:28:42.368Z">
 <meta property="article:author" content="Dark Knight">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -201,7 +201,7 @@
       
         <h2 id="读取csv"><a class="header-anchor" href="#读取csv">¶</a>读取csv</h2>
 <h3 id="方法一"><a class="header-anchor" href="#方法一">¶</a>方法一</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader_cross_table = csv.reader(open(cross_table_path, <span class="string">'r'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader_cross_table = csv.reader(open(data_idx_two_sides, <span class="string">'r'</span>))</span><br></pre></td></tr></table></figure>
 <p>这样后面可以直接用中括号引用</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rows = [item <span class="keyword">for</span> item <span class="keyword">in</span> reader_cross_table]</span><br><span class="line">rows = rows[<span class="number">1</span>:len(rows)]</span><br><span class="line">name2bank = &#123;item[<span class="number">1</span>].lower(): item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> rows&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="方法二"><a class="header-anchor" href="#方法二">¶</a>方法二</h3>
