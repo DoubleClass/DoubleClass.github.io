@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Dark Knight 的博客</title>
+  <title>2020年6月第二周 | Dark Knight 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dark Knight 的博客">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="¶天气 距离初伏还有整整一个月，但是天气已经到了最劲爆的时候，早上6：30之后已经非常非常热了。 ¶生活 有时候再找一种舒服的生活方式，那种一眼望到头，但是总不会觉得厌倦的生活方式。 感觉现在的节奏还算刚刚好。 8：30前的时间永远是我的（希望10年后依旧是这样子），平时的时间用番茄工作法，闲暇时候看看漫画，看看美剧，读读小说。 ¶梦想 已经读到南开大学了，工作肯定找得到，饭不会吃不上，生活总能过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020年6月第二周">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8/index.html">
 <meta property="og:site_name" content="Dark Knight 的博客">
+<meta property="og:description" content="¶天气 距离初伏还有整整一个月，但是天气已经到了最劲爆的时候，早上6：30之后已经非常非常热了。 ¶生活 有时候再找一种舒服的生活方式，那种一眼望到头，但是总不会觉得厌倦的生活方式。 感觉现在的节奏还算刚刚好。 8：30前的时间永远是我的（希望10年后依旧是这样子），平时的时间用番茄工作法，闲暇时候看看漫画，看看美剧，读读小说。 ¶梦想 已经读到南开大学了，工作肯定找得到，饭不会吃不上，生活总能过">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-14T10:35:22.000Z">
+<meta property="article:modified_time" content="2020-06-14T11:37:04.421Z">
 <meta property="article:author" content="Dark Knight">
+<meta property="article:tag" content="周记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Dark Knight 的博客" type="application/atom+xml">
@@ -174,390 +179,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-python-数据处理速查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2020年6月第二周" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/">python 数据处理速查 </a>
+    <h1 class="article-title" itemprop="name">
+      2020年6月第二周
     </h1>
   
 
         
-        <a href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/" class="archive-article-date">
-  	<time datetime="2020-05-02T12:26:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="读取csv"><a class="header-anchor" href="#读取csv">¶</a>读取csv</h2>
-<h3 id="方法一"><a class="header-anchor" href="#方法一">¶</a>方法一</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader_cross_table = csv.reader(open(data_idx_two_sides, <span class="string">'r'</span>))</span><br></pre></td></tr></table></figure>
-<p>这样后面可以直接用中括号引用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rows = [item <span class="keyword">for</span> item <span class="keyword">in</span> reader_cross_table]</span><br><span class="line">rows = rows[<span class="number">1</span>:len(rows)]</span><br><span class="line">name2bank = &#123;item[<span class="number">1</span>].lower(): item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> rows&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法二"><a class="header-anchor" href="#方法二">¶</a>方法二</h3>
-<p>用pandas，也很简单：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stich_names = pd.read_csv(stich_id2name_path, sep=<span class="string">'\t'</span>, header=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
-<p>引用的话，要使用loc：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stich2drugbank = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(stich_names.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">if</span> stich_names.loc[i, <span class="number">1</span>].strip(<span class="string">'\''</span>) <span class="keyword">in</span> name2bank:</span><br><span class="line">        stich2drugbank[stich_names.loc[i, <span class="number">0</span>].strip(<span class="string">'\''</span>)] = name2bank[stich_names.loc[i, <span class="number">1</span>].strip(<span class="string">'\''</span>)]</span><br></pre></td></tr></table></figure>
-<h2 id="写入csv"><a class="header-anchor" href="#写入csv">¶</a>写入csv</h2>
-<p>这个更简单：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f_decagon = open(<span class="string">'decagon_relations.csv'</span>, <span class="string">'w'</span>)</span><br><span class="line">decagon_writer = csv.writer(f_decagon)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">decagon_writer.writerows([item <span class="keyword">for</span> item <span class="keyword">in</span> decagon_relations])</span><br></pre></td></tr></table></figure>
-<h2 id="判断字典是否包含某个key："><a class="header-anchor" href="#判断字典是否包含某个key：">¶</a>判断字典是否包含某个key：</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> reader_decagon.loc[i][<span class="number">0</span>] <span class="keyword">in</span> stich2drugbank</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-PageRank算法与矩阵特征值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/">PageRank算法与矩阵特征值</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/" class="archive-article-date">
-  	<time datetime="2020-04-30T13:42:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写在前面"><a class="header-anchor" href="#写在前面">¶</a>写在前面</h2>
-<p>说起来，当初MIT 18.06这个课程完全是网络投喂给我的，知乎、B站上好多同学对他交口称赞，抱着看着玩的态度看了第一集，立刻被 Strang 老师的幽默，课程的严谨，有趣的授课方式所折服，就一直看了下去。</p>
-<p>谁也想不到这个讲线性代数的课会涉及到 <strong>正规方程</strong> 的推导，我也更没想到，周二看完的 <strong>特征值与特征向量的应用后</strong>，周三的机器学习马上讲了<strong>PageRank算法</strong>，而算法一种独特的求解方法，恰巧使用了特征值与特征向量的性质。</p>
-<p>这种知识点的交错简直太棒了。</p>
-<p>所以这篇文章讲首先回顾特征值、特征向量是什么，怎么算，再说一说由此带来的优美的性质，最后用两个应用实例 <strong>斐波那契数列的求解</strong>、<strong>PageRank的幂解法</strong>（power method）结束。</p>
-<h2 id="特征值、特征向量"><a class="header-anchor" href="#特征值、特征向量">¶</a>特征值、特征向量</h2>
-<p>网络上有很多特征值、特征向量的介绍，所以我在这里还是简单粗暴的用一个例子来过一下它们是啥、怎么求、有什么性质。</p>
-<h3 id="举例"><a class="header-anchor" href="#举例">¶</a>举例</h3>
-<p>有一个矩阵A，它长这样子A=[3 1;1 3]：</p>
-<p><img src="https://i.loli.net/2020/04/30/7hbB9LyEMHwTG4C.png" alt="image-20200430215947940"></p>
-<p>我们想求这个矩阵的特征值、特征向量，我们怎么做？</p>
-<p>构造 $A-\lambda I$ 矩阵，这个矩阵的行列式值为零，即可求出特征值，以下为求解步骤：</p>
-<p><img src="https://i.loli.net/2020/04/30/AyIpSfJcxTUo5F4.png" alt="image-20200430220226687"></p>
-<p>这样我们就求出来，两个特征值分别为 <strong>2</strong> 和 <strong>4</strong> ，那特征向量呢？</p>
-<p>特征向量就是矩阵  $A-\lambda I$ 的零空间，也就是方程  $(A-\lambda I)x=0$ 的解 $x$ ，这也很好求，代入即可。</p>
-<p>对特征值 <strong>4</strong> ，它的特征向量是 $x_1 = [1;1]$ ，对于特征值 <strong>2</strong> ，它的特征向量是 $x_2 = [-1; 1]$。</p>
-<h4 id="意义"><a class="header-anchor" href="#意义">¶</a>意义</h4>
-<p>所以，我们费劲巴列的算出这两个东西是干啥用呢？这要从两个方面说起，从定义上讲。<strong>特征向量是与原矩阵相乘之后方向不改变的向量</strong>，有些费解？还是用例子解释：</p>
-<p>我们刚才的A矩阵，与第一个特征向量相乘，$Ax_1=x_{new}=[4;4]$ ，发现没有，这个新得到的向量 $x_{new}$ ，它和原先向量 $x_1 = [1;1]$ 方向完全一致，同时$x_{new} = 4×x_1$，这个倍数4，就是我们对应的特征值 $\lambda$  ，于是我们就得到了非常重要的公式：<br>
-$$<br>
-Ax=\lambda x<br>
-$$<br>
-稍微处理一下：<br>
-$$<br>
-Ax-\lambda x=0<br>
-$$</p>
-<p>$$<br>
-(A-\lambda I)x=0<br>
-$$</p>
-<p>所以，要得到非零向量x，矩阵$A-\lambda I$ 必须是奇异的，也就是它的行列式必须为零（这也解释了为什么刚刚我们的方法可以求出特征值$\lambda$）</p>
-<p>而计算特征向量的第二个原因，就是它代表了矩阵很多的特征（废话），具备很多优美的性质，可以应用在很多地方，下面所述的两个例子，就是其在<strong>求幂</strong> 这个过程中起到了非常大的作用。</p>
-<p>优美的性质，激动人心的案例，马上就来。</p>
-<h2 id="优美的性质"><a class="header-anchor" href="#优美的性质">¶</a>优美的性质</h2>
-<h3 id="对角化"><a class="header-anchor" href="#对角化">¶</a>对角化</h3>
-<p>为了避免这篇文章变得又臭又长，对这个不是很美丽的性质，我们就把它拿出来看一看，不做过多介绍。</p>
-<h4 id="白话版描述"><a class="header-anchor" href="#白话版描述">¶</a>白话版描述</h4>
-<p>如果你给我一个n维方阵，就比如说A，如果这个矩阵不那么特殊，也就是它能求得n个互不相关的特征向量，也就是这n个向量可以支撑起整个n维空间，那么我通过下面这个式子，可以把你给我的A变成一个对角方阵，而且对角线上就是n个特征值。<br>
-$$<br>
-S^{-1}AS=\Lambda<br>
-$$<br>
-这里的S，就是特征值组合成的方阵，我还是拿刚才的A举例子，对A来说，S是这样的</p>
-<p><img src="https://i.loli.net/2020/04/30/qjQT6ZHo3f57Y8c.png" alt="image-20200430223954807"></p>
-<p>那我们就看看，最后乘出来是啥吧：</p>
-<p><img src="https://i.loli.net/2020/04/30/rq5I86ZC3G9TcEV.png" alt="image-20200430224131442"></p>
-<p>哈哈，是不是，既是一个对角方阵，而且对角线上的值还是特征值，有意思吧，其实推的话也很好推，只是篇幅限制，感兴趣的同学可以去听18.06特征向量这一节。</p>
-<p>这里我们就记住下面这个公式就好啦：<br>
-$$<br>
-S^{-1}AS=\Lambda<br>
-$$</p>
-<h3 id="求幂"><a class="header-anchor" href="#求幂">¶</a>求幂</h3>
-<p>对上面的公式稍微做些变化：<br>
-$$<br>
-A = S\Lambda S^{-1}<br>
-$$</p>
-<p>$$<br>
-A^2 = S\Lambda S^{-1}S\Lambda S<sup>{-1}=S\Lambda</sup>{2}S^{-1}<br>
-$$</p>
-<p>可以看到，求幂后，特征向量组成的S方阵并没有变化，只是特征值也做了幂操作，事实上，如果我们看特征向量的定义式：<br>
-$$<br>
-Ax=\lambda x<br>
-$$</p>
-<p>$$<br>
-A^2x=\lambda Ax=\lambda ^2x<br>
-$$</p>
-<p>也可以看出，特征向量没变，特征值与A同时加幂。这样的性质，就为我们求幂，提供了新的思路。</p>
-<p>考虑一个递归式子（给定u0和A），求uk：</p>
-<p><img src="https://i.loli.net/2020/04/30/xY78lzfZi9XRcKG.png" alt="image-20200430231031374"></p>
-<p>如果编程实现的话，非常方便，但是这样的操作涉及到k次的矩阵乘法，而且无法并行，非常耗时，有什么办法可以直接一步求解吗？</p>
-<p>当然可以，特征向量闪亮登场！</p>
-<p>写出式子的前几项：</p>
-<p><img src="https://i.loli.net/2020/04/30/7HcAFtaeJxYGDIX.png" alt="image-20200430231248475"></p>
-<p>这个时候，我们可以把每个u，都写成n个特征向量线性组合的形式（因为这些特征向量是线性无关的，可以撑起整个n维空间，所以任何向量都可以表示成这样的线性组合）。</p>
-<p><img src="https://i.loli.net/2020/04/30/r5ENIL9toeUzTQg.png" alt="image-20200430231503411"></p>
-<p>这里<br>
-$$<br>
-u_0 = c_1x_1 +c_2x_2+…+c_nx_n = Sc<br>
-$$</p>
-<p>两边同时乘上A，可以得到：</p>
-<p><img src="https://i.loli.net/2020/04/30/qf3kslwzA6N9udK.png" alt="image-20200430231634776"></p>
-<p>这个时候，如果我们把A求100幂，结果会怎样呢？</p>
-<p><img src="https://i.loli.net/2020/04/30/iYWPLRB25rb6klm.png" alt="image-20200430231752120"></p>
-<p>再向下推一步就可以得到<br>
-$$<br>
-A^{100}u_0 = S\Lambda ^{100}c<br>
-$$<br>
-还记得S和c是啥吧，就是n个特征向量组合起来的方阵和得到u0的线性组合参数。</p>
-<p>到这里，问题就迎刃而解啦<br>
-$$<br>
-u_k = A^ku_0=S\Lambda ^kc<br>
-$$<br>
-通过这个式子就可以一步求出解啦。</p>
-<h2 id="应用"><a class="header-anchor" href="#应用">¶</a>应用</h2>
-<h3 id="斐波那契数列"><a class="header-anchor" href="#斐波那契数列">¶</a>斐波那契数列</h3>
-<p>斐波那契数列是一个很经典的递归求解的案例，我们看看特征向量是怎么派上用场的吧~</p>
-<p>首先，给出问题形式：<br>
-$$<br>
-F(n+2)=F(n+1) + F(n) ，给定F(0)=0，F(1)=1<br>
-$$<br>
-手算的话，前几项是这样的</p>
-<blockquote>
-<p>0 1 1 2 3 5 8 13 21 34 55 89 144 233</p>
-</blockquote>
-<p>问题来了，怎么通过一次，而不是递归的得到问题的解呢？</p>
-<p>相信打过ACM比赛的人都知道 <strong>二分之跟号五+1</strong>，但是这个数咋来的呢？一起来看</p>
-<h4 id="问题转换"><a class="header-anchor" href="#问题转换">¶</a>问题转换</h4>
-<p>这里是膜拜Strang老师的有一个地方，通过一个非常巧妙的trick，把二阶问题转化为了一阶：</p>
-<p>令uk为下面这个：</p>
-<p><img src="https://i.loli.net/2020/04/30/BDOzLdaf6T8IqsN.png" alt="image-20200430233021735"></p>
-<p>那么，$u_{k+1}$ 就可以用这个矩阵得到：</p>
-<p><img src="https://i.loli.net/2020/04/30/7svEHktNY1yJzdU.png" alt="image-20200430233129531"></p>
-<p>问题转化为我们熟悉的形式，同时这个A也得到了。</p>
-<p>下一步就是，计算特征值、特征向量，S，c，相乘，得到结果，这个过程，我用下面这段代码描述：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lambda1 = <span class="number">1.6180</span></span><br><span class="line">lambda2 = <span class="number">-0.6180</span></span><br><span class="line">S=[<span class="number">1</span> <span class="number">-1</span>;<span class="number">1</span> <span class="number">1</span>]</span><br><span class="line">S_inverse=inv(S)</span><br><span class="line">Lambda = [lambda1 <span class="number">0</span>; <span class="number">0</span> lambda2]</span><br><span class="line">c = [<span class="number">1</span>/<span class="number">5</span>^(<span class="number">.5</span>);<span class="number">-1</span>/<span class="number">5</span>^(<span class="number">.5</span>)]</span><br><span class="line">result = S*Lambda^<span class="number">100</span>*c</span><br></pre></td></tr></table></figure>
-<p>最后得到，result = 1.0e+20 * 3.5348 而通过递归算法求得的真实值是3.5422e+20，太美妙了有没有？</p>
-<h3 id="PageRank算法的幂解"><a class="header-anchor" href="#PageRank算法的幂解">¶</a>PageRank算法的幂解</h3>
-<p>哈哈标题写那么大，写道这里才涉及到PageRank，好惭愧。</p>
-<p>更惭愧的是，这里不打算对PageRank做基本的介绍，因为李航老师的书里写的实在太过于清晰了，事实上，关于，幂解，我也仅仅打算从李老师那里copy过来，目的就是让大家感受下，这个方法，几乎原封不动，就是我们刚刚说到的那个求幂的方法：</p>
-<p><img src="https://i.loli.net/2020/04/30/NW4D6Ct5q97bmdG.png" alt="image-20200430234156761"></p>
-<p><img src="https://i.loli.net/2020/04/30/TERQLGFWwKYJmxI.png" alt="image-20200430234218786"></p>
-<p><img src="https://i.loli.net/2020/04/30/TaPC6NkKIUz8Vnv.png" alt="image-20200430234238106"></p>
-<p>我预感这两个图片很可能会挂，所以如果有同学想看手头没有书的话，可以联系邮箱tjcxs136720@163.com我发给你~</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Latex-语法速查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/">Latex 语法速查</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/" class="archive-article-date">
-  	<time datetime="2020-04-28T11:44:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图片"><a class="header-anchor" href="#图片">¶</a>图片</h2>
-<h3 id="单个图片"><a class="header-anchor" href="#单个图片">¶</a>单个图片</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">  \centering</span><br><span class="line">  \includegraphics[width&#x3D;\textwidth]&#123;figure&#x2F;1.png&#125;</span><br><span class="line">  \caption&#123;运行结果与PPT不一致&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="并排图片"><a class="header-anchor" href="#并排图片">¶</a>并排图片</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\centering %图片全局居中</span><br><span class="line">%并排几个图，就要写几个minipage</span><br><span class="line">\begin&#123;minipage&#125;[b]&#123;0.45\textwidth&#125; %所有minipage宽度之和要小于1，否则会自动变成竖排</span><br><span class="line">\centering %图片局部居中</span><br><span class="line">\includegraphics[width&#x3D;0.8\textwidth]&#123;figure&#x2F;2.png&#125; %此时的图片宽度比例是相对于这个minipage的，不是全局</span><br><span class="line">\caption&#123;name 1&#125;</span><br><span class="line">\label&#123;Fig.1&#125;</span><br><span class="line">\end&#123;minipage&#125;</span><br><span class="line">\begin&#123;minipage&#125;[b]&#123;0.45\textwidth&#125; %所有minipage宽度之和要小于1，否则会自动变成竖排</span><br><span class="line">\centering %图片局部居中</span><br><span class="line">\includegraphics[width&#x3D;0.8\textwidth]&#123;figure&#x2F;3.png&#125;%此时的图片宽度比例是相对于这个minipage的，不是全局</span><br><span class="line">\caption&#123;name 2&#125;</span><br><span class="line">\label&#123;Fig.2&#125;</span><br><span class="line">\end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="插入代码"><a class="header-anchor" href="#插入代码">¶</a>插入代码</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;lstlisting&#125;[language &#x3D; C++, numbers&#x3D;left, </span><br><span class="line">         numberstyle&#x3D;\tiny,keywordstyle&#x3D;\color&#123;blue!70&#125;,</span><br><span class="line">         commentstyle&#x3D;\color&#123;red!50!green!50!blue!50&#125;,frame&#x3D;shadowbox,</span><br><span class="line">         rulesepcolor&#x3D;\color&#123;red!20!green!20!blue!20&#125;,basicstyle&#x3D;\ttfamily]</span><br><span class="line">void openmp_sort_static(int thread_count) &#123;</span><br><span class="line">    init_unbalanced();</span><br><span class="line">    QueryPerformanceFrequency((LARGE_INTEGER *)&amp;freq);</span><br><span class="line">    QueryPerformanceCounter((LARGE_INTEGER *)&amp;head);</span><br><span class="line">    long long tail;</span><br><span class="line">    # pragma omp parallel for num_threads(thread_count) schedule(static, 100)</span><br><span class="line">    for (int i &#x3D; 0; i &lt; ARR_NUM; i++) &#123;</span><br><span class="line">        sort(arr[i].begin(), arr[i].end());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    QueryPerformanceCounter((LARGE_INTEGER*)&amp;tail);</span><br><span class="line">    printf(&quot;openmp sort(static) : %lfms.\n&quot;, (tail - head) * 1000.0&#x2F;freq);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  \end&#123;lstlisting&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="插入表格"><a class="header-anchor" href="#插入表格">¶</a>插入表格</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">    \small</span><br><span class="line">    \centering</span><br><span class="line">    \caption&#123;燃油效率与汽⻋价格&#125;</span><br><span class="line">    \begin&#123;tabular&#125;&#123;lcc&#125;</span><br><span class="line">    \toprule</span><br><span class="line">    &amp; (1)        &amp; (2)         \\</span><br><span class="line">    \midrule</span><br><span class="line">    燃油效率      &amp; -238.90*** &amp; -49.51 \\</span><br><span class="line">    &amp; (53.08)   &amp; (86.16) \\</span><br><span class="line">    汽车重量      &amp;            &amp; 1.75*** \\</span><br><span class="line">    &amp;           &amp; (0.641)     \\</span><br><span class="line">    常数项       &amp; 11,253***  &amp; 1,946 \\</span><br><span class="line">    &amp; (1,171)   &amp; (3,597)     \\</span><br><span class="line">    观测数       &amp; 74         &amp; 74 \\</span><br><span class="line">    $R^2$       &amp; 0.220      &amp; 0.293 \\</span><br><span class="line">    \bottomrule</span><br><span class="line">    \multicolumn&#123;3&#125;&#123;l&#125;&#123;\scriptsize 括号内为标准误&#125; \\</span><br><span class="line">    \multicolumn&#123;3&#125;&#123;l&#125;&#123;\scriptsize *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1&#125; \\</span><br><span class="line">    \end&#123;tabular&#125;%</span><br><span class="line">    \label&#123;tab:reg&#125;%</span><br><span class="line">\end&#123;table&#125;%</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">速查</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年五一放假前一周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/2020%E5%B9%B4%E4%BA%94%E4%B8%80%E6%94%BE%E5%81%87%E5%89%8D%E4%B8%80%E5%91%A8/">2020年五一放假前一周</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/2020%E5%B9%B4%E4%BA%94%E4%B8%80%E6%94%BE%E5%81%87%E5%89%8D%E4%B8%80%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-04-26T13:00:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+        <a href="/2020/06/14/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8/" class="archive-article-date">
+  	<time datetime="2020-06-14T10:35:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-14</time>
 </a>
         
       </header>
@@ -565,697 +200,50 @@ $$<br>
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
-<p>天气冷得出奇，不知道是什么原因。晚上睡觉都要再盖一层防寒服，很冷</p>
-<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
-<p>王道还是挺有趣，下一步关键还是在复习OJ</p>
-<h2 id="时事"><a class="header-anchor" href="#时事">¶</a>时事</h2>
-<h3 id="精神领袖"><a class="header-anchor" href="#精神领袖">¶</a>精神领袖</h3>
-<p>领袖出狱了，很有趣，大家都在谈论</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/2020%E5%B9%B4%E4%BA%94%E4%B8%80%E6%94%BE%E5%81%87%E5%89%8D%E4%B8%80%E5%91%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DeepDDI-log-4-25" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/DeepDDI-log-4-25/">DeepDDI log 4.25</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/DeepDDI-log-4-25/" class="archive-article-date">
-  	<time datetime="2020-04-25T08:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="尝试"><a class="header-anchor" href="#尝试">¶</a>尝试</h2>
-<p>python train_with_pre_data.py -unit_list 84 34 12 4 2 -gpu_id 0 -evaluate_method auc -use_relu True -use_GMP True -use_bn True -sample 1_3 -use_whole_data 1</p>
-<h2 id="修改-threshold"><a class="header-anchor" href="#修改-threshold">¶</a>修改 threshold</h2>
-<p>把0.5改成0.6，试一下结果(epoch  和  最后都改了)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pred_val_rfc[i] &gt; <span class="number">0.6</span></span><br></pre></td></tr></table></figure>
-<p>仍旧是0.94444</p>
-<p>激进一点：</p>
-<p>改成 0.7</p>
-<p>结果仍然 没变，可能是我傻了，但是为什么会不变呢？</p>
-<h2 id="调整学习率"><a class="header-anchor" href="#调整学习率">¶</a>调整学习率</h2>
-<p>从0.001到0.005，看结果怎么样</p>
-<p>都变成0.5了………………</p>
-<p>那我改成0.002试一下</p>
-<p>结果还是刚才那个，太南了</p>
-<h2 id="调整unit-list"><a class="header-anchor" href="#调整unit-list">¶</a>调整unit_list</h2>
-<p>python train_with_pre_data.py -unit_list 21 13 12 4 2 -gpu_id 0 -evaluate_method auc -use_relu True -use_GMP True -use_bn True -sample 1_3 -use_whole_data 1</p>
-<p>改成 21 13 12 4 2</p>
-<p>做了两次实验，一次 90.00一次 93.3333</p>
-<p>再改 84 126  34 12 4 2</p>
-<p>这次终于有长进了：</p>
-<p>0.9481481481481482</p>
-<p>再改 84 126  140 34 12 4 2</p>
-<p>这个到0.9518518518518518了，不错不错</p>
-<p>再改 84 126  140 180 34 12 4 2，这个就不是很好了，结果是 0.9407</p>
-<p>再改 84 126 140 134 12 4 2 不行，94.44</p>
-<p>再改84 126 140 34 124 2，95.185</p>
-<p>试一试 1：6比例的，效果非常差，85</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/DeepDDI-log-4-25/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DeepDDI-log-4-24" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/DeepDDI-log-4-24/">DeepDDI log 4.24</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/DeepDDI-log-4-24/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="添加验证集"><a class="header-anchor" href="#添加验证集">¶</a>添加验证集</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">DataSplit</span><span class="params">(dataX, dataY, ratio=<span class="number">0.90</span>)</span>:</span></span><br><span class="line">    size = dataX.shape[<span class="number">0</span>]</span><br><span class="line">    slice_whole = range(size)</span><br><span class="line">    slice_train = random.sample(slice_whole, int(ratio * size))</span><br><span class="line">    slice_val = [i <span class="keyword">for</span> i <span class="keyword">in</span> slice_whole <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> slice_train]</span><br><span class="line">    X_train = dataX[slice_train, :]</span><br><span class="line">    X_val = dataX[slice_val, :]</span><br><span class="line"></span><br><span class="line">    y_train = dataY[slice_train]</span><br><span class="line">    y_val = dataY[slice_val]</span><br><span class="line">    <span class="keyword">return</span> X_train, X_val, y_train, y_val</span><br></pre></td></tr></table></figure>
-<h2 id="使用1-3测试："><a class="header-anchor" href="#使用1-3测试：">¶</a>使用1_3测试：</h2>
-<h3 id="AUC"><a class="header-anchor" href="#AUC">¶</a>AUC</h3>
-<p><img src="https://i.loli.net/2020/04/25/bNqLmIrsTeVczYZ.png" alt="image-20200425092307666"></p>
-<h3 id="AUPRC"><a class="header-anchor" href="#AUPRC">¶</a>AUPRC</h3>
-<p><img src="https://i.loli.net/2020/04/25/US1VbGCdDpcztAO.png" alt="image-20200425093242190"></p>
-<p>不是很理想</p>
-<p><img src="https://i.loli.net/2020/04/25/FGcLIUBvHDRehaQ.png" alt="image-20200425093259606"></p>
-<p>为什么LR的效果这么好啊啊啊啊啊啊啊啊啊啊</p>
-<h2 id="加一层卷积层"><a class="header-anchor" href="#加一层卷积层">¶</a>加一层卷积层</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = Conv2D(filters=<span class="number">10</span>, kernel_size=(<span class="number">1</span>, <span class="number">5</span>), strides=(<span class="number">1</span>, <span class="number">1</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'valid'</span>)(x)</span><br><span class="line">x = MaxPooling2D(pool_size=(<span class="number">1</span>, <span class="number">2</span>))(x)</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2020/04/25/pKcIeUEYoVhzGwy.png" alt="image-20200425094910954"></p>
-<p>比刚才提高了0.005</p>
-<h2 id="不使用Globe-Max-Pooling"><a class="header-anchor" href="#不使用Globe-Max-Pooling">¶</a>不使用Globe Max Pooling</h2>
-<p><img src="https://i.loli.net/2020/04/25/FcbKhSPMCxiJ4p8.png" alt="image-20200425095325879"></p>
-<p>看来不加还是不行</p>
-<h2 id="最后改为relu"><a class="header-anchor" href="#最后改为relu">¶</a>最后改为relu</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">638</span>    output = Dense(<span class="number">1</span>, activation=<span class="string">'relu'</span>, name=<span class="string">'output'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>和上面完全一样</p>
-<h2 id="去掉一个drop-out"><a class="header-anchor" href="#去掉一个drop-out">¶</a>去掉一个drop out</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">636</span>    x = Dropout(<span class="number">0.2</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>又跌倒 0.9357了，不行，还是加回去</p>
-<h2 id="在刚刚-concatenate地方，把激活函数，从-tanh-改为-relu"><a class="header-anchor" href="#在刚刚-concatenate地方，把激活函数，从-tanh-改为-relu">¶</a>在刚刚 concatenate地方，把激活函数，从 tanh 改为 relu</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">614</span>     x = Dense(<span class="number">300</span>, activation=<span class="string">'relu'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>跌到0.92了，完蛋，还是改回来</p>
-<h2 id="增加一层-conv"><a class="header-anchor" href="#增加一层-conv">¶</a>增加一层 conv</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = Conv2D(filters=<span class="number">10</span>, kernel_size=(<span class="number">1</span>, <span class="number">5</span>), strides=(<span class="number">1</span>, <span class="number">1</span>), activation=<span class="string">'relu'</span>, padding=<span class="string">'valid'</span>)(x)</span><br></pre></td></tr></table></figure>
-<p>又回到0.91了，我太难了</p>
-<h2 id="在刚刚-concatenate的地方，Dense改成400"><a class="header-anchor" href="#在刚刚-concatenate的地方，Dense改成400">¶</a>在刚刚 concatenate的地方，Dense改成400</h2>
-<p>0.93333</p>
-<p>还是改回来</p>
-<h2 id="试试之前的，看还有94吗"><a class="header-anchor" href="#试试之前的，看还有94吗">¶</a>试试之前的，看还有94吗</h2>
-<p>还好，又回来了</p>
-<p>0.9444444444444444</p>
-<p>今天，就先到这里吧，太惨了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/DeepDDI-log-4-24/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-贝叶斯分类器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-04-23T11:31:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写在前面"><a class="header-anchor" href="#写在前面">¶</a>写在前面</h2>
-<h3 id="文明版"><a class="header-anchor" href="#文明版">¶</a>文明版</h3>
-<p>互联网的发展，可以让我等数学基础很差，也没有足够的学习的能力的学生也可以接触到机器学习，接触到贝叶斯分类器，实在是吾辈之幸，看不懂只能怪自己太菜了没本事</p>
-<h3 id="祖安版"><a class="header-anchor" href="#祖安版">¶</a>祖安版</h3>
-<p>周志华老师您写得那么晦涩让人看不懂显得很牛逼哈？</p>
-<h2 id="贝叶斯定理"><a class="header-anchor" href="#贝叶斯定理">¶</a>贝叶斯定理</h2>
-<p>不要公式，直接从例子入手。</p>
-<p>考虑一个垃圾邮件分类器，训练集中，有25个垃圾邮件、75个非垃圾邮件，其中含有“Buy”这个关键字的分布如下：</p>
-<p><img src="https://i.loli.net/2020/04/23/fEkA6G3JtWy9qLT.png" alt="image-20200423193712325"></p>
-<p>回答下面这个问题：</p>
-<p><strong>考虑带有“Buy”关键字的邮件，有多大概率它是垃圾邮件？</strong><br>
-$$<br>
-P = \frac{20}{20+5}=80%<br>
-$$<br>
-太简单了对不对？</p>
-<p>这就是<strong>贝叶斯定理</strong>。</p>
-<p>没了。</p>
-<p>如果你非要看公式：</p>
-<p><img src="https://i.loli.net/2020/04/23/Bd5FXL2fQJOp3j6.png" alt="image-20200423194203289"></p>
-<p>这就是公式，除了吓唬人没别的用。</p>
-<h2 id="朴素贝叶斯"><a class="header-anchor" href="#朴素贝叶斯">¶</a>朴素贝叶斯</h2>
-<p>还是刚才那个例子，如果我们不只考虑“buy”这一个关键字，还考虑，“cheap”这个词，那么问题变成什么样子呢？</p>
-<p><img src="https://i.loli.net/2020/04/23/JB8iYyEc5SqMCNU.png" alt="image-20200423194733606"></p>
-<p>可能出现这样的现象，由于概率很小，有些取值在样本中没有找到，这也就是周志华老师说的“未被观测到”与“出现概率为零”通常是不同的。</p>
-<p>有些问题可以用加大取样解决，但肯定有的不可以，那怎么办？</p>
-<p>用概率算！</p>
-<p>这里的**“朴素”**，就是假设“bug”和“cheap”这两个因素互相独立，更拽一点的说法是：</p>
-<p><strong>假设所有属性相互独立</strong></p>
-<p>那么，在“No spam”中，Buy 和 cheap 同时出现的样本，就可以表示为：</p>
-<p><img src="https://i.loli.net/2020/04/23/KVBYoqPZDJ5lH8y.png" alt="image-20200423195206534"></p>
-<p>概率相乘就可以啦。</p>
-<p>有了这个概率，我们还问刚才那个问题：</p>
-<p><strong>考虑同时带有“Buy”和“cheap”关键字的邮件，有多大概率它是垃圾邮件？</strong></p>
-<p>既然概率是0.5%，那“no spam”中同时包含两个字的样本就有$75*0.5%=2/3$ 个，那下面就好算啦：<br>
-$$<br>
-P=\frac{12}{12+2/3}=94.737%<br>
-$$<br>
-这，就是朴素贝叶斯分类器。</p>
-<p>完事。</p>
-<p>同样的，如果你还是很想看公式：</p>
-<p><img src="https://i.loli.net/2020/04/23/vKlRXxs1H5UkO8b.png" alt="image-20200423195901795"></p>
-<p>这就是公式，除了吓唬人，没别的好看的。</p>
-<h2 id="术语"><a class="header-anchor" href="#术语">¶</a>术语</h2>
-<p>下面是一些关于朴素贝叶斯你要知道的术语，也是用来吓唬人的。</p>
-<h3 id="拉普拉斯修正"><a class="header-anchor" href="#拉普拉斯修正">¶</a>拉普拉斯修正</h3>
-<p>想想看，如果某个属性值没有在训练集中与某个类一起出现过，那么算起来就是0，相乘的时候，把别的有用的信息也给抹掉了，所以，不能让它是零。</p>
-<p>那咋办嘛？</p>
-<p>加个小点的数不就完了。</p>
-<p>这就是拉普拉斯修正。</p>
-<p>当然，如果你还是很想看看公式，OK</p>
-<p><img src="https://i.loli.net/2020/04/23/wFcqYZaji5kH42s.png" alt="image-20200423200359362"></p>
-<h3 id="先验概率、类条件概率（似然）、“证据”因子"><a class="header-anchor" href="#先验概率、类条件概率（似然）、“证据”因子">¶</a>先验概率、类条件概率（似然）、“证据”因子</h3>
-<p>其实用来吓唬人的话，我推荐用英语。</p>
-<p>来，走起。</p>
-<p><img src="https://i.loli.net/2020/04/23/Q3pOU1dX65qm9bT.png" alt="image-20200423200929627"></p>
-<h4 id="先验概率"><a class="header-anchor" href="#先验概率">¶</a>先验概率</h4>
-<p>prior，$P©$ 就是25%和75%，yes和no的概率，完了。</p>
-<h4 id="类条件概率"><a class="header-anchor" href="#类条件概率">¶</a>类条件概率</h4>
-<p>class-conditional probability，也叫似然，likelihood，就是$P(x|c)$ 就是给定spam(yes)里面，有多少具有x这个样本的特征（带有“buy”和“cheep”关键字）的样本，完了。</p>
-<h4 id="证据"><a class="header-anchor" href="#证据">¶</a>证据</h4>
-<p>evidence，就是$P(x)$ 就是yes和no所有样本里出现x这个特征的，说白了就是用来归一化的，后面求最大化它也没用，直接拿走了。完了。</p>
-<h3 id="下溢"><a class="header-anchor" href="#下溢">¶</a>下溢</h3>
-<p>就是乘得太多了，数变得太小，不好比。</p>
-<p>伟大的数学家使用了<strong>取对数</strong> 这个方法，把连乘变成了连加，问题解决。完了。</p>
-<h3 id="贝叶斯网"><a class="header-anchor" href="#贝叶斯网">¶</a>贝叶斯网</h3>
-<p>因为 <strong>朴素贝叶斯</strong> 实在太 <strong>朴素</strong>，它的要求，<strong>特征全部独立</strong> 太苛刻，所以还是要考虑特征之间的约束关系，用一个DAG（有向无环图）来表示。</p>
-<p><img src="https://i.loli.net/2020/04/23/KLZroIncyWbxPgY.png" alt="image-20200423201729461"></p>
-<p>爸爸决定儿子，参数代表概率。</p>
-<p>用来吓唬人，这些差不多够了。</p>
-<p>想真学知识，还是踏踏实实去啃西瓜书P156 - 162。（加油，你可以的O(∩_∩)O）</p>
-<h3 id="EM算法"><a class="header-anchor" href="#EM算法">¶</a>EM算法</h3>
-<p>用来解决有些特征没有观测到的情况（隐变量）。</p>
-<p>用来吓唬人，就背下面这句话：</p>
-<p><img src="https://i.loli.net/2020/04/23/kbYHlTf5OI4EuSW.png" alt="image-20200423203019213"></p>
-<p>先计算期望，然后最大化，然后计算期望，然后最大化，然后期望，然后最大化。</p>
-<p>你问我究竟是怎么回事？</p>
-<p>这个西瓜书都没写，还是老老实实去看论文。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DeepDDI-log-4-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/DeepDDI-log-4-21/">DeepDDI log 4.21</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/21/DeepDDI-log-4-21/" class="archive-article-date">
-  	<time datetime="2020-04-21T01:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="记录"><a class="header-anchor" href="#记录">¶</a>记录</h2>
-<p>run_deep_ddi.py 在改变 feature、使用combination时，正负比例为：</p>
-<p>880：2000</p>
-<p><img src="https://i.loli.net/2020/04/21/ZRmuALK1SeJx5fF.png" alt="image-20200421100047921"></p>
-<p>最后结果：</p>
-<p><img src="https://i.loli.net/2020/04/21/rWtMKcZhA2geOLC.png" alt="image-20200421094159965"></p>
-<p>这说明：combination可以用，改变feature也没事</p>
-<p>注：使用的unit_list是：python run_deep_ddi.py -unit_list 12 24 4 2 3 -gpu_id 0</p>
-<h2 id="2"><a class="header-anchor" href="#2">¶</a>2</h2>
-<p>在 run_deep_ddi 使用 dataidx 进行metadata，发现完全不可使用，结果如下：</p>
-<p><img src="https://i.loli.net/2020/04/21/Y5HAISjR4ldaGeZ.png" alt="image-20200421145952727"></p>
-<p>下面再重新用上面的案例试一次，看是否回来</p>
-<h2 id="3"><a class="header-anchor" href="#3">¶</a>3</h2>
-<p>使用上面又进行一次测试之后发现结果如下：</p>
-<p><img src="https://i.loli.net/2020/04/21/6doAtwcDmkvHeM8.png" alt="image-20200421152157491"></p>
-<p>所以很明确，就是数据出现了问题，但是数据我就是这么做的啊，会出现什么问题？？？</p>
-<h2 id="4"><a class="header-anchor" href="#4">¶</a>4</h2>
-<p>于是，我再次尝试使用dataidx，把pos 和 neg 都固定在 880，2000，与之前保持完全一致，看看会发生什么？</p>
-<p><img src="https://i.loli.net/2020/04/21/TtLsMiZUhV7uYGK.png" alt="image-20200421154350453"></p>
-<p>结果是，效果依旧很差，那么难道这真的证明我的数据有问题吗？</p>
-<p>问题到底出现在哪？？？？</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<h2 id="5"><a class="header-anchor" href="#5">¶</a>5</h2>
-<p>再一次考虑，难道是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pos_data_idx = random.sample(pos_data_idx, <span class="number">880</span>)</span><br></pre></td></tr></table></figure>
-<p>这里的<code>random.sample</code> 不对劲？？</p>
-<p>那我改成</p>
-<p><code>pos_data_idx = pos_data_idx[:880]</code> 总该行了吧？</p>
-<p>我靠，这样真的可以？？？？</p>
-<p><img src="https://i.loli.net/2020/04/21/EFkK7ox2vUAyOnh.png" alt="image-20200421163123288"></p>
-<p>这是为什么？？？</p>
-<p>为什么？？？？？？</p>
-<h2 id="6"><a class="header-anchor" href="#6">¶</a>6</h2>
-<p>那我再试一下大一点的数据集，还是差3倍，pos：neg=1000：3000</p>
-<p><img src="https://i.loli.net/2020/04/21/QvZDM7UlaGtsq6T.png" alt="image-20200421163402044"></p>
-<p>结果仍然还不错，是</p>
-<p><img src="https://i.loli.net/2020/04/21/dsbQKAtf3rNOq1Y.png" alt="image-20200421164017224"></p>
-<h2 id="7"><a class="header-anchor" href="#7">¶</a>7</h2>
-<p>OK，那下一步可以继续之前的工作了，把数据保存下来以备使用。</p>
-<p>记录中间，在使用1000个数据、1_1数据比例时，出现了下面这个现象，记录一下：</p>
-<p><img src="https://i.loli.net/2020/04/21/1nzIGfJ7328C9S5.png" alt="image-20200421233351169"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/DeepDDI-log-4-21/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DeepDDI-log-4-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/DeepDDI-log-4-20/">DeepDDI log 4.20</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/DeepDDI-log-4-20/" class="archive-article-date">
-  	<time datetime="2020-04-20T13:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="悲剧"><a class="header-anchor" href="#悲剧">¶</a>悲剧</h2>
-<p>今天用跑好的dataidx重新运行发现全都是0.5了十分恼火，整个一上午和一下午都没有找到原因</p>
-<h2 id="思路一"><a class="header-anchor" href="#思路一">¶</a>思路一</h2>
-<p>target没有设成float，导致预测只能是整数，事实证明不是这个问题</p>
-<h2 id="思路二"><a class="header-anchor" href="#思路二">¶</a>思路二</h2>
-<p>dataidx本身存在问题，这个在下午甚至让我震惊了好久，因为在 dataidx中出现的反应的 两个药物竟然在源文件中没有，肯定是出问题了啊，但是最后发现</p>
-<p>问题出现 windows记事本，它的搜索功能太烂了，我用excel搜索就搜到了，所以以后也要记住教训：千万不要为了生内存用记事本，有excel为什么不用呢？</p>
-<h2 id="思路三"><a class="header-anchor" href="#思路三">¶</a>思路三</h2>
-<p>暂时没有思路三</p>
-<p>今天搞了一整天还是没有搞清楚问题出现在哪里</p>
-<p>但是还是觉得很有趣，因为93的结果出现过，这个问题应该是可以解决的</p>
-<p>所以下一步应该是从头捋一捋整个过程，validation set的分割，可以放到后面</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/DeepDDI-log-4-20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年4月第三周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">2020年4月第三周</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-04-19T08:05:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
-<p>4.16周四那天天气很怪，早上醒来时是下着雨的，但是8点多又晴了，之后下午三四点天又黄了起来，然后又好了。</p>
-<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
-<p>我可能并不适合科研，一次一次调整模型，然后一路ctrl z回来，一次又一次的打击真的让人有些受不了，时不时冒出来的50%，好不容易拼到94%，下一次运行又到了70%，真的是一次又一次。</p>
-<p>可能是我的方向不对，再坚持一个星期吧，先把代码整好看点再说</p>
+<p>距离初伏还有整整一个月，但是天气已经到了最劲爆的时候，早上6：30之后已经非常非常热了。</p>
 <h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
-<p>楼下的小院基本上已经装好了</p>
-<p><img src="https://i.loli.net/2020/04/19/4v8wmAQ2Wf3CHM9.png" alt="image-20200419162758452"></p>
-<p>看到另一个有趣的事情是，上面三楼的两户人家，一个站在凳子上给花浇水，另一个在晾衣服：</p>
-<p><img src="https://i.loli.net/2020/04/19/4amvJud9cODqnQZ.png" alt="image-20200419162914128"></p>
-<p>总是觉得楼房非常非常有趣，巴掌大点地方，聚集了多少柴米油盐，多少人的小生活，也许我在30岁像是左边那样的生活，50岁后便是右边大爷的节奏，生命的意义何在，真的有意义吗？</p>
-<p>另一个有趣的地方是，一个大叔不知道为啥上了梯子，但是下的时候犹豫了好长好长时间：</p>
-<p><img src="https://i.loli.net/2020/04/19/7zncSW483Qm2ojF.png" alt="image-20200419163250099"></p>
-<p>可能人在面临选择的时候大多是这样的，我们没有上帝视角，永远不知道我们处在哪个阶段，有可能只是false alarm，大多数情况可能都是false alarm，但是也可能稍有不慎就是万丈深渊。</p>
-<p>最后，吐槽一下小区的垃圾处理，吹得天花乱坠，垃圾分类，美好生活，进垃圾车时，还不是都进了一个地方？</p>
-<p><img src="https://i.loli.net/2020/04/19/HuPZtbQVsXwAFor.png" alt="image-20200419163557108"></p>
-<p>上有政策，下有对策，呵呵。</p>
-<h2 id="时事"><a class="header-anchor" href="#时事">¶</a>时事</h2>
-<h3 id="鲍毓明"><a class="header-anchor" href="#鲍毓明">¶</a>鲍毓明</h3>
-<p>对这个人我甚至不想再多说什么，提几个疑问吧。</p>
-<p>“哪一个四十岁中年男人希望与14岁女孩发展正常恋爱关系？”</p>
-<p>“妈妈到底扮演什么样的角色？”</p>
-<p>“烟台、北京警方在有证据、有嫌疑人的情况下，为什么不继续调查？”</p>
-<p>“请问烟台警方，为什么 ‘强奸’ 可以被实施，但是不能拿出来说？”</p>
-<h3 id="pandownload"><a class="header-anchor" href="#pandownload">¶</a>pandownload</h3>
-<p>也是有趣，头一次把pandownload分享给同学的那一天，就是它结束生命的那一天。</p>
-<p>说实话这个被查无可厚非，我想问的是，为什么在这样的事情上，警方的效率这么高？</p>
-<p>是每个人投诉自己的隐私被侵犯，都能得到警方这么细致的调查，乃至跨境逮捕吗？</p>
-<p>3年30万元，这个水平的程序员，真的需要这点钱吗？pandownload客户端写得多么清楚，“永久不收费”，请问警方看不到吗？30万为什么这么轻易就被视为赃款？</p>
-<h3 id="徐大SAO"><a class="header-anchor" href="#徐大SAO">¶</a>徐大SAO</h3>
-<p>相信关注的同学也注意到了徐大SAO最近的动态和视频，我一开始不相信真的会有不相信他乃至锤他的人，知道了我下载了 <strong>虎扑</strong> ，真的不知道这个社区的某些用户抱着一种什么样的心态，这个世上已经这样不允许人做好事儿了吗？做好事发出来就会遭到这种后果吗？以后知名up主哪一个还希望做这样的公益呢？</p>
-<p>气抖泪，愤掩摔，这个世界会好吗？</p>
-<p>其实细想想，这几件事情，背后都有一个共同的身影，资本。</p>
-<p>资本是多样的，没有资本，法律真的不敢动“鲍毓明”，没有资本，公安机关会那么屁颠屁颠的跨境抓人？没有资本，黑子们怎么突然爆发喷徐大SAO？</p>
-<p>不得不感叹，资本脚下，你动都不敢动，要你向西就得向西，没办法。</p>
-<h3 id="阅读"><a class="header-anchor" href="#阅读">¶</a>阅读</h3>
-<h3 id="卡拉马佐夫兄弟"><a class="header-anchor" href="#卡拉马佐夫兄弟">¶</a>卡拉马佐夫兄弟</h3>
-<p>这周读了很多，开始进入这本书的精髓，陀爷对宗教、社会的思考真的达到了一定程度，这本书的第五卷：宗教大法官 这一章以后一定要重新阅读，太过深奥，观点一个接着一个，实在是太妙了</p>
-<h3 id="那些比拼命努力更重要的事情"><a class="header-anchor" href="#那些比拼命努力更重要的事情">¶</a>那些比拼命努力更重要的事情</h3>
-<p>这本书看着看着其实挺枯燥的。全书无外乎几个观点</p>
-<ol>
-<li>童年很重要</li>
-<li>亲密关系非常非常重要</li>
-<li>酗酒要不得</li>
-<li>离婚并不一定代表失败（作者离了两次婚）</li>
-</ol>
-<p>有点想看看那本著名的《亲密关系》了，下周安排上</p>
-<h3 id="视频"><a class="header-anchor" href="#视频">¶</a>视频</h3>
-<h3 id="Better-Call-Saul"><a class="header-anchor" href="#Better-Call-Saul">¶</a>Better Call Saul</h3>
-<p>一般我都把追剧列为娱乐，但是这个剧，实在是太好太好太好，真正的诠释了，如何用镜头讲故事，这个电视剧最终命题。</p>
-<p>第九集最后10分钟，lalo进来之后，我把声音调到了最小，每时每刻都在提心吊胆下面会发生什么，气氛、台词、镜头、打光，实在是太过太过完美，我不记得上一次看电视剧看到这么爽是什么时候了，我也非常肯定以后很难再遇到同等水平的作品了。</p>
+<p>有时候再找一种舒服的生活方式，那种一眼望到头，但是总不会觉得厌倦的生活方式。</p>
+<p>感觉现在的节奏还算刚刚好。</p>
+<p>8：30前的时间永远是我的（希望10年后依旧是这样子），平时的时间用番茄工作法，闲暇时候看看漫画，看看美剧，读读小说。</p>
+<h3 id="梦想"><a class="header-anchor" href="#梦想">¶</a>梦想</h3>
+<p>已经读到南开大学了，工作肯定找得到，饭不会吃不上，生活总能过下去，唯一matter的地方，就是生活质量，而所谓生活质量，我更倾向于叔本华的“意欲”的说法，人对一件事情的主观看法，永远比这件事情本身重要得多。</p>
+<p>现在的社会，媒体（主流媒体、自媒体）宣传了太多的所谓“梦想”，名牌大学，大房子， 豪车，美女，其实我觉得这些更多的是“欲望”，而不是梦想，欲望在被满足的那一刹那，就会消失的荡然无存，购物的欲望是这样，性欲也是这样。</p>
+<p>最近的一系列新闻：</p>
+<ul>
+<li>高中生因为受批评弑母</li>
+<li>绿地高管陈军的套路</li>
+<li>博纳影业高管跳楼</li>
+<li>女博士带着两个月的孩子跳楼</li>
+</ul>
+<p>他们的生命在我们看来就是新闻上的几个字，知乎大V们的讨论，不疼不痒的几个赞，几句评论，但是落在他们的身上，就是生命的终结。</p>
+<p>生命是无意义的，我自始至终是这么认为的。但是人生下来是带着责任的，到了一定年纪之后，人不仅仅是为了自己而活，最少会为了“父母”，乃至更多的人。</p>
+<p>现在去说“想开点”似乎有些站着说话不腰疼，我们不知道他们经历了什么，大概永远不会知道。</p>
+<p>但是看得更广一点：</p>
+<p>高中生被母亲要求高成绩，是不是“名牌大学”的欲望？</p>
+<p>绿地陈军，张宇婷，是不是性欲，消费欲？</p>
+<p>博纳高管经历了什么我们无从知晓，但总不会逃过钱、权、色三字。</p>
+<p>女博士的丈夫堪称“罗志祥”第二，这算不算性欲?</p>
+<p>欲望充斥着我们的世界，一方面快捷方便的互联网自媒体放大了这种欲望，而被媒体放大的诱惑又吸引着年轻人们一波一波的追求着欲望。</p>
+<p>这种欲望驱动下人们开始疯狂的追逐金钱，追逐权力，导致社会越来越严重的“内卷”，一直到。。。我不知道这条道路会指向哪里，真的不知道。</p>
+<p>这一切使我非常的困惑，因为我不清楚到底哪样更好一些，辛辛苦苦奋斗到一个新的阶级享受下一个等级的欲望，或是快快乐乐活在自己这个阶级，享受现在的一切。</p>
+<p>关键问题是，什么时候会达到满足？</p>
+<p>开心和欲望到底哪一个更重要？</p>
+<p>或者，其实他们根本就是一件事情？</p>
+<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
+<p>大三下的事情都弄完了，或者说占学分的大部分都弄完了，考试下下个月再说吧。</p>
+<p>下一步就是复习和项目了，想一想还有一点小期待。</p>
+<p>一步一步走，不相信我会没有学上，也不相信我会找不到工作。</p>
+<h2 id="娱乐"><a class="header-anchor" href="#娱乐">¶</a>娱乐</h2>
+<p>哈哈我竟然又刷完了生活大爆炸的前两季，现在想写的什么，发现啥也写不出来哈哈哈哈哈哈哈</p>
+<p>也许娱乐的目的就是在这里吧，看滴时候笑出来了，过后有什么意义也无所谓了。</p>
+<p>起点阅读现在每天只有20点的免费硬币，只能买一章，唉，我还是迈不过去付费网文这个坎。</p>
+<p>哈哈数一数现在我的娱乐活动：</p>
+<ul>
+<li>生活大爆炸、小谢尔顿、兄弟连</li>
+<li>诡秘之主</li>
+<li>黑暗骑士归来</li>
+</ul>
+<p>10年后，不知道陪伴在我精神身边的是什么，但是现在，确实很满足。</p>
 
       
 
@@ -1278,16 +266,75 @@ $$<br>
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/14/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/07/2020%E5%B9%B4%E5%85%AD%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2020年六月第一周</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1307,12 +354,39 @@ $$<br>
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
+
+  
+
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "rRgCquSgoXpa41Vn8ROU7ygz-gzGzoHsz",
+            app_key: "SA07Q4dCD7RxrWGDkqE61deB",
+            placeholder: "comment as you like",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
   
 
 
@@ -1335,8 +409,8 @@ $$<br>
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
