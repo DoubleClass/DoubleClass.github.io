@@ -182,6 +182,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Latex-语法速查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/">Latex 语法速查</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/" class="archive-article-date">
+  	<time datetime="2020-04-28T11:44:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图片"><a class="header-anchor" href="#图片">¶</a>图片</h2>
+<h3 id="单个图片"><a class="header-anchor" href="#单个图片">¶</a>单个图片</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">  \centering</span><br><span class="line">  \includegraphics[width&#x3D;\textwidth]&#123;figure&#x2F;1.png&#125;</span><br><span class="line">  \caption&#123;运行结果与PPT不一致&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="并排图片"><a class="header-anchor" href="#并排图片">¶</a>并排图片</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\centering %图片全局居中</span><br><span class="line">%并排几个图，就要写几个minipage</span><br><span class="line">\begin&#123;minipage&#125;[b]&#123;0.45\textwidth&#125; %所有minipage宽度之和要小于1，否则会自动变成竖排</span><br><span class="line">\centering %图片局部居中</span><br><span class="line">\includegraphics[width&#x3D;0.8\textwidth]&#123;figure&#x2F;2.png&#125; %此时的图片宽度比例是相对于这个minipage的，不是全局</span><br><span class="line">\caption&#123;name 1&#125;</span><br><span class="line">\label&#123;Fig.1&#125;</span><br><span class="line">\end&#123;minipage&#125;</span><br><span class="line">\begin&#123;minipage&#125;[b]&#123;0.45\textwidth&#125; %所有minipage宽度之和要小于1，否则会自动变成竖排</span><br><span class="line">\centering %图片局部居中</span><br><span class="line">\includegraphics[width&#x3D;0.8\textwidth]&#123;figure&#x2F;3.png&#125;%此时的图片宽度比例是相对于这个minipage的，不是全局</span><br><span class="line">\caption&#123;name 2&#125;</span><br><span class="line">\label&#123;Fig.2&#125;</span><br><span class="line">\end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入代码"><a class="header-anchor" href="#插入代码">¶</a>插入代码</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;lstlisting&#125;[language &#x3D; C++, numbers&#x3D;left, </span><br><span class="line">         numberstyle&#x3D;\tiny,keywordstyle&#x3D;\color&#123;blue!70&#125;,</span><br><span class="line">         commentstyle&#x3D;\color&#123;red!50!green!50!blue!50&#125;,frame&#x3D;shadowbox,</span><br><span class="line">         rulesepcolor&#x3D;\color&#123;red!20!green!20!blue!20&#125;,basicstyle&#x3D;\ttfamily]</span><br><span class="line">void openmp_sort_static(int thread_count) &#123;</span><br><span class="line">    init_unbalanced();</span><br><span class="line">    QueryPerformanceFrequency((LARGE_INTEGER *)&amp;freq);</span><br><span class="line">    QueryPerformanceCounter((LARGE_INTEGER *)&amp;head);</span><br><span class="line">    long long tail;</span><br><span class="line">    # pragma omp parallel for num_threads(thread_count) schedule(static, 100)</span><br><span class="line">    for (int i &#x3D; 0; i &lt; ARR_NUM; i++) &#123;</span><br><span class="line">        sort(arr[i].begin(), arr[i].end());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    QueryPerformanceCounter((LARGE_INTEGER*)&amp;tail);</span><br><span class="line">    printf(&quot;openmp sort(static) : %lfms.\n&quot;, (tail - head) * 1000.0&#x2F;freq);</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">  \end&#123;lstlisting&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="插入表格"><a class="header-anchor" href="#插入表格">¶</a>插入表格</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">    \small</span><br><span class="line">    \centering</span><br><span class="line">    \caption&#123;燃油效率与汽⻋价格&#125;</span><br><span class="line">    \begin&#123;tabular&#125;&#123;lcc&#125;</span><br><span class="line">    \toprule</span><br><span class="line">    &amp; (1)        &amp; (2)         \\</span><br><span class="line">    \midrule</span><br><span class="line">    燃油效率      &amp; -238.90*** &amp; -49.51 \\</span><br><span class="line">    &amp; (53.08)   &amp; (86.16) \\</span><br><span class="line">    汽车重量      &amp;            &amp; 1.75*** \\</span><br><span class="line">    &amp;           &amp; (0.641)     \\</span><br><span class="line">    常数项       &amp; 11,253***  &amp; 1,946 \\</span><br><span class="line">    &amp; (1,171)   &amp; (3,597)     \\</span><br><span class="line">    观测数       &amp; 74         &amp; 74 \\</span><br><span class="line">    $R^2$       &amp; 0.220      &amp; 0.293 \\</span><br><span class="line">    \bottomrule</span><br><span class="line">    \multicolumn&#123;3&#125;&#123;l&#125;&#123;\scriptsize 括号内为标准误&#125; \\</span><br><span class="line">    \multicolumn&#123;3&#125;&#123;l&#125;&#123;\scriptsize *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1&#125; \\</span><br><span class="line">    \end&#123;tabular&#125;%</span><br><span class="line">    \label&#123;tab:reg&#125;%</span><br><span class="line">\end&#123;table&#125;%</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">速查</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/28/Latex-%E8%AF%AD%E6%B3%95%E9%80%9F%E6%9F%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年五一放假前一周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1217,174 +1303,6 @@ $$<br>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-F-S-计划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/">F &amp; S 计划</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/" class="archive-article-date">
-  	<time datetime="2020-04-10T03:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="源起"><a class="header-anchor" href="#源起">¶</a>源起</h2>
-<p>昨天看到了韩寒 五公里 18分钟的新闻，触动非常非常大，心里有一股力量蠢蠢欲动，让我不得不提笔写下下面的这些妄语。</p>
-<p>我今天21岁了，假设我可以活到72岁，我的人生已经度过了29.1%，然而可怕的是潜意识里总是觉得我的生活还没有正式开始，现在的一切总是在为将来做准备。</p>
-<p>什么将来？</p>
-<p>我闭上眼睛，使劲地想，好像有些画面，但总是不那么真切。</p>
-<p>23点，公司工位，19度空调，行军床，咖啡，显示器，机械键盘，高耸的发际线</p>
-<p>午后，伸懒腰的大橘，吧唧嘴的德牧，不想弹钢琴的小明，和逼着小明弹琴的小明妈妈</p>
-<p>将来好像没那么好，也没那么坏。</p>
-<p>毕业，工作，成家，保险，房贷，车贷，and… die。</p>
-<p>可总是少了点什么东西，</p>
-<p>读过韩寒的文字我大概明白了，</p>
-<p>少的是一份热爱，</p>
-<p>和守护这份热爱的执著与勇气。</p>
-<h2 id="Find-your-love-Stick-with-it"><a class="header-anchor" href="#Find-your-love-Stick-with-it">¶</a>Find your love &amp; Stick with it</h2>
-<p>于是我很是费了一番功夫地想了又想，然后很是悲哀地发现我并没有什么可以值得称作热爱的东西。</p>
-<p>算了，那就从跑步开始吧。</p>
-<p>从两公里开始，一直到五公里，从一开始的膝盖疼，脚腕疼，后背疼，心率过高，到一点点恢复体能，慢慢感觉到大口呼吸空气时伴着音乐节奏的快感，冷身之后大腿拉伸时的酸爽。</p>
-<p>但是说到热爱？还差得远呢。</p>
-<p>所以一是想让我自己继续坚持下去，二是想找到志同道合的小伙伴一起努力，想到这个办法。</p>
-<h3 id="Find-your-love"><a class="header-anchor" href="#Find-your-love">¶</a>Find your love</h3>
-<p>如果你和我一样，没有什么热爱的东西，那不妨从小时候那些兴趣班开始，绘画，书法，跳舞，小提琴，或者更简单地，跑步，健身，瑜伽，重新捡起来，说不定你会重新爱上他们。</p>
-<p>但人总是懒惰且容易疲倦的，所以当你决定对一个项目说不的时候，请一定保证已经至少投入了一个月的时间，和足够的精力。</p>
-<h3 id="Stick-with-it"><a class="header-anchor" href="#Stick-with-it">¶</a>Stick with it</h3>
-<p>或者你已经有所热爱，但近来有所荒废，那就恭喜你可以直接进入第二个阶段啦。</p>
-<p>长时间坚持一样东西是有时会是枯燥且无趣的，平凡人很难做到故事里主人公对一件事情如痴如醉，废寝忘食且甘之若饴的，大家都告诉你要学会“延迟满足”，但谁也不能告诉你“延迟”时撑不住了怎么办。</p>
-<p>我们需要自己的点滴努力被别人看在眼里</p>
-<p>需要自己的辛酸历程详实地记录下来</p>
-<p>更需要撑不住时陌生人的一个大拇指</p>
-<p>“你已经非常非常非常棒啦~”</p>
-<p><strong>你有多久没被表扬过了？</strong></p>
-<p>当二十年后，你向小明吹牛说你爸爸我当年跑十公里40分钟都用不了时，得有截屏这小子才服气呀？</p>
-<h2 id="关于坚持"><a class="header-anchor" href="#关于坚持">¶</a>关于坚持</h2>
-<p>毋庸置疑，坚持 是一件非常困难的事情。</p>
-<p>尤其是最开始的时候。</p>
-<p>这个时候，一些关于坚持的小经验，小技巧，就显得尤为重要了。</p>
-<p>下面这些是我收集到，并亲身实验觉得非常不错的小tips。</p>
-<ol>
-<li>
-<p>计划</p>
-<p>计划一定要提前做，而且要做的非常非常细，能否实现放一边，计划一定要有。</p>
-<p>比如一周几次，每次多长时间，何时开始，何时结束，跑步的话路线是哪里，画画的话画什么，健身的话跟着哪个教程走。</p>
-</li>
-<li>
-<p>准备</p>
-<p>有了计划，就需要提前做好准备。</p>
-<p>跑步的前一天晚上要把速干衣、头带、跑鞋准备好，并一定不能熬夜。</p>
-<p>书法绘画则需要准备纸墨笔砚，也要找好要临的样帖。</p>
-<p>拍vlog就得备好器材，写好脚本，甚至提前酝酿音乐、专场等等。</p>
-</li>
-</ol>
-<p>其实最后还想说一句，实在坚持不下去，就放弃吧，没什么好丢人的。</p>
-<p>一样米养百样人，大家各有各的长处，也许你坚持的正是你所不擅长的，放弃它，也许还有更美好的在等待你。</p>
-<h2 id="关于焦虑"><a class="header-anchor" href="#关于焦虑">¶</a>关于焦虑</h2>
-<p>以下的观点仅代表我自己的价值观，可能过于消极，大家选择性阅读哈。</p>
-<p>现在的社会，太会传播焦虑，从“少儿编程”，“天价兴趣班”，高三党最爱的记忆力“保健品”，再到充斥大街小巷的“游泳健身”，商家伪造“潮流”的假象，抓住你想要提高的需求，把商品加上一层“努力”的包装，连带巨大的焦虑和压力，一起贩售给老百姓。</p>
-<p>何必呢？</p>
-<p>我在和我的小肚子斗争了38天之后，它还是喜欢待在我的身上。</p>
-<p>嗨，那就算了吧，没准哪天见不到它还会想呢，</p>
-<p>于是第39天，我和我的小肚子签订了停战协议，双方决定互不干涉内政。</p>
-<p>可是这又有些“阿Q精神法”的嫌疑，似乎并不值得学习。</p>
-<p>所以问题的症结在于，<strong>弄清楚你想要什么</strong></p>
-<p>不是你父母想要你干什么，也不是你的朋友想要你干什么，更不是那些商家/社会想要你干什么。</p>
-<p>而是 <strong>你  自  己</strong> 想要什么。</p>
-<p>弄清这一点，那些试图强加于你的焦虑，就会不攻自破。</p>
-<p>所以我们的第一个目标：<strong>Find your love</strong>， 就显得尤为重要。</p>
-<p>这个世界太大太复杂，所以找到一个自己舒服的活法度过一生，才是最美妙的。</p>
-<p>（但是我预感我与小肚子的故事还远远没有结束）</p>
-<h2 id="关于失败"><a class="header-anchor" href="#关于失败">¶</a>关于失败</h2>
-<p>我觉得使人生没有成为彻彻底底悲剧的唯一一点，就是我们可以定义自己的成功与失败。</p>
-<p>尘归尘，土归土，方方的小盒，是所有人的归宿</p>
-<p>你比我成功，我比你幸福。</p>
-<p>所以嘛，失败是最不值得恐惧的，遗憾才是。</p>
-<p>种一棵树最好的时机是十年前和现在，让对失败的恐惧束缚住了你的手脚，才是最值得遗憾的。</p>
-<p>坚持是一件痛苦的事情，但坚持的过程极其珍贵，哪怕结果不尽如人意，这个过程依然是属于我们自己的财富。</p>
-<p>At least I tried，</p>
-<p>Very Hard.</p>
-<p>所以和小明的对话可能还有另一个版本，</p>
-<p>“你老爸我当年练了大半年的10公里，可就是死活进不了40分钟”</p>
-<p>“(ˉ▽￣～) 切~~”</p>
-<p>“但是在那年，也就是小肚子唯一和我分开的那一年，我碰到了你妈妈，你说巧不巧o(<em>￣▽￣</em>)ブ”</p>
-<h2 id="how-do-we-do-it"><a class="header-anchor" href="#how-do-we-do-it">¶</a>how do we do it</h2>
-<p>能看到这篇文章且读到这里的，都是我最好的朋友，let’s stay that way。</p>
-<p>我们没必要互相认识，熟悉，也就更没必要拘谨、羞涩，大家都带着小小的愿望来，自然也会尊重同伴的小小努力。</p>
-<p>我的想法是，每个人每天做完自己的schedule之后，把成果发到群里，可能是跑步的数据记录（这大概是我以后要干的事情），可能是扇贝单词的截图，可能是乐器的一段音频，舞蹈的一段视频，绘画的一张照片。</p>
-<p>这里我觉得重要的是，分享到群里的数据，没必要有多好，这是我们的精髓，不是才艺展示，不是技能分享，而是自己努力过程的一个小小记录，找到热爱之后，我们只关注“坚持”这一件事。</p>
-<p>另一部分是，大家在周末说一说这周的总体情况和对下周的计划。</p>
-<p>“这礼拜配速能达到5’40’‘了，争取下礼拜到5’35’’”</p>
-<p>“对了，下礼拜应该不用穿外套了，直接上短袖”</p>
-<h2 id="写在最后"><a class="header-anchor" href="#写在最后">¶</a>写在最后</h2>
-<p>感谢你一路读到了这里，如果你也想加入进来那就更好啦。</p>
-<p>其实会预感到最后的结果，几个礼拜过后，本来就没有几个人的群再也没有谁发消息，偶尔的一两个截屏也散发着尴尬的味道。</p>
-<p>后来，群里面开始有转发微信小游戏的续命，或者拼多多砍价，携程的砍价再加一个小小的红包。</p>
-<p>再后来，群里再没有人说话，没有谁还记得这个群的存在。</p>
-<p>哈哈哈哈哈哈这么一说竟然莫名有些伤感，还是像上面说的，失败or成功都在我们自己定义，哪怕又多跑了一个月的步，帮一个朋友捡起了一个小爱好，在我来看，都是巨大的成功。</p>
-<p><img src="https://i.loli.net/2020/04/12/fuEhl6jRYGTZzkH.png" alt="image-20200412191655004"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/">展开全文 >></a>
         </p>
       
 
