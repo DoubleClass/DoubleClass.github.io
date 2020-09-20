@@ -67,6 +67,8 @@
 	        
 				<li><a href="/tags/%E9%80%9F%E6%9F%A5/">little Tips</a></li>
 	        
+				<li><a href="/tags/%E6%9C%AC%E7%A7%91%E5%9B%9E%E5%BF%86%E5%BD%95/">本科回忆录</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -133,6 +135,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -153,19 +157,21 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
+					<li style="width: 12.5%"><a href="/">主页</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
+					<li style="width: 12.5%"><a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a></li>
+					<li style="width: 12.5%"><a href="/tags/%E5%91%A8%E8%AE%B0/">周记</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/DeepDDI/">DeepDDI</a></li>
+					<li style="width: 12.5%"><a href="/tags/DeepDDI/">DeepDDI</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a></li>
+					<li style="width: 12.5%"><a href="/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%A4%8D%E4%B9%A0/">专业课复习</a></li>
+					<li style="width: 12.5%"><a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E5%A4%8D%E4%B9%A0/">专业课复习</a></li>
 		        
-					<li style="width: 14.285714285714286%"><a href="/tags/%E9%80%9F%E6%9F%A5/">little Tips</a></li>
+					<li style="width: 12.5%"><a href="/tags/%E9%80%9F%E6%9F%A5/">little Tips</a></li>
+		        
+					<li style="width: 12.5%"><a href="/tags/%E6%9C%AC%E7%A7%91%E5%9B%9E%E5%BF%86%E5%BD%95/">本科回忆录</a></li>
 		        
 				</ul>
 			</nav>
@@ -181,6 +187,479 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-贪心算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/04/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/04/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-05-04T10:57:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="综述"><a class="header-anchor" href="#综述">¶</a>综述</h2>
+<p>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。</p>
+<p>贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</p>
+<h2 id="题库"><a class="header-anchor" href="#题库">¶</a>题库</h2>
+<h3 id="984-String-Without-AAA-or-BBB"><a class="header-anchor" href="#984-String-Without-AAA-or-BBB">¶</a>984. String Without AAA or BBB</h3>
+<p><strong>生成字符串没有‘aaa’和’bbb’。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Input: A = <span class="number">1</span>, B = <span class="number">2</span></span><br><span class="line">Output: <span class="string">"abb"</span></span><br><span class="line">Explanation: <span class="string">"abb"</span>, <span class="string">"bab"</span> <span class="keyword">and</span> <span class="string">"bba"</span> are all correct answers.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">string</span> strWithout3a3b(<span class="keyword">int</span> A, <span class="keyword">int</span> B) &#123;</span><br><span class="line">       <span class="keyword">char</span> a = <span class="string">'a'</span>;</span><br><span class="line">       <span class="keyword">char</span> b = <span class="string">'b'</span>;</span><br><span class="line">       <span class="keyword">if</span> (A &lt; B) &#123; <span class="comment">// 保证A &gt;= B，同时默认a是大的</span></span><br><span class="line">           swap(A, B);</span><br><span class="line">           swap(a, b);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">string</span> ans = <span class="string">""</span>;</span><br><span class="line">       <span class="keyword">while</span>(A &gt; <span class="number">0</span> || B &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="keyword">if</span> (A &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               ans += a;</span><br><span class="line">               A--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (A &gt; B) &#123; <span class="comment">//如果我比你还多，那我就多放一个</span></span><br><span class="line">               ans += a;</span><br><span class="line">               A--;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (B &gt; <span class="number">0</span>) &#123;</span><br><span class="line">               ans += b;</span><br><span class="line">               B--;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="860-Lemonade-Change"><a class="header-anchor" href="#860-Lemonade-Change">¶</a>860. Lemonade Change</h3>
+<p><strong>柠檬找零，每人买一个柠檬，（价值5）可能付5, 10, 20面值的钞票，问零钱是否能找开。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">lemonadeChange</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; bills)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> fives = <span class="number">0</span>; <span class="comment">//考虑所有情况，简单模拟</span></span><br><span class="line">        <span class="keyword">int</span> tens = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; bills.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (bills[i] == <span class="number">5</span>)</span><br><span class="line">                fives++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (bills[i] == <span class="number">10</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (fives &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">                    fives--;</span><br><span class="line">                    tens++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (fives &gt;= <span class="number">1</span> &amp;&amp; tens &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">                    fives--;</span><br><span class="line">                    tens--;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (fives &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                    fives -= <span class="number">3</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="55-Jump-Game"><a class="header-anchor" href="#55-Jump-Game">¶</a>55. Jump Game</h3>
+<p><strong>跳跃游戏，数组中每个元素表示下一步的距离，问是否能跳到最后索引位置。</strong></p>
+<h4 id="思路一"><a class="header-anchor" href="#思路一">¶</a>思路一</h4>
+<p>从倒数第一个开始，如果可以到最后一个，那么从这里截断，如果最后所剩只有一个元素，那么成功，反之失败</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Input: [<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">4</span>]</span><br><span class="line">Output: <span class="literal">true</span></span><br><span class="line">Explanation: Jump <span class="number">1</span> step from index <span class="number">0</span> to <span class="number">1</span>, then <span class="number">3</span> steps to the last index.</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt;= n) &#123;</span><br><span class="line">                n = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                n++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; n &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="思路二："><a class="header-anchor" href="#思路二：">¶</a>思路二：</h4>
+<p>考虑每次更新可否到达当前位置</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (k &lt; i) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            k = max(k, nums[i] + i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1029-Two-City-Scheduling"><a class="header-anchor" href="#1029-Two-City-Scheduling">¶</a>1029. Two City Scheduling</h3>
+<p><strong>2N个人，分别去A，B两地，花费不同价格，要求A总共去N人，B也要去N人，总价最低：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Input: [[<span class="number">10</span>,<span class="number">20</span>],[<span class="number">30</span>,<span class="number">200</span>],[<span class="number">400</span>,<span class="number">50</span>],[<span class="number">30</span>,<span class="number">20</span>]]</span><br><span class="line">Output: <span class="number">110</span></span><br><span class="line">Explanation: </span><br><span class="line">The first person goes to city A <span class="keyword">for</span> a cost of <span class="number">10.</span></span><br><span class="line">The second person goes to city A <span class="keyword">for</span> a cost of <span class="number">30.</span></span><br><span class="line">The third person goes to city B <span class="keyword">for</span> a cost of <span class="number">50.</span></span><br><span class="line">The fourth person goes to city B <span class="keyword">for</span> a cost of <span class="number">20.</span></span><br><span class="line"></span><br><span class="line">The total minimum cost is <span class="number">10</span> + <span class="number">30</span> + <span class="number">50</span> + <span class="number">20</span> = <span class="number">110</span> to have half the people interviewing in each city.</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> twoCitySchedCost(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; costs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (costs.empty())<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        sort(costs.begin(), costs.end(), [](<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;a, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;b)&#123;<span class="keyword">return</span> a[<span class="number">1</span>] - a[<span class="number">0</span>] &gt; b[<span class="number">1</span>] - b[<span class="number">0</span>];&#125;); <span class="comment">//每人只和自己比，去A比去B便宜更多的时候，肯定去A。</span></span><br><span class="line">        <span class="keyword">int</span> n = costs.size() / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            ans += costs[i][<span class="number">0</span>] + costs[i+n][<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1042-Flower-Planting-With-No-Adjacent"><a class="header-anchor" href="#1042-Flower-Planting-With-No-Adjacent">¶</a>1042. Flower Planting With No Adjacent</h3>
+<p><strong>联通图染色问题，paths表示相邻的花园，相邻的花园中不能种同一种花，一种有四种花。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">gardenNoAdj</span><span class="params">(<span class="keyword">int</span> N, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; paths)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;G[N];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; paths.size(); i++) &#123; <span class="comment">//建立邻接表</span></span><br><span class="line">            G[paths[i][<span class="number">0</span>] - <span class="number">1</span>].push_back(paths[i][<span class="number">1</span>] - <span class="number">1</span>);</span><br><span class="line">            G[paths[i][<span class="number">1</span>] - <span class="number">1</span>].push_back(paths[i][<span class="number">0</span>] - <span class="number">1</span>); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;answer(N, <span class="number">0</span>); <span class="comment">//初始化全部未染色</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;color&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>; j &lt; G[i].size(); j++) &#123;</span><br><span class="line">                color.erase(answer[G[i][j]]);</span><br><span class="line">            &#125;</span><br><span class="line">            answer[i] = *(color.begin());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1090-Largest-Values-From-Labels"><a class="header-anchor" href="#1090-Largest-Values-From-Labels">¶</a>1090. Largest Values From Labels</h3>
+<p><strong>给一个集合，每个元素有一个值<code>values[i]</code>与标签<code>labels[i]</code>。这里要选择一个子集，使得子集的元素个数不超过<code>num_wanted</code>，而且相同标签的元素个数不超过<code>use_limit</code>。求子集的最大和。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: values = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>], labels = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>], num_wanted = <span class="number">3</span>, use_limit = <span class="number">1</span></span><br><span class="line">Output: <span class="number">9</span></span><br><span class="line">Explanation: The subset chosen is the first, third, <span class="keyword">and</span> fifth item.</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">term</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> value, label;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(term a, term b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.value &gt; b.value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestValsFromLabels</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; values, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; labels, <span class="keyword">int</span> num_wanted, <span class="keyword">int</span> use_limit)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;term&gt; data;</span><br><span class="line">        data.resize(values.size());</span><br><span class="line">        <span class="keyword">int</span> ml = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; values.size(); i++) &#123;</span><br><span class="line">            data[i].value = values[i];</span><br><span class="line">            data[i].label = labels[i];</span><br><span class="line">            ml = max(ml, labels[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(data.begin(), data.end(), cmp);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; bucket;</span><br><span class="line">        bucket.resize(ml+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; data.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> lab = data[i].label;</span><br><span class="line">            <span class="keyword">if</span> (bucket[lab] &lt; use_limit) &#123;</span><br><span class="line">                num++;</span><br><span class="line">                bucket[lab]++;</span><br><span class="line">                sum += data[i].value;</span><br><span class="line">                <span class="keyword">if</span> (num &gt;= num_wanted) <span class="keyword">return</span> sum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1094-Car-Pooling"><a class="header-anchor" href="#1094-Car-Pooling">¶</a>1094. Car Pooling</h3>
+<p><strong>一辆车接旅客，根据旅客的人数，上下车位置，判断是否可以载完所有的旅客。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Input: trips = [[<span class="number">2</span>,<span class="number">1</span>,<span class="number">5</span>],[<span class="number">3</span>,<span class="number">3</span>,<span class="number">7</span>]], capacity = <span class="number">4</span></span><br><span class="line">Output: <span class="literal">false</span></span><br><span class="line">    </span><br><span class="line">class Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">bool</span> carPooling(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; trips, <span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp; t: trips)&#123;</span><br><span class="line">            m[t[<span class="number">1</span>]] += t[<span class="number">0</span>];  <span class="comment">// pick up</span></span><br><span class="line">            m[t[<span class="number">2</span>]] -= t[<span class="number">0</span>];  <span class="comment">// drop off</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> passengers = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it: m)&#123;</span><br><span class="line">            passengers += it.second;</span><br><span class="line">            <span class="keyword">if</span>(passengers &gt; capacity) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="1282-Group-the-People-Given-the-Group-Size-They-Belong-To"><a class="header-anchor" href="#1282-Group-the-People-Given-the-Group-Size-They-Belong-To">¶</a>1282. Group the People Given the Group Size They Belong To</h3>
+<p><strong>用户分组归属问题。</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Input: groupSizes = [<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>]</span><br><span class="line">Output: [[<span class="number">5</span>],[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>]]</span><br><span class="line">Explanation: </span><br><span class="line">Other possible solutions are [[<span class="number">2</span>,<span class="number">1</span>,<span class="number">6</span>],[<span class="number">5</span>],[<span class="number">0</span>,<span class="number">4</span>,<span class="number">3</span>]] <span class="keyword">and</span> [[<span class="number">5</span>],[<span class="number">0</span>,<span class="number">6</span>,<span class="number">2</span>],[<span class="number">4</span>,<span class="number">3</span>,<span class="number">1</span>]].</span><br><span class="line"></span><br><span class="line">class Solution &#123;<span class="comment">//显示粗粒度分开，然后再按大小切分</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; groupThePeople(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; groupSizes) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; groups;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; groupSizes.size(); ++i) &#123;</span><br><span class="line">            groups[groupSizes[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> group = groups.begin(); group != groups.end(); ++group) &#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">int</span>&amp; gsize = group-&gt;first;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; users = group-&gt;second;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> iter = users.begin(); iter != users.end(); iter = next(iter, gsize)) &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; *iter &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                </span><br><span class="line">                <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dummy</span><span class="params">(iter, next(iter, gsize))</span></span>;</span><br><span class="line">                ans.push_back(dummy);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法与数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/04/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020年5月第一周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/">2020年5月第一周</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/" class="archive-article-date">
+  	<time datetime="2020-05-03T15:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
+<p>天气突然变得特别特别热</p>
+<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
+<p>乏善可陈</p>
+<h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
+<p>开始减肥，早上只吃两个鸡蛋，中午吃好，晚上少吃主食，一周下来减了3Kg，效果还可以</p>
+<h2 id="时事"><a class="header-anchor" href="#时事">¶</a>时事</h2>
+<p>阅文的换水和新合同算是一个新闻，不过这个事情写开要太久，不展开了</p>
+<h2 id="阅读"><a class="header-anchor" href="#阅读">¶</a>阅读</h2>
+<p>这周开始《亲密关系》的阅读</p>
+<p>还是非常精彩的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-python-数据处理速查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/">python 数据处理速查 </a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/" class="archive-article-date">
+  	<time datetime="2020-05-02T12:26:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="读取csv"><a class="header-anchor" href="#读取csv">¶</a>读取csv</h2>
+<h3 id="方法一"><a class="header-anchor" href="#方法一">¶</a>方法一</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reader_cross_table = csv.reader(open(data_idx_two_sides, <span class="string">'r'</span>))</span><br></pre></td></tr></table></figure>
+<p>这样后面可以直接用中括号引用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rows = [item <span class="keyword">for</span> item <span class="keyword">in</span> reader_cross_table]</span><br><span class="line">rows = rows[<span class="number">1</span>:len(rows)]</span><br><span class="line">name2bank = &#123;item[<span class="number">1</span>].lower(): item[<span class="number">0</span>] <span class="keyword">for</span> item <span class="keyword">in</span> rows&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方法二"><a class="header-anchor" href="#方法二">¶</a>方法二</h3>
+<p>用pandas，也很简单：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stich_names = pd.read_csv(stich_id2name_path, sep=<span class="string">'\t'</span>, header=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<p>引用的话，要使用loc：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">stich2drugbank = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(stich_names.shape[<span class="number">0</span>]):</span><br><span class="line">    <span class="keyword">if</span> stich_names.loc[i, <span class="number">1</span>].strip(<span class="string">'\''</span>) <span class="keyword">in</span> name2bank:</span><br><span class="line">        stich2drugbank[stich_names.loc[i, <span class="number">0</span>].strip(<span class="string">'\''</span>)] = name2bank[stich_names.loc[i, <span class="number">1</span>].strip(<span class="string">'\''</span>)]</span><br></pre></td></tr></table></figure>
+<h2 id="写入csv"><a class="header-anchor" href="#写入csv">¶</a>写入csv</h2>
+<p>这个更简单：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f_decagon = open(<span class="string">'decagon_relations.csv'</span>, <span class="string">'w'</span>)</span><br><span class="line">decagon_writer = csv.writer(f_decagon)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">decagon_writer.writerows([item <span class="keyword">for</span> item <span class="keyword">in</span> decagon_relations])</span><br></pre></td></tr></table></figure>
+<h2 id="判断字典是否包含某个key："><a class="header-anchor" href="#判断字典是否包含某个key：">¶</a>判断字典是否包含某个key：</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> reader_decagon.loc[i][<span class="number">0</span>] <span class="keyword">in</span> stich2drugbank</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/02/python-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E9%80%9F%E6%9F%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-PageRank算法与矩阵特征值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/">PageRank算法与矩阵特征值</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/" class="archive-article-date">
+  	<time datetime="2020-04-30T13:42:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面"><a class="header-anchor" href="#写在前面">¶</a>写在前面</h2>
+<p>说起来，当初MIT 18.06这个课程完全是网络投喂给我的，知乎、B站上好多同学对他交口称赞，抱着看着玩的态度看了第一集，立刻被 Strang 老师的幽默，课程的严谨，有趣的授课方式所折服，就一直看了下去。</p>
+<p>谁也想不到这个讲线性代数的课会涉及到 <strong>正规方程</strong> 的推导，我也更没想到，周二看完的 <strong>特征值与特征向量的应用后</strong>，周三的机器学习马上讲了<strong>PageRank算法</strong>，而算法一种独特的求解方法，恰巧使用了特征值与特征向量的性质。</p>
+<p>这种知识点的交错简直太棒了。</p>
+<p>所以这篇文章讲首先回顾特征值、特征向量是什么，怎么算，再说一说由此带来的优美的性质，最后用两个应用实例 <strong>斐波那契数列的求解</strong>、<strong>PageRank的幂解法</strong>（power method）结束。</p>
+<h2 id="特征值、特征向量"><a class="header-anchor" href="#特征值、特征向量">¶</a>特征值、特征向量</h2>
+<p>网络上有很多特征值、特征向量的介绍，所以我在这里还是简单粗暴的用一个例子来过一下它们是啥、怎么求、有什么性质。</p>
+<h3 id="举例"><a class="header-anchor" href="#举例">¶</a>举例</h3>
+<p>有一个矩阵A，它长这样子A=[3 1;1 3]：</p>
+<p><img src="https://i.loli.net/2020/04/30/7hbB9LyEMHwTG4C.png" alt="image-20200430215947940"></p>
+<p>我们想求这个矩阵的特征值、特征向量，我们怎么做？</p>
+<p>构造 $A-\lambda I$ 矩阵，这个矩阵的行列式值为零，即可求出特征值，以下为求解步骤：</p>
+<p><img src="https://i.loli.net/2020/04/30/AyIpSfJcxTUo5F4.png" alt="image-20200430220226687"></p>
+<p>这样我们就求出来，两个特征值分别为 <strong>2</strong> 和 <strong>4</strong> ，那特征向量呢？</p>
+<p>特征向量就是矩阵  $A-\lambda I$ 的零空间，也就是方程  $(A-\lambda I)x=0$ 的解 $x$ ，这也很好求，代入即可。</p>
+<p>对特征值 <strong>4</strong> ，它的特征向量是 $x_1 = [1;1]$ ，对于特征值 <strong>2</strong> ，它的特征向量是 $x_2 = [-1; 1]$。</p>
+<h4 id="意义"><a class="header-anchor" href="#意义">¶</a>意义</h4>
+<p>所以，我们费劲巴列的算出这两个东西是干啥用呢？这要从两个方面说起，从定义上讲。<strong>特征向量是与原矩阵相乘之后方向不改变的向量</strong>，有些费解？还是用例子解释：</p>
+<p>我们刚才的A矩阵，与第一个特征向量相乘，$Ax_1=x_{new}=[4;4]$ ，发现没有，这个新得到的向量 $x_{new}$ ，它和原先向量 $x_1 = [1;1]$ 方向完全一致，同时$x_{new} = 4×x_1$，这个倍数4，就是我们对应的特征值 $\lambda$  ，于是我们就得到了非常重要的公式：<br>
+$$<br>
+Ax=\lambda x<br>
+$$<br>
+稍微处理一下：<br>
+$$<br>
+Ax-\lambda x=0<br>
+$$</p>
+<p>$$<br>
+(A-\lambda I)x=0<br>
+$$</p>
+<p>所以，要得到非零向量x，矩阵$A-\lambda I$ 必须是奇异的，也就是它的行列式必须为零（这也解释了为什么刚刚我们的方法可以求出特征值$\lambda$）</p>
+<p>而计算特征向量的第二个原因，就是它代表了矩阵很多的特征（废话），具备很多优美的性质，可以应用在很多地方，下面所述的两个例子，就是其在<strong>求幂</strong> 这个过程中起到了非常大的作用。</p>
+<p>优美的性质，激动人心的案例，马上就来。</p>
+<h2 id="优美的性质"><a class="header-anchor" href="#优美的性质">¶</a>优美的性质</h2>
+<h3 id="对角化"><a class="header-anchor" href="#对角化">¶</a>对角化</h3>
+<p>为了避免这篇文章变得又臭又长，对这个不是很美丽的性质，我们就把它拿出来看一看，不做过多介绍。</p>
+<h4 id="白话版描述"><a class="header-anchor" href="#白话版描述">¶</a>白话版描述</h4>
+<p>如果你给我一个n维方阵，就比如说A，如果这个矩阵不那么特殊，也就是它能求得n个互不相关的特征向量，也就是这n个向量可以支撑起整个n维空间，那么我通过下面这个式子，可以把你给我的A变成一个对角方阵，而且对角线上就是n个特征值。<br>
+$$<br>
+S^{-1}AS=\Lambda<br>
+$$<br>
+这里的S，就是特征值组合成的方阵，我还是拿刚才的A举例子，对A来说，S是这样的</p>
+<p><img src="https://i.loli.net/2020/04/30/qjQT6ZHo3f57Y8c.png" alt="image-20200430223954807"></p>
+<p>那我们就看看，最后乘出来是啥吧：</p>
+<p><img src="https://i.loli.net/2020/04/30/rq5I86ZC3G9TcEV.png" alt="image-20200430224131442"></p>
+<p>哈哈，是不是，既是一个对角方阵，而且对角线上的值还是特征值，有意思吧，其实推的话也很好推，只是篇幅限制，感兴趣的同学可以去听18.06特征向量这一节。</p>
+<p>这里我们就记住下面这个公式就好啦：<br>
+$$<br>
+S^{-1}AS=\Lambda<br>
+$$</p>
+<h3 id="求幂"><a class="header-anchor" href="#求幂">¶</a>求幂</h3>
+<p>对上面的公式稍微做些变化：<br>
+$$<br>
+A = S\Lambda S^{-1}<br>
+$$</p>
+<p>$$<br>
+A^2 = S\Lambda S^{-1}S\Lambda S<sup>{-1}=S\Lambda</sup>{2}S^{-1}<br>
+$$</p>
+<p>可以看到，求幂后，特征向量组成的S方阵并没有变化，只是特征值也做了幂操作，事实上，如果我们看特征向量的定义式：<br>
+$$<br>
+Ax=\lambda x<br>
+$$</p>
+<p>$$<br>
+A^2x=\lambda Ax=\lambda ^2x<br>
+$$</p>
+<p>也可以看出，特征向量没变，特征值与A同时加幂。这样的性质，就为我们求幂，提供了新的思路。</p>
+<p>考虑一个递归式子（给定u0和A），求uk：</p>
+<p><img src="https://i.loli.net/2020/04/30/xY78lzfZi9XRcKG.png" alt="image-20200430231031374"></p>
+<p>如果编程实现的话，非常方便，但是这样的操作涉及到k次的矩阵乘法，而且无法并行，非常耗时，有什么办法可以直接一步求解吗？</p>
+<p>当然可以，特征向量闪亮登场！</p>
+<p>写出式子的前几项：</p>
+<p><img src="https://i.loli.net/2020/04/30/7HcAFtaeJxYGDIX.png" alt="image-20200430231248475"></p>
+<p>这个时候，我们可以把每个u，都写成n个特征向量线性组合的形式（因为这些特征向量是线性无关的，可以撑起整个n维空间，所以任何向量都可以表示成这样的线性组合）。</p>
+<p><img src="https://i.loli.net/2020/04/30/r5ENIL9toeUzTQg.png" alt="image-20200430231503411"></p>
+<p>这里<br>
+$$<br>
+u_0 = c_1x_1 +c_2x_2+…+c_nx_n = Sc<br>
+$$</p>
+<p>两边同时乘上A，可以得到：</p>
+<p><img src="https://i.loli.net/2020/04/30/qf3kslwzA6N9udK.png" alt="image-20200430231634776"></p>
+<p>这个时候，如果我们把A求100幂，结果会怎样呢？</p>
+<p><img src="https://i.loli.net/2020/04/30/iYWPLRB25rb6klm.png" alt="image-20200430231752120"></p>
+<p>再向下推一步就可以得到<br>
+$$<br>
+A^{100}u_0 = S\Lambda ^{100}c<br>
+$$<br>
+还记得S和c是啥吧，就是n个特征向量组合起来的方阵和得到u0的线性组合参数。</p>
+<p>到这里，问题就迎刃而解啦<br>
+$$<br>
+u_k = A^ku_0=S\Lambda ^kc<br>
+$$<br>
+通过这个式子就可以一步求出解啦。</p>
+<h2 id="应用"><a class="header-anchor" href="#应用">¶</a>应用</h2>
+<h3 id="斐波那契数列"><a class="header-anchor" href="#斐波那契数列">¶</a>斐波那契数列</h3>
+<p>斐波那契数列是一个很经典的递归求解的案例，我们看看特征向量是怎么派上用场的吧~</p>
+<p>首先，给出问题形式：<br>
+$$<br>
+F(n+2)=F(n+1) + F(n) ，给定F(0)=0，F(1)=1<br>
+$$<br>
+手算的话，前几项是这样的</p>
+<blockquote>
+<p>0 1 1 2 3 5 8 13 21 34 55 89 144 233</p>
+</blockquote>
+<p>问题来了，怎么通过一次，而不是递归的得到问题的解呢？</p>
+<p>相信打过ACM比赛的人都知道 <strong>二分之跟号五+1</strong>，但是这个数咋来的呢？一起来看</p>
+<h4 id="问题转换"><a class="header-anchor" href="#问题转换">¶</a>问题转换</h4>
+<p>这里是膜拜Strang老师的有一个地方，通过一个非常巧妙的trick，把二阶问题转化为了一阶：</p>
+<p>令uk为下面这个：</p>
+<p><img src="https://i.loli.net/2020/04/30/BDOzLdaf6T8IqsN.png" alt="image-20200430233021735"></p>
+<p>那么，$u_{k+1}$ 就可以用这个矩阵得到：</p>
+<p><img src="https://i.loli.net/2020/04/30/7svEHktNY1yJzdU.png" alt="image-20200430233129531"></p>
+<p>问题转化为我们熟悉的形式，同时这个A也得到了。</p>
+<p>下一步就是，计算特征值、特征向量，S，c，相乘，得到结果，这个过程，我用下面这段代码描述：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lambda1 = <span class="number">1.6180</span></span><br><span class="line">lambda2 = <span class="number">-0.6180</span></span><br><span class="line">S=[<span class="number">1</span> <span class="number">-1</span>;<span class="number">1</span> <span class="number">1</span>]</span><br><span class="line">S_inverse=inv(S)</span><br><span class="line">Lambda = [lambda1 <span class="number">0</span>; <span class="number">0</span> lambda2]</span><br><span class="line">c = [<span class="number">1</span>/<span class="number">5</span>^(<span class="number">.5</span>);<span class="number">-1</span>/<span class="number">5</span>^(<span class="number">.5</span>)]</span><br><span class="line">result = S*Lambda^<span class="number">100</span>*c</span><br></pre></td></tr></table></figure>
+<p>最后得到，result = 1.0e+20 * 3.5348 而通过递归算法求得的真实值是3.5422e+20，太美妙了有没有？</p>
+<h3 id="PageRank算法的幂解"><a class="header-anchor" href="#PageRank算法的幂解">¶</a>PageRank算法的幂解</h3>
+<p>哈哈标题写那么大，写道这里才涉及到PageRank，好惭愧。</p>
+<p>更惭愧的是，这里不打算对PageRank做基本的介绍，因为李航老师的书里写的实在太过于清晰了，事实上，关于，幂解，我也仅仅打算从李老师那里copy过来，目的就是让大家感受下，这个方法，几乎原封不动，就是我们刚刚说到的那个求幂的方法：</p>
+<p><img src="https://i.loli.net/2020/04/30/NW4D6Ct5q97bmdG.png" alt="image-20200430234156761"></p>
+<p><img src="https://i.loli.net/2020/04/30/TERQLGFWwKYJmxI.png" alt="image-20200430234218786"></p>
+<p><img src="https://i.loli.net/2020/04/30/TaPC6NkKIUz8Vnv.png" alt="image-20200430234238106"></p>
+<p>我预感这两个图片很可能会挂，所以如果有同学想看手头没有书的话，可以联系邮箱tjcxs136720@163.com我发给你~</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/PageRank%E7%AE%97%E6%B3%95%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%89%B9%E5%BE%81%E5%80%BC/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Latex-语法速查" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -824,517 +1303,9 @@ $$<br>
 
 
   
-    <article id="post-DeepDDI-log-4-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/DeepDDI-log-4-20/">DeepDDI log 4.20</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/DeepDDI-log-4-20/" class="archive-article-date">
-  	<time datetime="2020-04-20T13:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="悲剧"><a class="header-anchor" href="#悲剧">¶</a>悲剧</h2>
-<p>今天用跑好的dataidx重新运行发现全都是0.5了十分恼火，整个一上午和一下午都没有找到原因</p>
-<h2 id="思路一"><a class="header-anchor" href="#思路一">¶</a>思路一</h2>
-<p>target没有设成float，导致预测只能是整数，事实证明不是这个问题</p>
-<h2 id="思路二"><a class="header-anchor" href="#思路二">¶</a>思路二</h2>
-<p>dataidx本身存在问题，这个在下午甚至让我震惊了好久，因为在 dataidx中出现的反应的 两个药物竟然在源文件中没有，肯定是出问题了啊，但是最后发现</p>
-<p>问题出现 windows记事本，它的搜索功能太烂了，我用excel搜索就搜到了，所以以后也要记住教训：千万不要为了生内存用记事本，有excel为什么不用呢？</p>
-<h2 id="思路三"><a class="header-anchor" href="#思路三">¶</a>思路三</h2>
-<p>暂时没有思路三</p>
-<p>今天搞了一整天还是没有搞清楚问题出现在哪里</p>
-<p>但是还是觉得很有趣，因为93的结果出现过，这个问题应该是可以解决的</p>
-<p>所以下一步应该是从头捋一捋整个过程，validation set的分割，可以放到后面</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/DeepDDI-log-4-20/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年4月第三周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">2020年4月第三周</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-04-19T08:05:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
-<p>4.16周四那天天气很怪，早上醒来时是下着雨的，但是8点多又晴了，之后下午三四点天又黄了起来，然后又好了。</p>
-<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
-<p>我可能并不适合科研，一次一次调整模型，然后一路ctrl z回来，一次又一次的打击真的让人有些受不了，时不时冒出来的50%，好不容易拼到94%，下一次运行又到了70%，真的是一次又一次。</p>
-<p>可能是我的方向不对，再坚持一个星期吧，先把代码整好看点再说</p>
-<h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
-<p>楼下的小院基本上已经装好了</p>
-<p><img src="https://i.loli.net/2020/04/19/4v8wmAQ2Wf3CHM9.png" alt="image-20200419162758452"></p>
-<p>看到另一个有趣的事情是，上面三楼的两户人家，一个站在凳子上给花浇水，另一个在晾衣服：</p>
-<p><img src="https://i.loli.net/2020/04/19/4amvJud9cODqnQZ.png" alt="image-20200419162914128"></p>
-<p>总是觉得楼房非常非常有趣，巴掌大点地方，聚集了多少柴米油盐，多少人的小生活，也许我在30岁像是左边那样的生活，50岁后便是右边大爷的节奏，生命的意义何在，真的有意义吗？</p>
-<p>另一个有趣的地方是，一个大叔不知道为啥上了梯子，但是下的时候犹豫了好长好长时间：</p>
-<p><img src="https://i.loli.net/2020/04/19/7zncSW483Qm2ojF.png" alt="image-20200419163250099"></p>
-<p>可能人在面临选择的时候大多是这样的，我们没有上帝视角，永远不知道我们处在哪个阶段，有可能只是false alarm，大多数情况可能都是false alarm，但是也可能稍有不慎就是万丈深渊。</p>
-<p>最后，吐槽一下小区的垃圾处理，吹得天花乱坠，垃圾分类，美好生活，进垃圾车时，还不是都进了一个地方？</p>
-<p><img src="https://i.loli.net/2020/04/19/HuPZtbQVsXwAFor.png" alt="image-20200419163557108"></p>
-<p>上有政策，下有对策，呵呵。</p>
-<h2 id="时事"><a class="header-anchor" href="#时事">¶</a>时事</h2>
-<h3 id="鲍毓明"><a class="header-anchor" href="#鲍毓明">¶</a>鲍毓明</h3>
-<p>对这个人我甚至不想再多说什么，提几个疑问吧。</p>
-<p>“哪一个四十岁中年男人希望与14岁女孩发展正常恋爱关系？”</p>
-<p>“妈妈到底扮演什么样的角色？”</p>
-<p>“烟台、北京警方在有证据、有嫌疑人的情况下，为什么不继续调查？”</p>
-<p>“请问烟台警方，为什么 ‘强奸’ 可以被实施，但是不能拿出来说？”</p>
-<h3 id="pandownload"><a class="header-anchor" href="#pandownload">¶</a>pandownload</h3>
-<p>也是有趣，头一次把pandownload分享给同学的那一天，就是它结束生命的那一天。</p>
-<p>说实话这个被查无可厚非，我想问的是，为什么在这样的事情上，警方的效率这么高？</p>
-<p>是每个人投诉自己的隐私被侵犯，都能得到警方这么细致的调查，乃至跨境逮捕吗？</p>
-<p>3年30万元，这个水平的程序员，真的需要这点钱吗？pandownload客户端写得多么清楚，“永久不收费”，请问警方看不到吗？30万为什么这么轻易就被视为赃款？</p>
-<h3 id="徐大SAO"><a class="header-anchor" href="#徐大SAO">¶</a>徐大SAO</h3>
-<p>相信关注的同学也注意到了徐大SAO最近的动态和视频，我一开始不相信真的会有不相信他乃至锤他的人，知道了我下载了 <strong>虎扑</strong> ，真的不知道这个社区的某些用户抱着一种什么样的心态，这个世上已经这样不允许人做好事儿了吗？做好事发出来就会遭到这种后果吗？以后知名up主哪一个还希望做这样的公益呢？</p>
-<p>气抖泪，愤掩摔，这个世界会好吗？</p>
-<p>其实细想想，这几件事情，背后都有一个共同的身影，资本。</p>
-<p>资本是多样的，没有资本，法律真的不敢动“鲍毓明”，没有资本，公安机关会那么屁颠屁颠的跨境抓人？没有资本，黑子们怎么突然爆发喷徐大SAO？</p>
-<p>不得不感叹，资本脚下，你动都不敢动，要你向西就得向西，没办法。</p>
-<h3 id="阅读"><a class="header-anchor" href="#阅读">¶</a>阅读</h3>
-<h3 id="卡拉马佐夫兄弟"><a class="header-anchor" href="#卡拉马佐夫兄弟">¶</a>卡拉马佐夫兄弟</h3>
-<p>这周读了很多，开始进入这本书的精髓，陀爷对宗教、社会的思考真的达到了一定程度，这本书的第五卷：宗教大法官 这一章以后一定要重新阅读，太过深奥，观点一个接着一个，实在是太妙了</p>
-<h3 id="那些比拼命努力更重要的事情"><a class="header-anchor" href="#那些比拼命努力更重要的事情">¶</a>那些比拼命努力更重要的事情</h3>
-<p>这本书看着看着其实挺枯燥的。全书无外乎几个观点</p>
-<ol>
-<li>童年很重要</li>
-<li>亲密关系非常非常重要</li>
-<li>酗酒要不得</li>
-<li>离婚并不一定代表失败（作者离了两次婚）</li>
-</ol>
-<p>有点想看看那本著名的《亲密关系》了，下周安排上</p>
-<h3 id="视频"><a class="header-anchor" href="#视频">¶</a>视频</h3>
-<h3 id="Better-Call-Saul"><a class="header-anchor" href="#Better-Call-Saul">¶</a>Better Call Saul</h3>
-<p>一般我都把追剧列为娱乐，但是这个剧，实在是太好太好太好，真正的诠释了，如何用镜头讲故事，这个电视剧最终命题。</p>
-<p>第九集最后10分钟，lalo进来之后，我把声音调到了最小，每时每刻都在提心吊胆下面会发生什么，气氛、台词、镜头、打光，实在是太过太过完美，我不记得上一次看电视剧看到这么爽是什么时候了，我也非常肯定以后很难再遇到同等水平的作品了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习的评估方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/">机器学习的评估方法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-04-15T02:23:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="分类准确率（Accuracy）"><a class="header-anchor" href="#分类准确率（Accuracy）">¶</a>分类准确率（Accuracy）</h2>
-<p>将$err(h_{\Theta}(x), y)$的返回值控制在，{0，1}，那么</p>
-<h2 id="混淆矩阵"><a class="header-anchor" href="#混淆矩阵">¶</a>混淆矩阵</h2>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SVM-基本型、核方法、松弛变量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/">SVM(基本型、核方法、松弛变量)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-04-13T09:14:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="写在前面"><a class="header-anchor" href="#写在前面">¶</a>写在前面</h2>
-<p>在前面介绍过拉格朗日法处理不等式约束的优化问题后，我们就可以回过头再重新看一看SVM，这篇文章将对SVM常出现的几个概念进行简要的介绍。</p>
-<p>参考文章：</p>
-<p><a href="http://www.blogjava.net/zhenandaci/category/31868.html" target="_blank" rel="noopener">http://www.blogjava.net/zhenandaci/category/31868.html</a></p>
-<p><a href="https://www.jiqizhixin.com/articles/2018-10-17-20" target="_blank" rel="noopener">https://www.jiqizhixin.com/articles/2018-10-17-20</a></p>
-<h2 id="SVM概述"><a class="header-anchor" href="#SVM概述">¶</a>SVM概述</h2>
-<h3 id="官方描述"><a class="header-anchor" href="#官方描述">¶</a>官方描述</h3>
-<p>支持向量机方法是建立在统计学习理论的VC 维理论和结构风险最小原理基础上的，根据有限的样本信息在模型的复杂性（即对特定训练样本的学习精度，Accuracy）和学习能力（即无错误地识别任意样本的能力）之间寻求最佳折衷，以期获得最好的推广能力（泛化能力）。</p>
-<p>下面就详细讲一讲这几项都是说的啥。</p>
-<h3 id="统计学习理论"><a class="header-anchor" href="#统计学习理论">¶</a>统计学习理论</h3>
-<p>统计机器学习之所以区别于传统机器学习的本质，就在于统计机器学习能够精确的给出学习效果，能够解答需要的样本数等等一系列问题。与统计机器学习的精密思维相比，传统的机器学习基本上属于摸着石头过河，用传统的机器学习方法构造分类系统完全成了一种技巧，一个人做的结果可能很好，另一个人差不多的方法做出来却很差，缺乏指导和原则。</p>
-<h3 id="VC维理论"><a class="header-anchor" href="#VC维理论">¶</a>VC维理论</h3>
-<p>所谓VC维是对函数类的一种度量，可以简单的理解为问题的复杂程度，VC维越高，一个问题就越复杂。正是因为SVM关注的是VC维，后面我们可以看到，SVM解决问题的时候，和样本的维数是无关的（甚至样本是上万维的都可以，这使得SVM很适合用来解决文本分类的问题，当然，有这样的能力也因为引入了核函数）。</p>
-<h3 id="结构风险"><a class="header-anchor" href="#结构风险">¶</a>结构风险</h3>
-<p>机器学习本质上就是一种对问题真实模型的逼近（我们选择一个我们认为比较好的近似模型，这个近似模型就叫做一个假设），但毫无疑问，真实模型一定是不知道的（如果知道了，我们干吗还要机器学习？直接用真实模型解决问题不就可以了？对吧，哈哈）既然真实模型不知道，那么我们选择的假设与问题真实解之间究竟有多大差距，我们就没法得知。比如说我们认为宇宙诞生于150亿年前的一场大爆炸，这个假设能够描述很多我们观察到的现象，但它与真实的宇宙模型之间还相差多少？谁也说不清，因为我们压根就不知道真实的宇宙模型到底是什么。</p>
-<p>这个与问题真实解之间的误差，就叫做风险（更严格的说，误差的累积叫做风险）。我们选择了一个假设之后（更直观点说，我们得到了一个分类器以后），真实误差无从得知，但我们可以用某些可以掌握的量来逼近它。最直观的想法就是使用分类器在样本数据上的分类的结果与真实结果（因为样本是已经标注过的数据，是准确的数据）之间的差值来表示。这个差值叫做经验风险Remp(w)。以前的机器学习方法都把经验风险最小化作为努力的目标，但后来发现很多分类函数能够在样本集上轻易达到100%的正确率，在真实分类时却一塌糊涂（即所谓的推广能力差，或泛化能力差）。此时的情况便是选择了一个足够复杂的分类函数（它的VC维很高），能够精确的记住每一个样本，但对样本之外的数据一律分类错误。回头看看经验风险最小化原则我们就会发现，此原则适用的大前提是经验风险要确实能够逼近真实风险才行（行话叫一致），但实际上能逼近么？答案是不能，因为样本数相对于现实世界要分类的文本数来说简直九牛一毛，经验风险最小化原则只在这占很小比例的样本上做到没有误差，当然不能保证在更大比例的真实文本上也没有误差。</p>
-<p>统计学习因此而引入了泛化误差界的概念，就是指真实风险应该由两部分内容刻画，一是经验风险，代表了分类器在给定样本上的误差；二是置信风险，代表了我们在多大程度上可以信任分类器在未知文本上分类的结果。很显然，第二部分是没有办法精确计算的，因此只能给出一个估计的区间，也使得整个误差只能计算上界，而无法计算准确的值（所以叫做泛化误差界，而不叫泛化误差）。</p>
-<p>置信风险与两个量有关，一是样本数量，显然给定的样本数量越大，我们的学习结果越有可能正确，此时置信风险越小；二是分类函数的VC维，显然VC维越大，推广能力越差，置信风险会变大。</p>
-<p>泛化误差界的公式为：</p>
-<p><img src="https://i.loli.net/2020/04/13/9YSTlHhjsXw4Bx8.png" alt="image-20200413184057251"></p>
-<p>公式中R(w)就是真实风险，Remp(w)就是经验风险，Ф(n/h)就是置信风险。统计学习的目标从经验风险最小化变为了寻求经验风险与置信风险的和最小，即结构风险最小。</p>
-<p>SVM正是这样一种努力最小化结构风险的算法。</p>
-<h2 id="SVM基本型"><a class="header-anchor" href="#SVM基本型">¶</a>SVM基本型</h2>
-<h3 id="线性分类器"><a class="header-anchor" href="#线性分类器">¶</a>线性分类器</h3>
-<p>线性分类器(一定意义上,也可以叫做感知机) 是最简单也很有效的分类器形式.在一个线性分类器中,可以看到SVM形成的思路,并接触很多SVM的核心概念.</p>
-<p>用一个二维空间里仅有两类样本的分类问题来举个小例子。如图所示</p>
-<p><img src="https://i.loli.net/2020/04/13/zX1YQgGspnWLxoE.png" alt="image-20200413184432460"></p>
-<p>C1和C2是要区分的两个类别，在二维平面中它们的样本如上图所示。中间的直线就是一个分类函数，它可以将两类样本完全分开。一般的，如果一个线性函数能够将样本完全正确的分开，就称这些数据是线性可分的，否则称为非线性可分的。</p>
-<p>什么叫线性函数呢？在一维空间里就是一个点，在二维空间里就是一条直线，三维空间里就是一个平面，可以如此想象下去，如果不关注空间的维数，这种线性函数还有一个统一的名称——超平面（Hyper Plane）！</p>
-<p>实际上，一个线性函数是一个实值函数（即函数的值是连续的实数），而我们的分类问题（例如这里的二元分类问题——回答一个样本属于还是不属于一个类别的问题）需要离散的输出值，例如用1表示某个样本属于类别C1，而用0表示不属于（不属于C1也就意味着属于C2），这时候只需要简单的在实值函数的基础上附加一个阈值即可，通过分类函数执行时得到的值大于还是小于这个阈值来确定类别归属。 例如我们有一个线性函数<br>
-$$<br>
-g(x)=wx+b<br>
-$$<br>
-我们可以取阈值为0，这样当有一个样本xi需要判别的时候，我们就看g(xi)的值。若g(xi)&gt;0，就判别为类别C1，若g(xi)&lt;0，则判别为类别C2（等于的时候我们就拒绝判断，haha）。此时也等价于给函数g(x)附加一个符号函数sign()，即f(x)=sign [g(x)]是我们真正的判别函数。</p>
-<p>关于$$g(x)=wx+b$$这个表达式要注意三点：</p>
-<ol>
-<li>式中的x不是二维坐标系中的横轴，而是样本的向量表示</li>
-<li>这个形式并不局限于二维的情况，在n维空间中仍然可以使用这个表达式，只是式中的w成为了n维向量</li>
-<li>g(x)不是中间那条直线的表达式，中间那条直线的表达式是g(x)=0，即wx+b=0，我们也把这个函数叫做分类面。</li>
-</ol>
-<p>实际上很容易看出来，中间那条分界线并不是唯一的，我们把它稍微旋转一下，只要不把两类数据分错，仍然可以达到上面说的效果，稍微平移一下，也可以。此时就牵涉到一个问题，对同一个问题存在多个分类函数的时候，哪一个函数更好呢？</p>
-<p>显然我们必须要先找一个指标来量化“好”的程度，通常使用的都是叫做“分类间隔”的指标。</p>
-<h3 id="找到更好的分类器"><a class="header-anchor" href="#找到更好的分类器">¶</a>找到更好的分类器</h3>
-<p>我们定义一个样本点到某个超平面的间隔：<br>
-$$<br>
-δ_i=y_i(w·x_i+b)<br>
-$$<br>
-仔细观察这个式子，我们可以知道这个间隔总是大于零的，而且它的值就等于|wxi+b|！（也就是|g(xi)|），我们把w和b进行一下归一化，即用w/||w||和b/||w||分别代替原来的w和b，那么间隔就可以写成</p>
-<p><img src="https://i.loli.net/2020/04/13/vTx3tRy8XwFSebj.png" alt="image-20200413185846260"></p>
-<p>（点到直线的距离，做解析几何中为： $$D = \frac{(Ax + By + c)}{\sqrt{(A<sup>2+B</sup>2)}}$$  $$\sqrt{(A<sup>2+B</sup>2)}$$就相当于||W||, 其中向量W=[A, B]; $$(Ax + By + c)$$就相当于g(X), 其中向量X=[x,y]。）</p>
-<p>这个公式是不是看上去有点眼熟？没错，这不就是解析几何中点xi到直线g(x)=0的距离公式嘛！（推广一下，是到超平面g(x)=0的距离， g(x)=0就是上节中提到的分类超平面）</p>
-<p>同时，如果你有阅读过周志华老师的西瓜书，书上对“间隔”的描述正是这样：</p>
-<p><img src="https://i.loli.net/2020/04/13/GytzXZVa2Txb5Lw.png" alt="image-20200413190754648"></p>
-<p>现在就可以给出问题的基本型啦，我们要做的就是最大化这个间隔，同时满足对现有样本分类正确：</p>
-<p><img src="https://i.loli.net/2020/04/13/RA6HXmNdtZMgoy1.png" alt="image-20200413191025140"></p>
-<p>这里我们可以稍微停顿一下，稍微思考一下，如果没有这个约束，那么$w$直接取0就好了嘛，这对应什么情况呢，对应着，对每一个给定的要分类的样本，分类器只能给出一个结果，就是b，这也就完全失去了分类器的意义，所以，很重要的问题是，如何在有约束的条件下求解这个优化问题。</p>
-<h2 id="SVM的求解"><a class="header-anchor" href="#SVM的求解">¶</a>SVM的求解</h2>
-<p>我们在上面的文章中已经给出了拉格朗日乘子法，所以这里不作过多介绍，我们直接算起来。</p>
-<p>这里我们分两部分，第一部分从感性上理解这个求解过程，第二部分从求导上看看第一部分的结果是怎么得到的。</p>
-<h3 id="理解"><a class="header-anchor" href="#理解">¶</a>理解</h3>
-<p>首先我们再次祭出问题模型图：</p>
-<p><img src="https://i.loli.net/2020/04/13/MV6ADB8WOGxgo3P.png" alt="image-20200413191755782"></p>
-<p>我们有属于两个类别的样本点（并不限定这些点在二维空间中）若干，如上图，圆形的样本点定为正样本（连带着，我们可以把正样本所属的类叫做正类），方形的点定为负例。我们想求得这样一个线性函数（在n维空间中的线性函数）：<br>
-$$<br>
-g(x)=wx+b<br>
-$$</p>
-<p>使得所有属于正类的点+代入以后有g(x+)≥1，而所有属于负类的点x-代入后有g(x-)≤-1（之所以总跟1比较，无论正一还是负一，都是因为我们固定了间隔为1）。代入g(x)后的值如果在1和-1之间，我们就拒绝判断。</p>
-<p>求这样的g(x)的过程就是求w（一个n维向量）和b（一个实数）两个参数的过程（但实际上只需要求w，求得以后找某些样本点代入就可以求得b）。因此在求g(x)的时候，w才是变量。</p>
-<p>你肯定能看出来，一旦求出了w（也就求出了b），那么中间的直线H就知道了（因为它就是wx+b=0嘛，哈哈），那么H1和H2也就知道了（因为三者是平行的，而且相隔的距离还是||w||决定的）。那么w是谁决定的？显然是你给的样本决定的，一旦你在空间中给出了那些个样本点，三条直线的位置实际上就唯一确定了（因为我们求的是最优的那三条，当然是唯一的），我们解优化问题的过程也只不过是把这个确定了的东西算出来而已。</p>
-<p>样本确定了w，用数学的语言描述，就是w可以表示为样本的某种组合：<br>
-$$<br>
-w = \alpha_1x_1 +\alpha_2x_2+…+\alpha_nx_n<br>
-$$<br>
-式子中的αi是一个一个的数（在严格的证明过程中，这些α被称为拉格朗日乘子），而xi是样本点，因而是向量，n就是总样本点的个数。为了方便描述，以下开始严格区别数字与向量的乘积和向量间的乘积，我会用α1x1表示数字和向量的乘积，而用&lt;x1,x2&gt;表示向量x1,x2的内积（也叫点积，注意与向量叉积的区别）。因此g(x)的表达式严格的形式应该是：<br>
-$$<br>
-g(x) = &lt;x,w&gt;+b<br>
-$$<br>
-但是上面的式子还不够好，你回头看看图中正样本和负样本的位置，想像一下，我不动所有点的位置，而只是把其中一个正样本点定为负样本点（也就是把一个点的形状从圆形变为方形），结果怎么样？三条直线都必须移动（因为对这三条直线的要求是必须把方形和圆形的点正确分开）！这说明w不仅跟样本点的位置有关，还跟样本的类别有关（也就是和样本的“标签”有关）。因此用下面这个式子表示才算完整：<br>
-$$<br>
-w = \alpha_1y_1x_1 +\alpha_2y_2x_2+…+\alpha_ny_nx_n<br>
-$$<br>
-其中的yi就是第i个样本的标签，它等于1或者-1。其实以上式子的那一堆拉格朗日乘子中，只有很少的一部分不等于0（不等于0才对w起决定作用），这部分不等于0的拉格朗日乘子后面所乘的样本点，其实都落在H1和H2上，也正是这部分样本（而不需要全部样本）唯一的确定了分类函数，当然，更严格的说，这些样本的一部分就可以确定，因为例如确定一条直线，只需要两个点就可以，即便有三五个都落在上面，我们也不是全都需要。这部分我们真正需要的样本点，就叫做支持（撑）向量！（名字还挺形象吧，他们“撑”起了分界线）</p>
-<p>式子也可以用求和符号简写一下：</p>
-<p>$$<br>
-w = \sum_{i=1}^{n}\alpha_iy_ix_i<br>
-$$<br>
-哈哈这个式子是不是有些眼熟，这个正是我们下面从求导为零推出来的~</p>
-<h3 id="求导"><a class="header-anchor" href="#求导">¶</a>求导</h3>
-<p>问题转为拉格朗日乘子法形式如下：</p>
-<p><img src="https://i.loli.net/2020/04/13/HYPFbkaxcvpJmnS.png" alt="image-20200413193301246"></p>
-<p>我们分别对$w$ $b$求导为零，可得：</p>
-<p><img src="https://i.loli.net/2020/04/13/Drsi8MEuzWkqY74.png" alt="image-20200413193817952"></p>
-<p>进一步带入，可得：</p>
-<p><img src="/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200413194014813.png" alt="image-20200413194014813"></p>
-<p>问题最终转化为这样一个二次规划问题，而SVM中另一个著名的关键词SMO就是为了解决这个问题，但是这个方法我还没有学会，所以不能在这里分享啦，以后有机会再多了解了解这个方法。</p>
-<h2 id="方法的优化"><a class="header-anchor" href="#方法的优化">¶</a>方法的优化</h2>
-<p>讨论进行到这里，我们的SVM仍没有逃出“线性分类器”这个圈，对于线性不可分的样本，依然无能为力，所以，我们需要对模型进行稍微的调整，来解决那些线性不可分的问题：</p>
-<p>这里讨论两种最常见的方法，核函数和松弛变量</p>
-<h3 id="方法一：核函数"><a class="header-anchor" href="#方法一：核函数">¶</a>方法一：核函数</h3>
-<p>我们从一个典型的线性不可分例子开始我们的讨论：</p>
-<p><img src="https://i.loli.net/2020/04/13/GpOyfLmV9KxkIT5.png" alt="image-20200413195842207"></p>
-<p>我们把横轴上端点a和b之间红色部分里的所有点定为正类，两边的黑色部分里的点定为负类。试问能找到一个线性函数把两类正确分开么？不能，因为二维空间里的线性函数就是指直线，显然找不到符合条件的直线。</p>
-<p>但我们可以找到一条曲线，例如下面这一条：</p>
-<p><img src="https://i.loli.net/2020/04/13/e62FuPHXModyzEf.png" alt="image-20200413195907007"></p>
-<p>显然通过点在这条曲线的上方还是下方就可以判断点所属的类别（你在横轴上随便找一点，算算这一点的函数值，会发现负类的点函数值一定比0大，而正类的一定比0小）。这条曲线就是我们熟知的二次曲线，它的函数表达式可以写为：<br>
-$$<br>
-g(x) = c_0+c_1x+c_2x^2<br>
-$$<br>
-问题只是它不是一个线性函数，但是，下面要注意看了，新建一个向量y和a：</p>
-<p><img src="https://i.loli.net/2020/04/13/tb1cr9pjYmWJUCL.png" alt="image-20200413200008658"></p>
-<p>这样g(x)就可以转化为f(y)=&lt;a,y&gt;，你可以把y和a分别回带一下，看看等不等于原来的g(x)。用内积的形式写你可能看不太清楚，实际上f(y)的形式就是：</p>
-<p>g(x)=f(y)=ay</p>
-<p>在任意维度的空间中，这种形式的函数都是一个线性函数（只不过其中的a和y都是多维向量罢了），因为自变量y的次数不大于1。</p>
-<p>看出妙在哪了么？原来在二维空间中一个线性不可分的问题，映射到四维空间后，变成了线性可分的！因此这也形成了我们最初想解决线性不可分问题的基本思路——向高维空间转化，使其变得线性可分。</p>
-<p>而转化最关键的部分就在于找到x到y的映射方法。遗憾的是，如何找到这个映射，没有系统性的方法（也就是说，纯靠猜和凑）。具体到我们的文本分类问题，文本被表示为上千维的向量，即使维数已经如此之高，也常常是线性不可分的，还要向更高的空间转化。其中的难度可想而知。</p>
-<p>用一个具体文本分类的例子来看看这种向高维空间映射从而分类的方法如何运作，想象一下，我们文本分类问题的原始空间是1000维的（即每个要被分类的文档被表示为一个1000维的向量），在这个维度上问题是线性不可分的。现在我们有一个2000维空间里的线性函数</p>
-<p>$$f(x’)=&lt;w’,x’&gt;+b$$</p>
-<p>注意向量的右上角有个 ’哦。它能够将原问题变得可分。式中的 w’和x’都是2000维的向量，只不过w’是定值，而x’是变量（好吧,严格说来这个函数是2001维的,哈哈），现在我们的输入呢，是一个1000维的向量x，分类的过程是先把x变换为2000维的向量x’，然后求这个变换后的向量x’与向量w’的内积，再把这个内积的值和b相加，就得到了结果，看结果大于阈值还是小于阈值就得到了分类结果。</p>
-<p>你发现了什么？我们其实只关心那个高维空间里内积的值，那个值算出来了，分类结果就算出来了。而从理论上说， x’是经由x变换来的，因此广义上可以把它叫做x的函数（有一个x，就确定了一个x’，对吧，确定不出第二个），而w’是常量，它是一个低维空间里的常量w经过变换得到的，所以给了一个w 和x的值，就有一个确定的f(x’)值与其对应。这让我们幻想，是否能有这样一种函数K(w,x),他接受低维空间的输入值，却能算出高维空间的内积值&lt;w’,x’&gt;？</p>
-<p>如果有这样的函数，那么当给了一个低维空间的输入x以后，</p>
-<p><img src="https://i.loli.net/2020/04/13/STwHUCYyPKR6l4q.png" alt="image-20200413200202900"></p>
-<p>这两个函数的计算结果就完全一样，我们也就用不着费力找那个映射关系，直接拿低维的输入往g(x)里面代就可以了（再次提醒，这回的g(x)就不是线性函数啦，因为你不能保证K(w,x)这个表达式里的x次数不高于1哦）。（事实上，这个过程在西瓜书上解释为，直接用高维向量点乘会导致计算量异常巨大</p>
-<p>万幸的是，这样的K(w,x)确实存在，它就是被称作核函数（核，kernel）的辣个东西，而且还不止一个，事实上，只要是满足了Mercer条件的函数，都可以作为核函数。核函数的基本作用就是接受两个低维空间里的向量，能够计算出经过某个变换后在高维空间里的向量内积值。</p>
-<p>好啦，说完了啥叫核函数，也给大家看看一看那些函数这么神奇，可以做这个事情：</p>
-<p><img src="https://i.loli.net/2020/04/13/TldMfaQn126W3eL.png" alt="image-20200413200502050"></p>
-<h3 id="方法二：松弛变量"><a class="header-anchor" href="#方法二：松弛变量">¶</a>方法二：松弛变量</h3>
-<p>现在我们已经把一个本来线性不可分的文本分类问题，通过映射到高维空间而变成了线性可分的。就像下图这样：</p>
-<p><img src="https://i.loli.net/2020/04/13/W3nCzbEXRaNrtkD.png" alt="image-20200413200720825"></p>
-<p>圆形和方形的点各有成千上万个（毕竟，这就是我们训练集中文档的数量嘛，当然很大了）。现在想象我们有另一个训练集，只比原先这个训练集多了一篇文章，映射到高维空间以后（当然，也使用了相同的核函数），也就多了一个样本点，但是这个样本的位置是这样的：</p>
-<p><img src="https://i.loli.net/2020/04/13/QFzdVIp4TkhnZwf.png" alt="image-20200413200745278"></p>
-<p>就是图中黄色那个点，它是方形的，因而它是负类的一个样本，这单独的一个样本，使得原本线性可分的问题变成了线性不可分的。这样类似的问题（仅有少数点线性不可分）叫做“近似线性可分”的问题。</p>
-<p>以我们人类的常识来判断，说有一万个点都符合某种规律（因而线性可分），有一个点不符合，那这一个点是否就代表了分类规则中我们没有考虑到的方面呢（因而规则应该为它而做出修改）？</p>
-<p>其实我们会觉得，更有可能的是，这个样本点压根就是错误，是噪声，是提供训练集的同学人工分类时一打瞌睡错放进去的。所以我们会简单的忽略这个样本点，仍然使用原来的分类器，其效果丝毫不受影响。</p>
-<p>但这种对噪声的容错性是人的思维带来的，我们的程序可没有。由于我们原本的优化问题的表达式中，确实要考虑所有的样本点（不能忽略某一个，因为程序它怎么知道该忽略哪一个呢？），在此基础上寻找正负类之间的最大几何间隔，而几何间隔本身代表的是距离，是非负的，像上面这种有噪声的情况会使得整个问题无解。这种解法其实也叫做“硬间隔”分类法，因为他硬性的要求所有样本点都满足和分类平面间的距离必须大于某个值。</p>
-<p>因此由上面的例子中也可以看出，硬间隔的分类法其结果容易受少数点的控制，这是很危险的（尽管有句话说真理总是掌握在少数人手中，但那不过是那一小撮人聊以自慰的词句罢了，咱还是得民主）。</p>
-<p>但解决方法也很明显，就是仿照人的思路，允许一些点到分类平面的距离不满足原先的要求。由于不同的训练集各点的间距尺度不太一样，因此用间隔（而不是几何间隔）来衡量有利于我们表达形式的简洁。我们原先对样本点的要求是：</p>
-<p><img src="https://i.loli.net/2020/04/13/b3mRfKaXtzIP5l9.png" alt="image-20200413200935735"></p>
-<p>意思是说离分类面最近的样本点函数间隔也要比1大。如果要引入容错性，就给1这个硬性的阈值加一个松弛变量，即允许：</p>
-<p><img src="/.com//E:%5Chexo%5Csource_posts%5Cimages%5Cimage-20200413201008603.png" alt="image-20200413201008603"></p>
-<p>因为松弛变量是非负的，因此最终的结果是要求间隔可以比1小。但是当某些点出现这种间隔比1小的情况时（这些点也叫离群点），意味着我们放弃了对这些点的精确分类，而这对我们的分类器来说是种损失。但是放弃这些点也带来了好处，那就是使分类面不必向这些点的方向移动，因而可以得到更大的几何间隔（在低维空间看来，分类边界也更平滑）。显然我们必须权衡这种损失和好处。好处很明显，我们得到的分类间隔越大，好处就越多。回顾我们原始的硬间隔分类对应的优化问题：</p>
-<p><img src="https://i.loli.net/2020/04/13/9MCHNZqFjXUTuGW.png" alt="image-20200413201052535"></p>
-<p>||w||2就是我们的目标函数（当然系数可有可无），希望它越小越好，因而损失就必然是一个能使之变大的量（能使它变小就不叫损失了，我们本来就希望目标函数值越小越好）。那如何来衡量损失，有很多方式，西瓜书也给出几种常用的损失函数：</p>
-<p><img src="https://i.loli.net/2020/04/13/85zwHoEahWju9Kf.png" alt="image-20200413201533356"></p>
-<p>对于具体问题，需要考虑不同的损失函数，没有确切的说法哪一个比较实用。</p>
-<h3 id="综合"><a class="header-anchor" href="#综合">¶</a>综合</h3>
-<p>那可能有同学会问，两个方法都是为了解决线性不可分问题，那我们要怎么选择呢？是两个都要用，还是咋样呢？</p>
-<p>其实这两种方法还是有些许不同，一般的过程应该是这样，还以文本分类为例。在原始的低维空间中，样本相当的不可分，无论你怎么找分类平面，总会有大量的离群点，此时用核函数向高维空间映射一下，虽然结果仍然是不可分的，但比原始空间里的要更加接近线性可分的状态（就是达到了近似线性可分的状态），此时再用松弛变量处理那些少数“冥顽不化”的离群点，就简单有效得多啦。</p>
-<h2 id="写在最后"><a class="header-anchor" href="#写在最后">¶</a>写在最后</h2>
-<p>其实关于SVM还是留下了两个话题没有讨论，一个是，为什么拉格朗日法，先求对w和b的最小值，再求对$\alpha$的最大值就能得到问题解了呢？</p>
-<p>另一个是SMO方法，也是没有搞懂，留到后面去吧，今天就到这里啦。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1471,6 +1442,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">专业课复习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">本科回忆录</a>
               </li>
             
             <div class="clearfix"></div>
