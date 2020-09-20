@@ -188,6 +188,123 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-DeepDDI-log-4-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/21/DeepDDI-log-4-21/">DeepDDI log 4.21</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/21/DeepDDI-log-4-21/" class="archive-article-date">
+  	<time datetime="2020-04-21T01:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="记录"><a class="header-anchor" href="#记录">¶</a>记录</h2>
+<p>run_deep_ddi.py 在改变 feature、使用combination时，正负比例为：</p>
+<p>880：2000</p>
+<p><img src="https://i.loli.net/2020/04/21/ZRmuALK1SeJx5fF.png" alt="image-20200421100047921"></p>
+<p>最后结果：</p>
+<p><img src="https://i.loli.net/2020/04/21/rWtMKcZhA2geOLC.png" alt="image-20200421094159965"></p>
+<p>这说明：combination可以用，改变feature也没事</p>
+<p>注：使用的unit_list是：python run_deep_ddi.py -unit_list 12 24 4 2 3 -gpu_id 0</p>
+<h2 id="2"><a class="header-anchor" href="#2">¶</a>2</h2>
+<p>在 run_deep_ddi 使用 dataidx 进行metadata，发现完全不可使用，结果如下：</p>
+<p><img src="https://i.loli.net/2020/04/21/Y5HAISjR4ldaGeZ.png" alt="image-20200421145952727"></p>
+<p>下面再重新用上面的案例试一次，看是否回来</p>
+<h2 id="3"><a class="header-anchor" href="#3">¶</a>3</h2>
+<p>使用上面又进行一次测试之后发现结果如下：</p>
+<p><img src="https://i.loli.net/2020/04/21/6doAtwcDmkvHeM8.png" alt="image-20200421152157491"></p>
+<p>所以很明确，就是数据出现了问题，但是数据我就是这么做的啊，会出现什么问题？？？</p>
+<h2 id="4"><a class="header-anchor" href="#4">¶</a>4</h2>
+<p>于是，我再次尝试使用dataidx，把pos 和 neg 都固定在 880，2000，与之前保持完全一致，看看会发生什么？</p>
+<p><img src="https://i.loli.net/2020/04/21/TtLsMiZUhV7uYGK.png" alt="image-20200421154350453"></p>
+<p>结果是，效果依旧很差，那么难道这真的证明我的数据有问题吗？</p>
+<p>问题到底出现在哪？？？？</p>
+<p>啊！！！！！</p>
+<p>啊！！！！！</p>
+<p>啊！！！！！</p>
+<p>啊！！！！！</p>
+<h2 id="5"><a class="header-anchor" href="#5">¶</a>5</h2>
+<p>再一次考虑，难道是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pos_data_idx = random.sample(pos_data_idx, <span class="number">880</span>)</span><br></pre></td></tr></table></figure>
+<p>这里的<code>random.sample</code> 不对劲？？</p>
+<p>那我改成</p>
+<p><code>pos_data_idx = pos_data_idx[:880]</code> 总该行了吧？</p>
+<p>我靠，这样真的可以？？？？</p>
+<p><img src="https://i.loli.net/2020/04/21/EFkK7ox2vUAyOnh.png" alt="image-20200421163123288"></p>
+<p>这是为什么？？？</p>
+<p>为什么？？？？？？</p>
+<h2 id="6"><a class="header-anchor" href="#6">¶</a>6</h2>
+<p>那我再试一下大一点的数据集，还是差3倍，pos：neg=1000：3000</p>
+<p><img src="https://i.loli.net/2020/04/21/QvZDM7UlaGtsq6T.png" alt="image-20200421163402044"></p>
+<p>结果仍然还不错，是</p>
+<p><img src="https://i.loli.net/2020/04/21/dsbQKAtf3rNOq1Y.png" alt="image-20200421164017224"></p>
+<h2 id="7"><a class="header-anchor" href="#7">¶</a>7</h2>
+<p>OK，那下一步可以继续之前的工作了，把数据保存下来以备使用。</p>
+<p>记录中间，在使用1000个数据、1_1数据比例时，出现了下面这个现象，记录一下：</p>
+<p><img src="https://i.loli.net/2020/04/21/1nzIGfJ7328C9S5.png" alt="image-20200421233351169"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/21/DeepDDI-log-4-21/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-DeepDDI-log-4-20" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1441,69 +1558,6 @@ $$<br>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/29/2020%E5%B9%B43%E6%9C%88%E6%9C%80%E5%90%8E%E4%B8%80%E5%91%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-BP算法-推导实例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/25/BP%E7%AE%97%E6%B3%95-%E6%8E%A8%E5%AF%BC%E5%AE%9E%E4%BE%8B/">BP算法 推导实例</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/25/BP%E7%AE%97%E6%B3%95-%E6%8E%A8%E5%AF%BC%E5%AE%9E%E4%BE%8B/" class="archive-article-date">
-  	<time datetime="2020-03-25T09:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="推导例子"><a class="header-anchor" href="#推导例子">¶</a>推导例子</h2>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/25/BP%E7%AE%97%E6%B3%95-%E6%8E%A8%E5%AF%BC%E5%AE%9E%E4%BE%8B/">展开全文 >></a>
         </p>
       
 
