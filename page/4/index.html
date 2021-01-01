@@ -188,6 +188,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构-二叉树（重构、遍历）leetcode102、103、105" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88%E9%87%8D%E6%9E%84%E3%80%81%E9%81%8D%E5%8E%86%EF%BC%89leetcode102%E3%80%81103%E3%80%81105/">数据结构-二叉树（重构、遍历）leetcode102、103、105</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88%E9%87%8D%E6%9E%84%E3%80%81%E9%81%8D%E5%8E%86%EF%BC%89leetcode102%E3%80%81103%E3%80%81105/" class="archive-article-date">
+  	<time datetime="2020-06-15T12:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="102（层序遍历）"><a class="header-anchor" href="#102（层序遍历）">¶</a>102（层序遍历）</h2>
+<p>题目：<br>
+<img src="https://img-blog.csdnimg.cn/20200615202948486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA3NTIxNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+这里与邓老师讲的唯一不同之处在于需要判断节点是否在某一层，把同属于某一层的节点一起输出。<br>
+思路就是在循环里每次不是pop一次，而是每次把当前队列（插入之前）pop空。<br>
+代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">levelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n = q.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;tmp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; q.front()-&gt;val &lt;&lt; <span class="string">" "</span> ;</span><br><span class="line">                tmp.push_back(q.front()-&gt;val);</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> (q.front()-&gt;left)q.push(q.front()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.front()-&gt;right)q.push(q.front()-&gt;right);</span><br><span class="line">                q.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            ans.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="103（层序遍历变形）"><a class="header-anchor" href="#103（层序遍历变形）">¶</a>103（层序遍历变形）</h2>
+<p>题目：<br>
+<img src="https://img-blog.csdnimg.cn/2020061520372974.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA3NTIxNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+其实跟102一模一样，就是用一个flag判断一下是奇数层还是偶数层，reverse一下就好啦</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">zigzagLevelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;ans;</span><br><span class="line">        <span class="keyword">if</span> (!root)<span class="keyword">return</span> ans;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt;q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">int</span> n = q.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;tmp;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">                tmp.push_back(q.front()-&gt;val);</span><br><span class="line">                <span class="keyword">if</span> (q.front()-&gt;left)q.push(q.front()-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (q.front()-&gt;right)q.push(q.front()-&gt;right);</span><br><span class="line">                q.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (k % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                reverse(tmp.begin(), tmp.end());</span><br><span class="line">            &#125;</span><br><span class="line">            k++;</span><br><span class="line">            ans.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="105（从前序与中序遍历序列构造二叉树）"><a class="header-anchor" href="#105（从前序与中序遍历序列构造二叉树）">¶</a>105（从前序与中序遍历序列构造二叉树）</h2>
+<p>题目：<br>
+<img src="https://img-blog.csdnimg.cn/20200615203903917.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTA3NTIxNQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>
+这题就是一个递归，关键在找到递归的位置，也就是四个子数组的开始和结束：</p>
+<h3 id="手动分数组版本"><a class="header-anchor" href="#手动分数组版本">¶</a>手动分数组版本</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = preorder.size();</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(preorder[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preorder_left, inorder_left, preorder_right, inorder_right;</span><br><span class="line">        <span class="comment">//在inorder里面寻找根节点，划分左子树和右子树</span></span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="comment">//构造左子树的中序遍历</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; m; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[i] == preorder[<span class="number">0</span>]) <span class="keyword">break</span>;</span><br><span class="line">            inorder_left.push_back(inorder[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//构造右子树的中序遍历</span></span><br><span class="line">        <span class="keyword">for</span>(i = i + <span class="number">1</span>; i &lt; m; i ++)&#123;</span><br><span class="line">            inorder_right.push_back(inorder[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; m; j ++)&#123;</span><br><span class="line">            <span class="comment">//构造左子树的前序遍历</span></span><br><span class="line">            <span class="keyword">if</span>(j &lt;= inorder_left.size())</span><br><span class="line">                preorder_left.push_back(preorder[j]);</span><br><span class="line">            <span class="comment">//构造右子树的前序遍历</span></span><br><span class="line">            <span class="keyword">else</span> preorder_right.push_back(preorder[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        root-&gt;left = buildTree(preorder_left, inorder_left);</span><br><span class="line">        root-&gt;right = buildTree(preorder_right, inorder_right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="哈希表版本"><a class="header-anchor" href="#哈希表版本">¶</a>哈希表版本</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; index;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">myBuildTree</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="keyword">int</span> preorder_left, <span class="keyword">int</span> preorder_right, <span class="keyword">int</span> inorder_left, <span class="keyword">int</span> inorder_right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (preorder_left &gt; preorder_right) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 前序遍历中的第一个节点就是根节点</span></span><br><span class="line">        <span class="keyword">int</span> preorder_root = preorder_left;</span><br><span class="line">        <span class="comment">// 在中序遍历中定位根节点</span></span><br><span class="line">        <span class="keyword">int</span> inorder_root = index[preorder[preorder_root]];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 先把根节点建立出来</span></span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(preorder[preorder_root]);</span><br><span class="line">        <span class="comment">// 得到左子树中的节点数目</span></span><br><span class="line">        <span class="keyword">int</span> size_left_subtree = inorder_root - inorder_left;</span><br><span class="line">        <span class="comment">// 递归地构造左子树，并连接到根节点</span></span><br><span class="line">        <span class="comment">// 先序遍历中「从 左边界+1 开始的 size_left_subtree」个元素就对应了中序遍历中「从 左边界 开始到 根节点定位-1」的元素</span></span><br><span class="line">        root-&gt;left = myBuildTree(preorder, inorder, preorder_left + <span class="number">1</span>, preorder_left + size_left_subtree, inorder_left, inorder_root - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 递归地构造右子树，并连接到根节点</span></span><br><span class="line">        <span class="comment">// 先序遍历中「从 左边界+1+左子树节点数目 开始到 右边界」的元素就对应了中序遍历中「从 根节点定位+1 到 右边界」的元素</span></span><br><span class="line">        root-&gt;right = myBuildTree(preorder, inorder, preorder_left + size_left_subtree + <span class="number">1</span>, preorder_right, inorder_root + <span class="number">1</span>, inorder_right);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = preorder.size();</span><br><span class="line">        <span class="comment">// 构造哈希映射，帮助我们快速定位根节点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            index[inorder[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> myBuildTree(preorder, inorder, <span class="number">0</span>, n - <span class="number">1</span>, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法与数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%88%E9%87%8D%E6%9E%84%E3%80%81%E9%81%8D%E5%8E%86%EF%BC%89leetcode102%E3%80%81103%E3%80%81105/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年6月第二周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1079,93 +1171,9 @@
 
 
   
-    <article id="post-2020年5月第一周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/">2020年5月第一周</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-05-03T15:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
-<p>天气突然变得特别特别热</p>
-<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
-<p>乏善可陈</p>
-<h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
-<p>开始减肥，早上只吃两个鸡蛋，中午吃好，晚上少吃主食，一周下来减了3Kg，效果还可以</p>
-<h2 id="时事"><a class="header-anchor" href="#时事">¶</a>时事</h2>
-<p>阅文的换水和新合同算是一个新闻，不过这个事情写开要太久，不展开了</p>
-<h2 id="阅读"><a class="header-anchor" href="#阅读">¶</a>阅读</h2>
-<p>这周开始《亲密关系》的阅读</p>
-<p>还是非常精彩的</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/2020%E5%B9%B45%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1177,7 +1185,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Dark Knight
+    		&copy; 2021 Dark Knight
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
