@@ -200,6 +200,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数据结构-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/">数据结构: 数组</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2020-05-05T07:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="26-删除排序数组中的重复项"><a class="header-anchor" href="#26-删除排序数组中的重复项">¶</a>26. 删除排序数组中的重复项</h3>
+<p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Given nums = [<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">4</span>],</span><br><span class="line"></span><br><span class="line">Your function should <span class="keyword">return</span> length = <span class="number">5</span>, with the first five elements of nums being modified to <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="keyword">and</span> <span class="number">4</span> respectively.</span><br><span class="line"></span><br><span class="line">It doesn<span class="number">'</span>t matter what values are <span class="built_in">set</span> beyond the returned length.</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> removeDuplicates(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty())<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[index] != nums[i]) &#123;</span><br><span class="line">                index++;</span><br><span class="line">                nums[index] = nums[i];</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="66-加一"><a class="header-anchor" href="#66-加一">¶</a>66. 加一</h3>
+<p>大数加一</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">plusOne</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (digits[digits.size() - <span class="number">1</span>] != <span class="number">9</span>) &#123;</span><br><span class="line">            digits[digits.size() - <span class="number">1</span>] = digits[digits.size() - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> digits;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = digits.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">int</span> current = carry + digits[i];</span><br><span class="line">            <span class="keyword">if</span> (current &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                digits[i] = current;</span><br><span class="line">                carry = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                digits[i] = current % <span class="number">10</span>;</span><br><span class="line">                carry = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry == <span class="number">1</span>) &#123;</span><br><span class="line">            digits.insert(digits.begin(), <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="969-数组形式的整数加法"><a class="header-anchor" href="#969-数组形式的整数加法">¶</a>969. 数组形式的整数加法</h3>
+<p>都变成数组：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">addToArrayForm</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;k = change(K);</span><br><span class="line">        <span class="keyword">int</span> index;</span><br><span class="line">        <span class="keyword">if</span>(k.size() &gt; A.size())</span><br><span class="line">            index = k.size() - A.size();</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            index = A.size() - k.size();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> flag = k.size() &gt; A.size() ? <span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(index--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">                A.insert(A.begin(), <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                k.insert(k.begin(), <span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ans(A.size(), <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = A.size() - <span class="number">1</span>;i &gt;= <span class="number">0</span>; i-- )&#123;</span><br><span class="line">            <span class="keyword">int</span> current = A[i] + k[i] + carry;</span><br><span class="line">            ans[i]  = current % <span class="number">10</span>;</span><br><span class="line">            carry = current / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (carry) &#123;</span><br><span class="line">            ans.insert(ans.begin(), <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">change</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ans;</span><br><span class="line">        <span class="keyword">while</span>(k) &#123;</span><br><span class="line">            ans.push_back(k%<span class="number">10</span>);</span><br><span class="line">            k = k / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(ans.begin(), ans.end());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="118-杨辉三角形"><a class="header-anchor" href="#118-杨辉三角形">¶</a>118. 杨辉三角形</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">generate</span><span class="params">(<span class="keyword">int</span> numRows)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">res</span><span class="params">(numRows)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numRows; i++) &#123;</span><br><span class="line">            res[i].resize(i + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; j++) &#123;</span><br><span class="line">                res[i][j] = res[i - <span class="number">1</span>][j - <span class="number">1</span>] + res[i - <span class="number">1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="169-多数元素"><a class="header-anchor" href="#169-多数元素">¶</a>169. 多数元素</h3>
+<p>找一个数组中出现最多的元素，（出现次数&gt;n/2）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> candidate = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (num == candidate) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (--count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                candidate = num;</span><br><span class="line">                count = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> candidate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="219-存在重复元素Ⅱ"><a class="header-anchor" href="#219-存在重复元素Ⅱ">¶</a>219. 存在重复元素Ⅱ</h3>
+<p>这其实是一个hash问题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.empty()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;M;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator iter = M.find(nums[i]);</span><br><span class="line">            <span class="keyword">if</span> (iter == M.end()) &#123;</span><br><span class="line">                M[nums[i]] = i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (i - iter-&gt;second &lt;= k) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                M[nums[i]] = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="283-移动零"><a class="header-anchor" href="#283-移动零">¶</a>283. 移动零</h3>
+<p>其他元素不变，把零放到最后</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                nums.erase(nums.begin()+i);</span><br><span class="line">                i--;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(count--) &#123;</span><br><span class="line">            nums.push_back(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="54-螺旋矩阵"><a class="header-anchor" href="#54-螺旋矩阵">¶</a>54. 螺旋矩阵</h3>
+<p>把矩阵顺时针输出</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">spiralOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix.empty() || matrix[<span class="number">0</span>].empty())<span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;ans;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> m = matrix.size(), n = matrix[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">int</span> up = <span class="number">0</span>, down = m - <span class="number">1</span>, left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i++) ans.push_back(matrix[up][i]);</span><br><span class="line">            <span class="keyword">if</span> (++up &gt; down)<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = up; i &lt;= down; i++) ans.push_back(matrix[i][right]);</span><br><span class="line">            <span class="keyword">if</span> (--right &lt; left)<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = right; i &gt;= left; i--) ans.push_back(matrix[down][i]);</span><br><span class="line">            <span class="keyword">if</span> (--down &lt; up)<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = down; i &gt;= up; i--) ans.push_back(matrix[i][left]);</span><br><span class="line">            <span class="keyword">if</span> (++left &gt; right)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="215-第K大的元素"><a class="header-anchor" href="#215-第K大的元素">¶</a>215 第K大的元素</h3>
+<h4 id="完全二叉树"><a class="header-anchor" href="#完全二叉树">¶</a>完全二叉树</h4>
+<p>若设二叉树的深度为k，除第 k 层外，其它各层 (1～k-1) 的结点数都达到最大个数，第k 层所有的结点都<strong>连续集中在最左边</strong>，这就是完全二叉树。</p>
+<p><img src="https://i.loli.net/2020/05/08/EUJS1AIPCvi6LDc.png" alt="image-20200508193706731"></p>
+<p>自己实现小顶堆：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ElemType pair<span class="meta-string">&lt;int,int&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CMaxHeap</span> &#123;</span>  <span class="comment">//小顶堆</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	ElemType *heap;</span><br><span class="line">	<span class="keyword">int</span> heapSize, MaxHeapSize;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    CMaxHeap(<span class="keyword">int</span> size) &#123;</span><br><span class="line">        heapSize = <span class="number">0</span>;</span><br><span class="line">        MaxHeapSize = size;</span><br><span class="line">        heap = <span class="keyword">new</span> ElemType[size + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    ~CMaxHeap() &#123; <span class="keyword">delete</span>[] heap; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ClearHeap</span><span class="params">()</span> </span>&#123; heapSize = <span class="number">0</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsEmpty</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heapSize == <span class="number">0</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">IsFull</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heapSize == MaxHeapSize; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getLength</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heapSize; &#125;</span><br><span class="line">    <span class="function">ElemType <span class="title">top</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> heap[<span class="number">0</span>]; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(ElemType e)</span></span>;</span><br><span class="line">	<span class="function">ElemType <span class="title">pop</span><span class="params">()</span></span>;	<span class="comment">//去堆顶元素</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">FixUp</span><span class="params">(<span class="keyword">int</span> k)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">FixDown</span><span class="params">(<span class="keyword">int</span> k)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMaxHeap::FixDown</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	i = <span class="number">2</span> * k + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; heapSize) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i &lt; heapSize - <span class="number">1</span> &amp;&amp; heap[i] &gt; heap[i + <span class="number">1</span>])</span><br><span class="line">			i++;			<span class="comment">//取孩子结点中较小者</span></span><br><span class="line">		<span class="keyword">if</span> (heap[k] &lt; heap[i])</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		swap(heap[k], heap[i]);</span><br><span class="line">		k = i;</span><br><span class="line">		i = <span class="number">2</span> * k + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMaxHeap::FixUp</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	i = (k - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">while</span> (k &gt; <span class="number">0</span> &amp;&amp; heap[i] &gt; heap[k]) &#123;</span><br><span class="line">		swap(heap[k], heap[i]);</span><br><span class="line">		k = i;</span><br><span class="line">		i = (k - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CMaxHeap::push</span><span class="params">(ElemType e)</span> </span>&#123;</span><br><span class="line">	heap[heapSize] = e;</span><br><span class="line">	heapSize++;</span><br><span class="line">	FixUp(heapSize - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ElemType <span class="title">CMaxHeap::pop</span><span class="params">()</span> </span>&#123; <span class="comment">//去掉堆顶</span></span><br><span class="line">	swap(heap[<span class="number">0</span>], heap[heapSize - <span class="number">1</span>]);</span><br><span class="line">	heapSize--;</span><br><span class="line">	FixDown(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">return</span> heap[heapSize];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法与数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-贪心算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1223,129 +1332,6 @@ $$<br>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DeepDDI-log-4-21" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/DeepDDI-log-4-21/">DeepDDI log 4.21</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/21/DeepDDI-log-4-21/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2020/04/21/DeepDDI-log-4-21/" class="archive-article-date">
-  	<time datetime="2020-04-21T01:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="记录"><a class="header-anchor" href="#记录">¶</a>记录</h2>
-<p>run_deep_ddi.py 在改变 feature、使用combination时，正负比例为：</p>
-<p>880：2000</p>
-<p><img src="https://i.loli.net/2020/04/21/ZRmuALK1SeJx5fF.png" alt="image-20200421100047921"></p>
-<p>最后结果：</p>
-<p><img src="https://i.loli.net/2020/04/21/rWtMKcZhA2geOLC.png" alt="image-20200421094159965"></p>
-<p>这说明：combination可以用，改变feature也没事</p>
-<p>注：使用的unit_list是：python run_deep_ddi.py -unit_list 12 24 4 2 3 -gpu_id 0</p>
-<h2 id="2"><a class="header-anchor" href="#2">¶</a>2</h2>
-<p>在 run_deep_ddi 使用 dataidx 进行metadata，发现完全不可使用，结果如下：</p>
-<p><img src="https://i.loli.net/2020/04/21/Y5HAISjR4ldaGeZ.png" alt="image-20200421145952727"></p>
-<p>下面再重新用上面的案例试一次，看是否回来</p>
-<h2 id="3"><a class="header-anchor" href="#3">¶</a>3</h2>
-<p>使用上面又进行一次测试之后发现结果如下：</p>
-<p><img src="https://i.loli.net/2020/04/21/6doAtwcDmkvHeM8.png" alt="image-20200421152157491"></p>
-<p>所以很明确，就是数据出现了问题，但是数据我就是这么做的啊，会出现什么问题？？？</p>
-<h2 id="4"><a class="header-anchor" href="#4">¶</a>4</h2>
-<p>于是，我再次尝试使用dataidx，把pos 和 neg 都固定在 880，2000，与之前保持完全一致，看看会发生什么？</p>
-<p><img src="https://i.loli.net/2020/04/21/TtLsMiZUhV7uYGK.png" alt="image-20200421154350453"></p>
-<p>结果是，效果依旧很差，那么难道这真的证明我的数据有问题吗？</p>
-<p>问题到底出现在哪？？？？</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<p>啊！！！！！</p>
-<h2 id="5"><a class="header-anchor" href="#5">¶</a>5</h2>
-<p>再一次考虑，难道是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pos_data_idx = random.sample(pos_data_idx, <span class="number">880</span>)</span><br></pre></td></tr></table></figure>
-<p>这里的<code>random.sample</code> 不对劲？？</p>
-<p>那我改成</p>
-<p><code>pos_data_idx = pos_data_idx[:880]</code> 总该行了吧？</p>
-<p>我靠，这样真的可以？？？？</p>
-<p><img src="https://i.loli.net/2020/04/21/EFkK7ox2vUAyOnh.png" alt="image-20200421163123288"></p>
-<p>这是为什么？？？</p>
-<p>为什么？？？？？？</p>
-<h2 id="6"><a class="header-anchor" href="#6">¶</a>6</h2>
-<p>那我再试一下大一点的数据集，还是差3倍，pos：neg=1000：3000</p>
-<p><img src="https://i.loli.net/2020/04/21/QvZDM7UlaGtsq6T.png" alt="image-20200421163402044"></p>
-<p>结果仍然还不错，是</p>
-<p><img src="https://i.loli.net/2020/04/21/dsbQKAtf3rNOq1Y.png" alt="image-20200421164017224"></p>
-<h2 id="7"><a class="header-anchor" href="#7">¶</a>7</h2>
-<p>OK，那下一步可以继续之前的工作了，把数据保存下来以备使用。</p>
-<p>记录中间，在使用1000个数据、1_1数据比例时，出现了下面这个现象，记录一下：</p>
-<p><img src="https://i.loli.net/2020/04/21/1nzIGfJ7328C9S5.png" alt="image-20200421233351169"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/DeepDDI-log-4-21/">展开全文 >></a>
         </p>
       
 
