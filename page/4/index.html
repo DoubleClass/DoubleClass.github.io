@@ -200,6 +200,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-grabcut-剖析-part1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/grabcut-%E5%89%96%E6%9E%90-part1/">grabcut 剖析 part1</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/08/17/grabcut-%E5%89%96%E6%9E%90-part1/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2020/08/17/grabcut-%E5%89%96%E6%9E%90-part1/" class="archive-article-date">
+  	<time datetime="2020-08-17T01:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="函数用法"><a class="header-anchor" href="#函数用法">¶</a>函数用法</h2>
+<h3 id="imread"><a class="header-anchor" href="#imread">¶</a>imread</h3>
+<p><strong>作用</strong>：读取图片</p>
+<p><strong>函数原型</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Mat <span class="title">imread</span><span class="params">( <span class="keyword">const</span> <span class="built_in">string</span>&amp; filename, <span class="keyword">int</span> flags = <span class="number">1</span> )</span></span></span><br></pre></td></tr></table></figure>
+<p>flag标志位作用：</p>
+<p><strong>flags = -1</strong>：imread按解码得到的方式读入图像  // =   CV_LOAD_IMAGE_UNCHANGED</p>
+<p><strong>flags = 0</strong>：imread按单通道的方式读入图像，即灰白图像  // =  CV_LOAD_IMAGE_GRAYSCALE</p>
+<p><strong>flags = 1</strong>：imread按三通道方式读入图像，即彩色图像  // =  CV_LOAD_IMAGE_COLOR</p>
+<p><strong>例子</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> test1 = <span class="string">"E:\\cppProjects\\cv_projects\\opencv_test\\Lark20200709-200446.jpeg"</span>;</span><br><span class="line">Mat image = imread(test1, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>这样读出来就是彩色的图片</p>
+<ul>
+<li>[]</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/17/grabcut-%E5%89%96%E6%9E%90-part1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年8月第二周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1354,134 +1437,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/01/2020%E5%B9%B4%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%9B%9E%E9%A1%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020年6月第四周" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/22/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8/">2020年6月第四周</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/06/22/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2020/06/22/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-06-22T14:06:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="天气"><a class="header-anchor" href="#天气">¶</a>天气</h2>
-<p>还是没有入伏，室内温度在31°左右，会有些不爽，但整体来说还是很不错的，我很喜欢。</p>
-<p>只不过因为减肥不能畅快的吃西瓜、吃冰棍儿，有那么一点点遗憾</p>
-<h2 id="生活"><a class="header-anchor" href="#生活">¶</a>生活</h2>
-<p>深夜码字，只开一盏小台灯，顿时有了氛围。</p>
-<p>莫名其妙有一个营销学的老师加了我，不知道干什么，但是翻了翻她的朋友圈，马拉松，旅游，访谈，会议，生活似乎非常的多姿多彩，上网页查她的简历，原来博士实在北大的光华管理，同时有耶鲁大学的学位。</p>
-<p>不禁感叹，可能人与人的不同，展现最淋漓尽致的就是他们的阅历，知乎上有个问题，“既然人注定死亡，那生的意义又在何处？”，我最喜欢的一个回答大概是这样的：</p>
-<blockquote>
-<p>的确，所有的生命都要死亡，那么是什么时候呢？</p>
-<p>借用加缪在《西西弗的神话》中所言，“真正严肃的哲学问题只有一个，自杀。”</p>
-<p>我们为何不立刻自杀呢？</p>
-<p>如果你能够回答为何不立刻自杀的问题，答案有一条算一条，都是你现在的人生意义。</p>
-<p>这也是加缪的哲学观点中我最认同的一部分，“判断生活是否值得经历，这本身就是在回答哲学的根本问题。”</p>
-<p>作者：韩柯基<br>
-链接：<a href="https://www.zhihu.com/question/288017836/answer/459376783" target="_blank" rel="noopener">https://www.zhihu.com/question/288017836/answer/459376783</a><br>
-来源：知乎<br>
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-</blockquote>
-<p>我原本想论述的是，每个人不自杀，都会有他的道理，这就是他生命的意义，而不同生命有不同的意义，本就是天经地义的事情。</p>
-<p>但是，转过头想想，我羡慕上面那种生活吗，当然。我能体验到吗，未必。求而不得，大概是所有芸芸众生ongoing的状态吧。</p>
-<p>哈哈哈哈哈哈每周一次的神棍状态感觉好棒，感觉好像超脱了出去，哈哈哈哈但是写完之后就得去运动，去减肥，去复习，去申请研究生，谁都逃不掉俗世的一顿折腾呀</p>
-<h2 id="学习"><a class="header-anchor" href="#学习">¶</a>学习</h2>
-<p>最近准备做一个疯狂的事情。</p>
-<p>不得不说，跑步这件事情不但对身体有很好的促进作用，对心理的作用更大，我竟然敢立flag了哈哈哈。</p>
-<p>国家喜欢做5年计划，我退求其次，做一个3年计划，或者说目标吧。</p>
-<p>《离散数学及其应用（第八版）》</p>
-<p>《算法（第四版）》</p>
-<p>《大话数据结构》</p>
-<p>《数据结构及其算法（第四版）》</p>
-<p>按照 图、高级树、链表的顺序，逐步推完这三本书。</p>
-<p>《线性代数》根据课程，把习题做完</p>
-<p>《剑指offer》+ leetcode，完成至少300道习题并做记录</p>
-<p>《深入理解计算机系统》做lab</p>
-<p>具体的todo list和日程安排，可能后续会放上来，也可能不会哈哈哈哈，毕竟是flag，立下来就是为了倒掉嘛哈哈哈哈哈哈。</p>
-<p>另外，更想写给3年后的自己一些话：</p>
-<p>现在的你大概会经历求职的焦虑吧，留在天津，还是去北京，很抱歉当年我没有做出决定，把问题留到了现在，我想说的是，别被又一轮的消费主义冲昏了头脑</p>
-<p>咱们不需要多少钱，家财万贯，睡得还是那一丈宽的床，吃的还是五谷杂粮，出行有车，是不是能买件新衣服，我觉得，就可以了。</p>
-<p>你可能会说，那孩子呢，不得给孩子某一个好房子，找一个好学校，找一个好老师，办一个好班。话是这么说没错，但是可以想想你自己</p>
-<p>给孩子一个完整幸福的童年，足够了。</p>
-<p>天下之大，由他去闯。</p>
-<p>不要给自己太大压力，有些事情认真些，有些事情差不多就完了。</p>
-<h2 id="下一步"><a class="header-anchor" href="#下一步">¶</a>下一步</h2>
-<p>希望养成的新的习惯：</p>
-<ol>
-<li>早八点半之前计划一天的todolist（周末除外）</li>
-<li>晚上10点半深度复盘当天内容</li>
-<li>娱乐还是控制在诡秘和蝙蝠侠</li>
-<li>番茄始终，严格执行</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/22/2020%E5%B9%B46%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8/">展开全文 >></a>
         </p>
       
 
