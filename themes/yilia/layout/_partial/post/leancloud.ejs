@@ -1,0 +1,48 @@
+<script src="<%- theme.js_cdn.av %>"></script>
+<script type="text/javascript"> 
+if(<%- theme.leancloud_visitors.enable %>){
+    var leancloud_app_id  = '<%- theme.leancloud_visitors.app_id %>';
+    var leancloud_app_key = '<%- theme.leancloud_visitors.app_key %>';
+    AV.init({
+        appId: leancloud_app_id,
+        appKey: leancloud_app_key
+    });
+    var pageViewsLength = $(".pageViews").length;
+    var isIndex = $(".pageViews").length > 1 ?true:false;
+    function showTime() {
+        var Counter = AV.Object.extend("Counter");
+        if(isIndex){
+            $(".pageViews").each(function(){
+                showPageViewsNum($(this),Counter);
+                addPageViewsNum($(this));
+            });
+        }else{
+            showPageViewsNum($(".pageViews"),Counter);
+            addPageViewsNum($(".pageViews"));
+        }
+    }
+    //显示阅读量
+    function showPageViewsNum(ele,Counter){
+        var query = new AV.Query("Counter");
+        var url = ele.attr('id').trim();
+            query.equalTo("words", url);
+            query.count().then(function (number) {
+                $(document.getElementById(url)).text(number?  number : '0');
+            }, function (error) {
+                 $(document.getElementById(url)).text('0');
+            });
+    }
+    //追加阅读量
+    function addPageViewsNum(ele){
+        var url = ele.attr('id').trim();
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {});
+    }
+    if(pageViewsLength){ //此处判断等于 1 在执行 可去除循环
+        showTime();
+    }
+}
+</script>

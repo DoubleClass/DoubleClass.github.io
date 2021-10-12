@@ -1,0 +1,28 @@
+<script>
+	var yiliaConfig = {
+		mathjax: <%=theme.mathjax%>,
+		isHome: <%=is_home()%>,
+		isPost: <%=is_post()%>,
+		isArchive: <%=is_archive()%>,
+		isTag: <%=is_tag()%>,
+		isCategory: <%=is_category()%>,
+		open_in_new: <%=theme.open_in_new%>,
+		toc_hide_index: <%=theme.toc_hide_index%>,
+		root: "<%=config.root%>",
+		innerArchive: <%=theme.smart_menu.innerArchive ? true : false%>,
+		showTags: <%=(theme.slider && theme.slider.showTags) ? true : false%>
+	}
+</script>
+#上面是 yilia 主题配置自带 下面是我自己添加的js代码
+<script src="<%- theme.js_cdn.jquery %>"></script>
+<% if (theme.leancloud_visitors.enable){ %>
+//这是自定一个js文件,放在 layout\_parial\post 目录 leancloud.ejs中
+<%- partial('post/leancloud') %> 
+<% } %>
+
+
+<%- partial('script') %>
+
+<% if (theme.mathjax){ %>
+<%- partial('mathjax') %>
+<% } %>
