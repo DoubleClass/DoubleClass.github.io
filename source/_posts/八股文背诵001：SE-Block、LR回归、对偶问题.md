@@ -49,3 +49,18 @@ https://arxiv.org/abs/1709.01507
 
 ## 逻辑斯蒂回归
 
+就是想把线性回归用到分类上去，加了一个sigmoid，然后用交叉熵做损失函数。
+
+背诵内容：
+
+### 逻辑斯蒂分布：
+
+![image-20211017171148390](https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171148390.png)
+
+二项模型和几率：
+
+![image-20211017171219766](https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171219766.png)
+
+### 参数估计：
+
+![image-20211017171248198](https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171248198.png)
