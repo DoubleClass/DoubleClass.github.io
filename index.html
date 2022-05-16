@@ -200,6 +200,116 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs231n-two-layer-net-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/16/cs231n-two-layer-net-work/">cs231n: two layer net work</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2022/05/16/cs231n-two-layer-net-work/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2022/05/16/cs231n-two-layer-net-work/" class="archive-article-date">
+  	<time datetime="2022-05-16T08:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Assignment1: two layer net work</h1>
+<h2 id="Relu-的实现"><a class="header-anchor" href="#Relu-的实现">¶</a>Relu 的实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inner1_act = np.maximum(zeros, inner1)</span><br></pre></td></tr></table></figure>
+<p>注意这里使用maximum，而不是max，max会出大问题</p>
+<h2 id="softmax-loss的计算"><a class="header-anchor" href="#softmax-loss的计算">¶</a>softmax loss的计算</h2>
+<p>首先，需要把每个sample减去最大值，防止上溢下溢。</p>
+<p>首先softmax公式如下：<br>
+$$<br>
+softmax(x)_i = \frac{e<sup>{x_i}}{\sum_{j}{e</sup>{x_j}}}<br>
+$$</p>
+<p>这里我们减去最大值，即为了防止上溢和下溢</p>
+<p>举个例子，x=[100000,100001,100002],如果直接代入上式数值会非常大，当对每个x的值减去x中的最大值后得到[-2,-1,0]，此时再代入上式。</p>
+<p>我试过加这个步骤，和不加，结果是一模一样的，应该可以证明这样对结果不产生影响，只是简化了计算。</p>
+<p>之后，就是numpy的究级切片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">probs[range(N), y]</span><br></pre></td></tr></table></figure>
+<p><code>probs</code>是一个（5，3）维的矩阵，有5个sample，3个维度，y是类似<code>[0,1,1,2,0]</code>的真实标签。</p>
+<p>因为cross entropy公式：<br>
+$$<br>
+Loss = -\sum_{i=1}^{m}{y_ilog(a_i)}<br>
+$$</p>
+<p>$y_i$ 是one-hot 标签，所以在其他维度都为零，有一个选择的过程，上面这行代码就做出了这个选择。只选y对应的那一列。</p>
+<h2 id="cross-entropy-和-softmax-求偏导"><a class="header-anchor" href="#cross-entropy-和-softmax-求偏导">¶</a>cross entropy 和 softmax 求偏导</h2>
+<p>经典的$a-1$倒数，具体可以参考：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/42040307" target="_blank" rel="noopener">求偏导的过程（知乎）</a></p>
+<p>这里就需要稍微细心一点，每一步对应的维度要算对。</p>
+<h2 id="随机梯度下降（训练过程）"><a class="header-anchor" href="#随机梯度下降（训练过程）">¶</a>随机梯度下降（训练过程）</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mini_batch = np.random.permutation(num_train)[<span class="number">0</span>:batch_size]</span><br></pre></td></tr></table></figure>
+<p>挺好用的一个打乱方法。</p>
+<p>参数更新也很直接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.params[<span class="string">'W1'</span>] -= learning_rate * grads[<span class="string">'W1'</span>]</span><br><span class="line">self.params[<span class="string">'b1'</span>] -= learning_rate * grads[<span class="string">'b1'</span>]</span><br><span class="line">self.params[<span class="string">'W2'</span>] -= learning_rate * grads[<span class="string">'W2'</span>]</span><br><span class="line">self.params[<span class="string">'b2'</span>] -= learning_rate * grads[<span class="string">'b2'</span>]</span><br></pre></td></tr></table></figure>
+<p>本次实验到此结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/16/cs231n-two-layer-net-work/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-关于妇女节和其他" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1144,101 +1254,6 @@ dp</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/13/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5002%EF%BC%9A%E7%9F%A9%E9%98%B5QR%E5%88%86%E8%A7%A3%E3%80%81%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-八股文背诵001：SE-Block、LR回归、对偶问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/">八股文背诵001：SE-Block、LR回归、对偶问题</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-10-12T14:22:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SE-Block"><a class="header-anchor" href="#SE-Block">¶</a>SE Block</h2>
-<p>通过对特征通道间的相关性进行建模，把重要的特征进行强化来提升准确率。</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211012222439117.png" alt="image-20211012222439117"></p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SE</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    REDUCTION = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, max_channels, mbtest=False)</span>:</span></span><br><span class="line">        super(SE, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.max_channels = max_channels</span><br><span class="line">        self.reduction = SE.REDUCTION</span><br><span class="line"></span><br><span class="line">        num_mid = self.max_channels // self.reduction</span><br><span class="line"></span><br><span class="line">        self.fc = nn.Sequential(OrderedDict([</span><br><span class="line">            (<span class="string">'reduce'</span>, Conv2d(self.max_channels, num_mid, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'relu'</span>, nn.ReLU(inplace=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'expand'</span>, Conv2d(num_mid, self.max_channels, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'h_sigmoid'</span>, nn.Hardsigmoid(inplace=<span class="literal">True</span>)),</span><br><span class="line">        ]))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        y = x.mean(<span class="number">3</span>, keepdim=<span class="literal">True</span>).mean(<span class="number">2</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment"># reduce</span></span><br><span class="line">        y = self.fc(y)</span><br><span class="line">        <span class="keyword">return</span> x * y</span><br></pre></td></tr></table></figure>
-<p>来自论文：‘</p>
-<p><a href="https://arxiv.org/abs/1709.01507" target="_blank" rel="noopener">https://arxiv.org/abs/1709.01507</a></p>
-<h2 id="逻辑斯蒂回归"><a class="header-anchor" href="#逻辑斯蒂回归">¶</a>逻辑斯蒂回归</h2>
-<p>就是想把线性回归用到分类上去，加了一个sigmoid，然后用交叉熵做损失函数。</p>
-<p>背诵内容：</p>
-<h3 id="逻辑斯蒂分布："><a class="header-anchor" href="#逻辑斯蒂分布：">¶</a>逻辑斯蒂分布：</h3>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171148390.png" alt="image-20211017171148390"></p>
-<p>二项模型和几率：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171219766.png" alt="image-20211017171219766"></p>
-<h3 id="参数估计："><a class="header-anchor" href="#参数估计：">¶</a>参数估计：</h3>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171248198.png" alt="image-20211017171248198"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

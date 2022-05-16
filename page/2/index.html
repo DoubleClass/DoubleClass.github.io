@@ -200,6 +200,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-八股文背诵001：SE-Block、LR回归、对偶问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/">八股文背诵001：SE-Block、LR回归、对偶问题</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-10-12T14:22:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SE-Block"><a class="header-anchor" href="#SE-Block">¶</a>SE Block</h2>
+<p>通过对特征通道间的相关性进行建模，把重要的特征进行强化来提升准确率。</p>
+<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211012222439117.png" alt="image-20211012222439117"></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SE</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    REDUCTION = <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, max_channels, mbtest=False)</span>:</span></span><br><span class="line">        super(SE, self).__init__()</span><br><span class="line"></span><br><span class="line">        self.max_channels = max_channels</span><br><span class="line">        self.reduction = SE.REDUCTION</span><br><span class="line"></span><br><span class="line">        num_mid = self.max_channels // self.reduction</span><br><span class="line"></span><br><span class="line">        self.fc = nn.Sequential(OrderedDict([</span><br><span class="line">            (<span class="string">'reduce'</span>, Conv2d(self.max_channels, num_mid, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'relu'</span>, nn.ReLU(inplace=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'expand'</span>, Conv2d(num_mid, self.max_channels, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">True</span>)),</span><br><span class="line">            (<span class="string">'h_sigmoid'</span>, nn.Hardsigmoid(inplace=<span class="literal">True</span>)),</span><br><span class="line">        ]))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        y = x.mean(<span class="number">3</span>, keepdim=<span class="literal">True</span>).mean(<span class="number">2</span>, keepdim=<span class="literal">True</span>)</span><br><span class="line">        <span class="comment"># reduce</span></span><br><span class="line">        y = self.fc(y)</span><br><span class="line">        <span class="keyword">return</span> x * y</span><br></pre></td></tr></table></figure>
+<p>来自论文：‘</p>
+<p><a href="https://arxiv.org/abs/1709.01507" target="_blank" rel="noopener">https://arxiv.org/abs/1709.01507</a></p>
+<h2 id="逻辑斯蒂回归"><a class="header-anchor" href="#逻辑斯蒂回归">¶</a>逻辑斯蒂回归</h2>
+<p>就是想把线性回归用到分类上去，加了一个sigmoid，然后用交叉熵做损失函数。</p>
+<p>背诵内容：</p>
+<h3 id="逻辑斯蒂分布："><a class="header-anchor" href="#逻辑斯蒂分布：">¶</a>逻辑斯蒂分布：</h3>
+<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171148390.png" alt="image-20211017171148390"></p>
+<p>二项模型和几率：</p>
+<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171219766.png" alt="image-20211017171219766"></p>
+<h3 id="参数估计："><a class="header-anchor" href="#参数估计：">¶</a>参数估计：</h3>
+<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017171248198.png" alt="image-20211017171248198"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/12/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5001%EF%BC%9ASE-Block%E3%80%81LR%E5%9B%9E%E5%BD%92%E3%80%81%E5%AF%B9%E5%81%B6%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年10月1日" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1447,171 +1542,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/21/%E6%9D%82%E8%AE%BA%E2%80%94%E2%80%94%E5%8D%81%E4%B8%87%E4%B8%80%E5%B9%B4%E7%9A%84%E5%9B%BD%E9%99%85%E5%B9%BC%E5%84%BF%E5%9B%AD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-F-S-一周年" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/10/F-S-%E4%B8%80%E5%91%A8%E5%B9%B4/">F&amp;S 一周年</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/04/10/F-S-%E4%B8%80%E5%91%A8%E5%B9%B4/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2021/04/10/F-S-%E4%B8%80%E5%91%A8%E5%B9%B4/" class="archive-article-date">
-  	<time datetime="2021-04-10T00:15:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="变化"><a class="header-anchor" href="#变化">¶</a>变化</h2>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210408102508551.png" alt="image-20210408102508551"></p>
-<p>去年的今天，写了这篇文章，到现在整整一年过去了。</p>
-<p>时间过得太快了。</p>
-<p>现在和当时有啥变化呢？</p>
-<p>首先是学习没啥压力了，没了保研的压力，加上导师很佛，又赶上生病，除了毕设没别的课业压力。</p>
-<p>然后是体重，从去年那时候的74，成功来到了68，然后又无可奈何的回到了73。</p>
-<p>磕磕绊绊谈了一个月的恋爱，散了。</p>
-<p>小心翼翼追了两个月的女孩，凉了。</p>
-<p>再最后就是查出来一身老头病，坐不能坐，站不能站。</p>
-<p>最重要的，可能就是得病之后的心态变化。</p>
-<h2 id="心态"><a class="header-anchor" href="#心态">¶</a>心态</h2>
-<p><em>如果提前知道只能活到三十岁，你会怎么过这一生？</em></p>
-<p>四十岁呢？</p>
-<p>五十岁呢？</p>
-<p>那如果你按照30岁的剧本真正活到了三十岁，但是并没有去世，这又该怎么办呢？</p>
-<p>还挺有意思的是不是？</p>
-<p>甚至拿来作小说的设定也不错。</p>
-<p>我也是第一次想这个问题，还没想出靠谱的答案。</p>
-<p>为了避免把这篇文章写成《腰突患者经验分享》，尽量减少对病的描述，但是为了阐述生理、心理的变化，它终究也是绕不过去的。</p>
-<p>总的来说吧，这是个终身的毛病。</p>
-<p>疼起来可能无法弯腰，无法走路。</p>
-<p>不疼时也不能久坐，久站。</p>
-<p>还时不时会突然复发。</p>
-<p>（想一想你和心爱的姑娘买好票看一场心仪已久的电影，刚放完开头突然腰痛如坐针毡不得不提前离开）</p>
-<p>（是不是还挺绝望的）</p>
-<p>转变在于看到一个腰突论坛的帖子。</p>
-<p><a href="http://www.yz-bbs.com/thread-25706-1-1.html" target="_blank" rel="noopener">http://www.yz-bbs.com/thread-25706-1-1.html</a></p>
-<p>（还挺奇怪的，这个帖子是在我最难过绝望在手机便签里自说自话时，搜狗输入法根据我的输入弹出来的）</p>
-<p>（直到现在我都没能复现这个输入法推荐的流程）</p>
-<p>论坛大哥说了很多，核心就在一点。</p>
-<p><strong>这个病，真没啥。难在攻心。</strong></p>
-<p>说得太好了。</p>
-<p>之前一直笼罩在大脑门的阴影无非就是</p>
-<p>不能走，不能跳，无法工作，变成废人。</p>
-<p>但是大量的腰突患者还是可以无症状的工作生活。</p>
-<p>可依旧说不上来的颓废，茫然。</p>
-<p>现在想想可能就是一次次复发出现了阴影。</p>
-<p>直到这位论坛老哥点出来之后才发现，其实这病带来的更多的是心理上的障碍。</p>
-<p>想通了其实就想开了。</p>
-<p>感谢这位老哥，感谢硅谷老哥提出的那句：</p>
-<p><strong>It’s not A BUG, it’s A FEATURE !</strong></p>
-<p>战略上蔑视它，战术上重视它。</p>
-<p>多注意多运动多锻炼，有啥了不起嘛。</p>
-<h2 id="回顾"><a class="header-anchor" href="#回顾">¶</a>回顾</h2>
-<p>去年写了几个坚持的热爱，盘点盘点。</p>
-<ul>
-<li>跑步</li>
-</ul>
-<p>从四月份到今年一月份跑了大概450公里。现在是跑不了了。</p>
-<ul>
-<li>写字</li>
-</ul>
-<p>写完了整本玄秘塔碑，二十一遍春望，十几副对联，有时心情不好会写写兰亭序，多心经，在B站发了几十个视频。现在是坐不下了。</p>
-<ul>
-<li>网球</li>
-</ul>
-<p>这个不需要刻意的坚持，来津南后就去泡网球场，加了好多大佬，有机会就去打，甚至轮空加凑巧拿了个校长杯并列季军。现在也不敢打了。</p>
-<p>是不是看起来惨爆了？喜欢做的因为腰突全部不能干了，我一开始也可伤心可难过了，直到我看到这个知乎回答</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210410191527233.png" alt="image-20210410191527233"></p>
-<p>核心思想就是：</p>
-<p><strong>太用力的人跑不远</strong></p>
-<p>这篇回答很短，感兴趣可以跳过去看一看https://www.zhihu.com/question/23819007</p>
-<p>里面说的这几条：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210410191714228.png" alt="image-20210410191714228"></p>
-<p>之前也看过，但是只有亲身经历过，才会更深刻懂得它的意思。</p>
-<p>甚至于。</p>
-<p>这个道理是有研究来支撑的：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210410191933125.png" alt="image-20210410191933125"></p>
-<p>书里的解释：</p>
-<p>在中等难度的任务中，动机水平维持中等程度是最佳的。<br>
-过高的动机水平引起焦虑等不良情绪，从而影响问题解决的能力；而过低的动机水平又不足以唤起个体。因此，实验证明，中等水平强度的动机，最有利于中等程度任务的完成。</p>
-<p>所以对于这样的任务，适当的休息，减少任务，可能会帮助走的更远吧。</p>
-<h2 id="接下来"><a class="header-anchor" href="#接下来">¶</a>接下来</h2>
-<p>从这一年的经历来看，工作之前给自己制定五年计划是非常不现实的。</p>
-<p>所以大概只有个大方向。</p>
-<p>首先是养病，把核心练起来，前庭功能练回来。</p>
-<p>再其次是保持好的心态，多听听音乐。</p>
-<p>另外就是尽可能的多思考，少看会手机。</p>
-<p>小学坐公交车上总是能天马行空的想这想那，现在就是手机一刻不能离开身边。</p>
-<p>多思考，多记录。</p>
-<p>剩下的时间读一读论文，做做题，毕竟病痨鬼朋友都会不喜欢，更别提公司了。</p>
-<p>最后的最后，整一句最近很喜欢的鸡汤：</p>
-<p><em>人活着本来是没有什么意义的，但只有活着才会发现那些有意义的事情，就像你发现了这朵花，就像我发现了你。</em></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210410194014421.png" alt="image-20210410194014421"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20210410194026437.png" alt="image-20210410194026437"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/10/F-S-%E4%B8%80%E5%91%A8%E5%B9%B4/">展开全文 >></a>
         </p>
       
 

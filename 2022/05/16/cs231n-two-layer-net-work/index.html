@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Dark Knight 的博客</title>
+  <title>cs231n: two layer net work | Dark Knight 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dark Knight 的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/8/index.html">
+  <meta name="description" content="Assignment1: two layer net work ¶Relu 的实现 1inner1_act &#x3D; np.maximum(zeros, inner1) 注意这里使用maximum，而不是max，max会出大问题 ¶softmax loss的计算 首先，需要把每个sample减去最大值，防止上溢下溢。 首先softmax公式如下： $$ softmax(x)_i &#x3D; \frac{e{x_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231n: two layer net work">
+<meta property="og:url" content="http://yoursite.com/2022/05/16/cs231n-two-layer-net-work/index.html">
 <meta property="og:site_name" content="Dark Knight 的博客">
+<meta property="og:description" content="Assignment1: two layer net work ¶Relu 的实现 1inner1_act &#x3D; np.maximum(zeros, inner1) 注意这里使用maximum，而不是max，max会出大问题 ¶softmax loss的计算 首先，需要把每个sample减去最大值，防止上溢下溢。 首先softmax公式如下： $$ softmax(x)_i &#x3D; \frac{e{x_">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-16T08:54:14.000Z">
+<meta property="article:modified_time" content="2022-05-16T08:55:38.541Z">
 <meta property="article:author" content="Dark Knight">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Dark Knight 的博客" type="application/atom+xml">
@@ -198,130 +203,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-cs231n-two-layer-net-work" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cs231n: two layer net work
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2022/05/16/cs231n-two-layer-net-work/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2022/05/16/cs231n-two-layer-net-work/" class="archive-article-date">
+  	<time datetime="2022-05-16T08:54:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Assignment1: two layer net work</h1>
+<h2 id="Relu-的实现"><a class="header-anchor" href="#Relu-的实现">¶</a>Relu 的实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inner1_act = np.maximum(zeros, inner1)</span><br></pre></td></tr></table></figure>
+<p>注意这里使用maximum，而不是max，max会出大问题</p>
+<h2 id="softmax-loss的计算"><a class="header-anchor" href="#softmax-loss的计算">¶</a>softmax loss的计算</h2>
+<p>首先，需要把每个sample减去最大值，防止上溢下溢。</p>
+<p>首先softmax公式如下：<br>
+$$<br>
+softmax(x)_i = \frac{e<sup>{x_i}}{\sum_{j}{e</sup>{x_j}}}<br>
+$$</p>
+<p>这里我们减去最大值，即为了防止上溢和下溢</p>
+<p>举个例子，x=[100000,100001,100002],如果直接代入上式数值会非常大，当对每个x的值减去x中的最大值后得到[-2,-1,0]，此时再代入上式。</p>
+<p>我试过加这个步骤，和不加，结果是一模一样的，应该可以证明这样对结果不产生影响，只是简化了计算。</p>
+<p>之后，就是numpy的究级切片：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">probs[range(N), y]</span><br></pre></td></tr></table></figure>
+<p><code>probs</code>是一个（5，3）维的矩阵，有5个sample，3个维度，y是类似<code>[0,1,1,2,0]</code>的真实标签。</p>
+<p>因为cross entropy公式：<br>
+$$<br>
+Loss = -\sum_{i=1}^{m}{y_ilog(a_i)}<br>
+$$</p>
+<p>$y_i$ 是one-hot 标签，所以在其他维度都为零，有一个选择的过程，上面这行代码就做出了这个选择。只选y对应的那一列。</p>
+<h2 id="cross-entropy-和-softmax-求偏导"><a class="header-anchor" href="#cross-entropy-和-softmax-求偏导">¶</a>cross entropy 和 softmax 求偏导</h2>
+<p>经典的$a-1$倒数，具体可以参考：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/42040307" target="_blank" rel="noopener">求偏导的过程（知乎）</a></p>
+<p>这里就需要稍微细心一点，每一步对应的维度要算对。</p>
+<h2 id="随机梯度下降（训练过程）"><a class="header-anchor" href="#随机梯度下降（训练过程）">¶</a>随机梯度下降（训练过程）</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mini_batch = np.random.permutation(num_train)[<span class="number">0</span>:batch_size]</span><br></pre></td></tr></table></figure>
+<p>挺好用的一个打乱方法。</p>
+<p>参数更新也很直接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">self.params[<span class="string">'W1'</span>] -= learning_rate * grads[<span class="string">'W1'</span>]</span><br><span class="line">self.params[<span class="string">'b1'</span>] -= learning_rate * grads[<span class="string">'b1'</span>]</span><br><span class="line">self.params[<span class="string">'W2'</span>] -= learning_rate * grads[<span class="string">'W2'</span>]</span><br><span class="line">self.params[<span class="string">'b2'</span>] -= learning_rate * grads[<span class="string">'b2'</span>]</span><br></pre></td></tr></table></figure>
+<p>本次实验到此结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/DeepDDI-log-4-25/" class="archive-article-date">
-  	<time datetime="2020-04-25T08:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/DeepDDI-log-4-25/">DeepDDI log 4.25</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/25/DeepDDI-log-4-25/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/DeepDDI-log-4-24/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/DeepDDI-log-4-24/">DeepDDI log 4.24</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/24/DeepDDI-log-4-24/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2020-04-23T11:31:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/">贝叶斯分类器</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/23/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%88%86%E7%B1%BB%E5%99%A8/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -333,330 +279,130 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2022/05/16/cs231n-two-layer-net-work/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/DeepDDI-log-4-21/" class="archive-article-date">
-  	<time datetime="2020-04-21T01:39:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/08/%E5%85%B3%E4%BA%8E%E5%A6%87%E5%A5%B3%E8%8A%82%E5%92%8C%E5%85%B6%E4%BB%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于妇女节和其他</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/DeepDDI-log-4-21/">DeepDDI log 4.21</a>
-    </h1>
+  
   
 
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/21/DeepDDI-log-4-21/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/DeepDDI-log-4-20/" class="archive-article-date">
-  	<time datetime="2020-04-20T13:26:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/DeepDDI-log-4-20/">DeepDDI log 4.20</a>
-    </h1>
+
   
 
 
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/20/DeepDDI-log-4-20/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">DeepDDI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" class="archive-article-date">
-  	<time datetime="2020-04-19T08:05:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">2020年4月第三周</a>
-    </h1>
-  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'true' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "rRgCquSgoXpa41Vn8ROU7ygz-gzGzoHsz",
+            app_key: "SA07Q4dCD7RxrWGDkqE61deB",
+            placeholder: "feel free to leave a commnet",
+            avatar:"mm"
+        });
+    }
+</script>
 
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/19/2020%E5%B9%B44%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-04-15T02:23:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/">机器学习的评估方法</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E8%AF%84%E4%BC%B0%E6%96%B9%E6%B3%95/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-04-13T09:14:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/">SVM(基本型、核方法、松弛变量)</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/13/SVM-%E5%9F%BA%E6%9C%AC%E5%9E%8B%E3%80%81%E6%A0%B8%E6%96%B9%E6%B3%95%E3%80%81%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/" class="archive-article-date">
-  	<time datetime="2020-04-10T03:27:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/">F &amp; S 计划</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/10/F-S-%E8%AE%A1%E5%88%92/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">周记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-04-08T06:48:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/">支持向量机（SVM）的数学基础</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2020/04/08/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%EF%BC%88SVM%EF%BC%89/" class="pageViews">0</span>次
-  </a>
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/9/">Next &amp;raquo;</a>
-    </nav>
+    </section>
   
 
 
@@ -680,8 +426,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
