@@ -200,6 +200,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs231n-assignment1-softmax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/17/cs231n-assignment1-softmax/">cs231n: assignment1: softmax</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2022/05/17/cs231n-assignment1-softmax/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2022/05/17/cs231n-assignment1-softmax/" class="archive-article-date">
+  	<time datetime="2022-05-17T13:17:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Assignment2: Softmax</h1>
+<h2 id="loss-的计算"><a class="header-anchor" href="#loss-的计算">¶</a>loss 的计算</h2>
+<p>这里基本上和之前neural network中第一步完全一样，但仍然有一些需要注意的：</p>
+<ul>
+<li>不要忘了reg，正则化比想象中更有用，多一个正则项大约高了10个点。</li>
+<li>不要忘了dw也需要求一个平均。因为点乘内包含了一个求和的过程。</li>
+</ul>
+<p>再放一遍代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">N = X.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute the logits</span></span><br><span class="line">scores = np.dot(X, W)</span><br><span class="line"></span><br><span class="line"><span class="comment"># fix 防止上溢下溢</span></span><br><span class="line">fixed_score = scores - np.max(scores, axis=<span class="number">1</span>, keepdims=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute the softmax scores</span></span><br><span class="line">softmax_scores = np.exp(fixed_score) / np.sum(np.exp(fixed_score), axis=<span class="number">1</span>, keepdims=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute loss</span></span><br><span class="line">loss = <span class="number">-1</span>* np.log(softmax_scores[range(N), y])</span><br><span class="line">loss = np.sum(loss)</span><br><span class="line">loss /= N</span><br><span class="line">loss += reg * np.sum(W*W)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compute gradient</span></span><br><span class="line">dsoft = softmax_scores   <span class="comment"># N, C  # X is N, D  W is D,C</span></span><br><span class="line">dsoft[range(N), y] = dsoft[range(N), y] - <span class="number">1</span></span><br><span class="line">dW = np.dot(X.T, dsoft)</span><br><span class="line">dW /= N</span><br><span class="line">dW += <span class="number">2</span>*reg*W</span><br></pre></td></tr></table></figure>
+<h2 id="SGD-的实现"><a class="header-anchor" href="#SGD-的实现">¶</a>SGD 的实现</h2>
+<p>这里又学到一个minibatch的选择方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># version 1</span></span><br><span class="line">mini_batch = np.random.permutation(num_train)[<span class="number">0</span>:batch_size]</span><br><span class="line">X_batch = X[mini_batch, ...]</span><br><span class="line">y_batch = y[mini_batch]</span><br><span class="line"></span><br><span class="line"><span class="comment"># version 2</span></span><br><span class="line">batch_indices = np.random.choice(X_indices,batch_size)</span><br><span class="line"><span class="comment"># Get our batch from these indices.</span></span><br><span class="line">X_batch = X[batch_indices]</span><br><span class="line">y_batch = y[batch_indices]</span><br></pre></td></tr></table></figure>
+<p>其他就都比较正常了，下班！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/17/cs231n-assignment1-softmax/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cs231n-two-layer-net-work" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1152,108 +1244,6 @@ dp</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/24/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5003%EF%BC%9ABatchNorm/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-八股文背诵002：矩阵QR分解、奇异值分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/13/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5002%EF%BC%9A%E7%9F%A9%E9%98%B5QR%E5%88%86%E8%A7%A3%E3%80%81%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">八股文背诵002：矩阵QR分解、奇异值分解</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/10/13/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5002%EF%BC%9A%E7%9F%A9%E9%98%B5QR%E5%88%86%E8%A7%A3%E3%80%81%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2021/10/13/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5002%EF%BC%9A%E7%9F%A9%E9%98%B5QR%E5%88%86%E8%A7%A3%E3%80%81%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-10-13T14:49:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="矩阵QR分解"><a class="header-anchor" href="#矩阵QR分解">¶</a>矩阵QR分解</h2>
-<h3 id="施密特方法"><a class="header-anchor" href="#施密特方法">¶</a>施密特方法</h3>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162034788.png" alt="image-20211017162034788"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162449550.png" alt="image-20211017162449550"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162507365.png" alt="image-20211017162507365"></p>
-<h3 id="Householder变换"><a class="header-anchor" href="#Householder变换">¶</a>Householder变换</h3>
-<p>主要作用是镜像变化，照的镜子是与某个单位向量正交的一个平面（n-1）维，得到镜子那边的对称向量。</p>
-<p>性质：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162837956.png" alt="image-20211017162837956"></p>
-<p>通过Householder，把某个x变换到与某个向量平行：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162923189.png" alt="image-20211017162923189"></p>
-<p>也就可以利用这个性质进行QR分解：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017162950268.png" alt="image-20211017162950268"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017163007572.png" alt="image-20211017163007572"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017163018215.png" alt="image-20211017163018215"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017163044532.png" alt="image-20211017163044532"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017163102796.png" alt="image-20211017163102796"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017163121027.png" alt="image-20211017163121027"></p>
-<h2 id="奇异值分解"><a class="header-anchor" href="#奇异值分解">¶</a>奇异值分解</h2>
-<p>例题：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017170910523.png" alt="image-20211017170910523"></p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211017170934567.png" alt="image-20211017170934567"></p>
-<p>粉色那里应该是1。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/13/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5002%EF%BC%9A%E7%9F%A9%E9%98%B5QR%E5%88%86%E8%A7%A3%E3%80%81%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
