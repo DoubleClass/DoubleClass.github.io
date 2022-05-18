@@ -200,6 +200,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs231n-assignment1-svm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/18/cs231n-assignment1-svm/">cs231n: assignment1: svm</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2022/05/18/cs231n-assignment1-svm/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2022/05/18/cs231n-assignment1-svm/" class="archive-article-date">
+  	<time datetime="2022-05-18T13:57:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Assignment1: SVM</h1>
+<h2 id="数学原理"><a class="header-anchor" href="#数学原理">¶</a>数学原理</h2>
+<p>SVM数学原理还挺复杂的，涉及到什么拉格朗日乘子法，还是不等式约束，这里挖一个坑，之后尽量补充进来。</p>
+<h2 id="SVM-loss"><a class="header-anchor" href="#SVM-loss">¶</a>SVM loss</h2>
+<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/2022-05-18-21-43-55_2e238461.png" alt="2022-05-18-21-43-55"></p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">num_train = X.shape[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">scores = np.dot(X, W)</span><br><span class="line">correct_scores = scores[range(num_train), y]</span><br><span class="line">margins = scores - correct_scores[:, np.newaxis] + <span class="number">1</span></span><br><span class="line">mask = margins &gt; np.zeros(scores.shape)</span><br><span class="line">loss = np.sum(margins[mask])</span><br><span class="line"></span><br><span class="line">loss = loss/num_train + reg*np.sum(W*W)</span><br><span class="line"></span><br><span class="line"><span class="comment"># remember the "continue", for the true class, we don't calculate loss</span></span><br><span class="line">loss -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>这里最后的减去1，意思就是sigma求和下面那个$y_i\neq j$，对于true label，我们并不计算loss</p>
+<h2 id="梯度的计算"><a class="header-anchor" href="#梯度的计算">¶</a>梯度的计算</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">margin = scores - correct_scores[:, np.newaxis] + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># only using gradient.</span></span><br><span class="line">margin[margin&gt;<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">margin[margin&lt;=<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># calculate how many margin are bigger than zero, still, we don't count true class label, thus minus 1</span></span><br><span class="line">row_sum = np.sum(margin,axis=<span class="number">1</span>) - <span class="number">1</span></span><br><span class="line">margin[range(num_train), y] = -row_sum</span><br><span class="line">dW = np.dot(X.T, margin)</span><br><span class="line">dW /= num_train</span><br><span class="line">dW += <span class="number">2</span>*reg*W</span><br></pre></td></tr></table></figure>
+<p>这里这个<code>-1</code>，意思也是我们对true label并不处理</p>
+<p>计算 <code>row_sum</code>的意思就是计算有多少 大于零的，大于零的根据求导公式要减去。</p>
+<p>这个主要是数学求导…</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/18/cs231n-assignment1-svm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cs231n-assignment1-softmax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1149,101 +1241,6 @@ dp</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/10/25/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5004%EF%BC%9Asoftmax/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-八股文背诵003：BatchNorm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/24/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5003%EF%BC%9ABatchNorm/">八股文背诵003：BatchNorm</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/10/24/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5003%EF%BC%9ABatchNorm/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2021/10/24/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5003%EF%BC%9ABatchNorm/" class="archive-article-date">
-  	<time datetime="2021-10-24T13:42:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Batchnorm"><a class="header-anchor" href="#Batchnorm">¶</a>Batchnorm</h2>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211024214525604.png" alt="image-20211024214525604"></p>
-<p>之后就是找一个简单的白化，能过计算简单，同时保留信息。</p>
-<p>所有引入 Batchnorm。</p>
-<p>也就是：</p>
-<ol>
-<li>在X的每层，每个维度上作白化，也就不需要整体白化，计算复杂度大大降低。</li>
-<li>之后再跟一个linear，有一个α和β参数，保留了信息。</li>
-</ol>
-<p>这些应付面试应该够了。</p>
-<p>如果深入理解继续阅读：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/34879333" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34879333</a></p>
-<h2 id="Warmup"><a class="header-anchor" href="#Warmup">¶</a>Warmup</h2>
-<p>一开始模型初始化，不能用太大的学习率，否则震荡过于强烈。</p>
-<p>而模型在看过一些minibatch对数据有了一定理解之后，就可以适当增加学习率，适当的变化模型。</p>
-<p>而当学习到了一定程度，就需要学习率慢慢变小（decay），因为此时模型已经慢慢收敛，过大的学习率有可能让模型崩掉或达到次优性能。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/24/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5003%EF%BC%9ABatchNorm/">展开全文 >></a>
         </p>
       
 
