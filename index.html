@@ -200,6 +200,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cs231n-assignment1-knn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/19/cs231n-assignment1-knn/">cs231n: assignment1: knn</a>
+    </h1>
+  
+
+
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/2022/05/19/cs231n-assignment1-knn/" class="pageViews">0</span>次
+  </a>
+
+        
+        <a href="/2022/05/19/cs231n-assignment1-knn/" class="archive-article-date">
+  	<time datetime="2022-05-19T12:45:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>Assignment1.3: KNN</h1>
+<p>这个实验之前做过，说白了就是求距离：</p>
+<ul>
+<li>用两个for循环</li>
+<li>用一个for循环</li>
+<li>完全不用for循环</li>
+</ul>
+<p>然后还有几个numpy函数的用法：</p>
+<ul>
+<li>np.bincount</li>
+<li>np.array_split</li>
+<li>等等</li>
+</ul>
+<p>这些用处都不是很大。<br>
+这里把代码贴上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Two for loops:</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(num_test):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> xrange(num_train):</span><br><span class="line">        </span><br><span class="line">        dists[i,j] = np.sqrt(np.sum((X[i,:]-self.X_train[j,:])**<span class="number">2</span>))</span><br><span class="line"><span class="keyword">return</span> dists</span><br><span class="line"></span><br><span class="line"><span class="comment">## one for loop:</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> xrange(num_test):</span><br><span class="line">    dists[i,:] = np.sqrt(np.sum((X[i,:] - self.X_train)**<span class="number">2</span>, axis = <span class="number">1</span>))</span><br><span class="line"><span class="keyword">return</span> dists</span><br><span class="line"></span><br><span class="line"><span class="comment">## no loop:</span></span><br><span class="line">X_squared = np.sum(X**<span class="number">2</span>,axis=<span class="number">1</span>)     <span class="comment"># 500,1</span></span><br><span class="line">Y_squared = np.sum(self.X_train**<span class="number">2</span>,axis=<span class="number">1</span>) <span class="comment"># 5000,1</span></span><br><span class="line">XY = np.dot(X, self.X_train.T) <span class="comment"># 500, 5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Expand L2 distance formula to get L2(X,Y) = sqrt((X-Y)^2) = sqrt(X^2 + Y^2 -2XY)</span></span><br><span class="line">dists = np.sqrt(X_squared[:,np.newaxis] + Y_squared <span class="number">-2</span>*XY)</span><br><span class="line"><span class="comment"># 就是把公式拆开了。。。</span></span><br></pre></td></tr></table></figure>
+<p>完事，下班！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/19/cs231n-assignment1-knn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cs231n-assignment1-svm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1159,88 +1255,6 @@ dp</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/09/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-八股文背诵004：softmax" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/25/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5004%EF%BC%9Asoftmax/">八股文背诵004：softmax</a>
-    </h1>
-  
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2021/10/25/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5004%EF%BC%9Asoftmax/" class="pageViews">0</span>次
-  </a>
-
-        
-        <a href="/2021/10/25/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5004%EF%BC%9Asoftmax/" class="archive-article-date">
-  	<time datetime="2021-10-25T14:14:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Softmax"><a class="header-anchor" href="#Softmax">¶</a>Softmax</h2>
-<p>大家都知道softmax是什么，但是我们谈论softmax时一般会默认使用 <strong>交叉熵</strong> 损失函数，所以关键在损失函数，极其导数的推导：</p>
-<p><img src="https://bat-blog.oss-cn-beijing.aliyuncs.com/image-20211025221743617.png" alt="image-20211025221743617"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/10/25/%E5%85%AB%E8%82%A1%E6%96%87%E8%83%8C%E8%AF%B5004%EF%BC%9Asoftmax/">展开全文 >></a>
         </p>
       
 
