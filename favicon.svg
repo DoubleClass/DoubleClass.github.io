@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DOUBLECLASS">
+  <rect width="64" height="64" rx="12" fill="#171a1c"/>
+  <path d="M13 13h17v17H13z" fill="#3e738e"/>
+  <path d="M34 34h17v17H34z" fill="#9b3d35"/>
+  <path d="M34 13h17v17H34zM13 34h17v17H13z" fill="none" stroke="#d4bd82" stroke-width="3"/>
+  <path d="M25 25h14v14H25z" fill="#ece7d9"/>
+</svg>
