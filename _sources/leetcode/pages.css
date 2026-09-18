@@ -1,0 +1,6 @@
+.pages-bar{display:flex;align-items:center;gap:16px;min-height:46px;padding:8px 24px;background:#173f31;color:#fff;font-size:13px;flex-wrap:wrap}
+.pages-bar a{color:#fff;text-decoration:none;white-space:nowrap}
+.pages-bar a:hover{text-decoration:underline}
+.pages-bar button{border:1px solid #9bb4a7;background:#fff;color:#173f31;border-radius:4px;padding:6px 12px;font-weight:600}
+.pages-sync-status{flex:1;font-size:12px;color:#dce8df}
+@media(max-width:720px){.pages-bar{gap:12px;padding:8px 12px}.pages-sync-status{order:4;flex-basis:100%;font-size:12px}.pages-bar button{margin-left:auto}.pages-bar{font-size:13px}}
